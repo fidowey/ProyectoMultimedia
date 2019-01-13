@@ -1,8 +1,6 @@
 	<?php 
 	include "bootstrap_link.php";
 	 ?>
-
-	//aca va el contenido qe se repite (header)
 	<!DOCTYPE html>
 	<html>
 	<head>
@@ -12,7 +10,29 @@
 	<body>
 	<div class="container">
 		<div class="row">
+			<div id="margen" class="col-12">
+				<br>
+				<br>
+				<br>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-3">
+				<img src="views/include/img/conaf_logo2.png" width="369" height="128" alt="conaf_logo2">
+			</div>
+			<div class="col-6" style="text-align: center;">
+				<br>
+			<h1>BIENVENIDO</h1>
+			<br>				
+			</div>
+			<div class="col-3"></div>
+		</div>
+		<div class="row">
 					<style>
+					#margen{
+    				text-align: center;
+    				background-color:#dcedf5;
+    				}
     				#Inicio {
     				text-align: center;
     				background-color:#458def;
@@ -58,4 +78,3 @@
       				<a class="nav-item nav-link text-light" href="#">Iniciar Sesión</a>
       				</div>
 		</div>
-	</div>
