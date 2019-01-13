@@ -10,22 +10,52 @@
 		<title></title>
 	</head>
 	<body>
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  			<a class="navbar-brand" href="#">Navbar</a>
-  			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    			<span class="navbar-toggler-icon"></span>
-  			</button>
-  			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    			<div class="navbar-nav">
-      				<a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-      				<a class="nav-item nav-link" href="#">Features</a>
-      				<a class="nav-item nav-link" href="#">Pricing</a>
-      				<a class="nav-item nav-link disabled" href="#">Disabled</a>
-    			</div>
-    			<nav class="navbar navbar-light bg-light">
-  					<form class="form-inline">
-    				<button class="btn btn-outline-success" type="button">Main button</button>
-  				</form>
-				</nav>
-  			</div>
-		</nav>
+	<div class="container">
+		<div class="row">
+					<style>
+    				#Inicio {
+    				text-align: center;
+    				background-color:#458def;
+    				}
+    				#Parques {
+    				text-align: center;
+    				background-color:#58b5ab;
+    				}
+    				#Contacto {
+    				text-align: center;
+    				background-color:#a076cc;
+    				}
+    				#Nosotros {
+    				text-align: center;
+    				background-color:#5abd51;
+    				}
+    				#Visitanos {
+    				text-align: center;
+    				background-color:#54b5e2;
+    				}
+    				#Iniciar_Sesion {
+    				text-align: center;
+    				background-color:#f38f31;
+    				}    				    				
+    				</style>
+
+  					<div id="Inicio" class="col-2" >
+      				<a class="nav-item nav-link text-light" href="#">Inicio</a>
+      				</div>
+      				<div id="Parques" class="col-2">
+      				<a class="nav-item nav-link text-light" href="#">Parques</a>
+      				</div>
+      				<div id="Contacto" class="col-2">
+      				<a class="nav-item nav-link text-light" href="#">Contacto</a>
+      				</div>
+      				<div id="Nosotros" class="col-2">
+      				<a class="nav-item nav-link text-light" href="#">Nosotros</a>
+      				</div>
+      				<div id="Visitanos" class="col-2 ">
+      				<a class="nav-item nav-link text-light" href="#">Visitanos</a>
+      				</div>
+      				<div id="Iniciar_Sesion" class="col-2">
+      				<a class="nav-item nav-link text-light" href="#">Iniciar Sesión</a>
+      				</div>
+		</div>
+	</div>
