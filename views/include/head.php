@@ -60,7 +60,7 @@
     				</style>
 
   					<div id="Inicio" class="col-2" >
-      				<a class="nav-item nav-link text-light" href="#">Inicio</a>
+      				<a class="nav-item nav-link text-light" href="index.php">Inicio</a>
       				</div>
       				<div id="Parques" class="col-2">
       				<a class="nav-item nav-link text-light" href="#">Parques</a>
