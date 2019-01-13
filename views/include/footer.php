@@ -1,5 +1,5 @@
 
-<div class="container">
+
 		<style>
 		#footer{
 		background-color:#dcedf5; 
