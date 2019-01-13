@@ -8,7 +8,6 @@
 		<div id="footer" class="row">
 		<div class="col-6">	
 			<img src="views/include/img/conaf_logo.png" width="128" height="128" alt="conaf_logo">
-			
 		</div>
 		<div class="col-2"></div>
 		<div class="col-4">
