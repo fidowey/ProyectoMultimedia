@@ -18,11 +18,11 @@
 		</div>
 		<div class="row">
 			<div class="col-3">
-				<img src="views/include/img/conaf_logo2.png" width="369" height="128" alt="conaf_logo2">
+				<img src="views/include/img/conaf_logo2.png" class="img-responsive" width="369" height="128" alt="conaf_logo2">
 			</div>
 			<div class="col-6" style="text-align: center;">
 				<br>
-			<h1>BIENVENIDO</h1>
+			<p><h1>BIENVENIDO</h1></p>
 			<br>				
 			</div>
 			<div class="col-3"></div>
