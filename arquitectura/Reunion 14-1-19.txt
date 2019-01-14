@@ -1,0 +1,23 @@
+- Que hay que hacer con el excel
+R: Solo servira para exportar lista visitantes, guardaparques. Importar datos de nuevos 
+
+- Administrador banea cuentas
+R: Funcionario de conaf puede banear visita frecuente
+
+- Administrador general cambia estadoo no?
+R: Cambia su situacion, desabilitar.
+
+- El sistema interactua con?
+R: El guardaprques tambien interactua ,no solamente el administrador. El guardaprque puede dar de alta a un visitante  pero no ve a los demas guardaparques.
+
+-La pagina 2 sera el index
+
+- Cualquier trabajador puede ser guardaparques. 
+0- trabajador normal
+1- guardaparques
+
+Arreglar tabla. Sacar la funciones a otra tabla y relacionarlas con codigo. Turnos sacar de otra tabla.
+
+- Hacer diagramas de casos de uso.
+
+- Actualizar vista de requerimientos
