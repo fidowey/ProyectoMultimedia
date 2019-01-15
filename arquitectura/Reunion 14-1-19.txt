@@ -8,7 +8,8 @@ R: Funcionario de conaf puede banear visita frecuente
 R: Cambia su situacion, desabilitar.
 
 - El sistema interactua con?
-R: El guardaprques tambien interactua ,no solamente el administrador. El guardaprque puede dar de alta a un visitante  pero no ve a los demas guardaparques.
+R: El guardaprques tambien interactua ,no solamente el administrador. El guardaprque puede dar de alta a un visitante
+ pero no ve a los demas guardaparques.
 
 -La pagina 2 sera el index
 
