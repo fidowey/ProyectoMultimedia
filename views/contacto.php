@@ -3,7 +3,7 @@
 
   <div class="row">
     <div class="col-md-4">
-		<img src="include/img/forestin.png" class="img-fluid rounded mx-auto d-block">
+		<img src="include/img/forestin.png" class="img-fluid rounded mx-auto d-block" >
     </div>
     <div class="col-md-4">
 		<form action="correo.php">
