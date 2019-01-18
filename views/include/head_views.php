@@ -26,56 +26,6 @@
 			</div>
 			<div class="col-3"></div>
 		</div>
-		<div class="row">
-					<style>
-					#margen{
-    				text-align: center;
-    				background-color:#dcedf5;
-    				}
-    				#Inicio {
-    				text-align: center;
-    				background-color:#458def;
-    				}
-    				#Parques {
-    				text-align: center;
-    				background-color:#58b5ab;
-    				}
-    				#Contacto {
-    				text-align: center;
-    				background-color:#a076cc;
-    				}
-    				#Nosotros {
-    				text-align: center;
-    				background-color:#5abd51;
-    				}
-    				#Visitanos {
-    				text-align: center;
-    				background-color:#54b5e2;
-    				}
-    				#Iniciar_Sesion {
-    				text-align: center;
-    				background-color:#f38f31;
-    				}    				    				
-    				</style>
-
-  					<div id="Inicio" class="col-2" >
-      				<a class="nav-item nav-link text-light" href="index.php">Inicio</a>
-      				</div>
-      				<div id="Parques" class="col-2">
-      				<a class="nav-item nav-link text-light" href="#">Parques</a>
-      				</div>
-      				<div id="Contacto" class="col-2">
-      				<a class="nav-item nav-link text-light" href="#">Contacto</a>
-      				</div>
-      				<div id="Nosotros" class="col-2">
-      				<a class="nav-item nav-link text-light" href="#">Nosotros</a>
-      				</div>
-      				<div id="Visitanos" class="col-2 ">
-      				<a class="nav-item nav-link text-light" href="#">Visitanos</a>
-      				</div>
-      				<div id="Iniciar_Sesion" class="col-2">
-      				<a class="nav-item nav-link text-light" href="#">Iniciar Sesión</a>
-      				</div>
 		</div>
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
   			<button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span>
@@ -83,7 +33,7 @@
   			<div class="collapse navbar-collapse bg-info" id="navbarSupportedContent">
     			<ul class="navbar-nav mr-auto text-center ">
       				<li class="nav-item active">
-        				<a class="nav-link text-center" href="#">	Inicio		</a>
+        				<a class="nav-link text-center" href="/ProyectoMultimedia/views/inicio.php">	Inicio		</a>
       				</li>
       				<li class="nav-item ">
         				<a class="nav-link text-center" href="/ProyectoMultimedia/views/contacto.php">	Contacto	</a>
@@ -95,6 +45,6 @@
         				<a class="nav-link text-center " href="#">	Visitanos	</a>
       				</li>
     			</ul>
-				<a href="#!" class="btn btn-primary btn-lg active bg-success" role="button" aria-pressed="true">Iniciar sesion</a>
+				<a href="/ProyectoMultimedia/views/login.php" class="btn btn-primary btn-lg active bg-success" role="button" aria-pressed="true">Iniciar sesion</a>
   			</div>
 		</nav>
