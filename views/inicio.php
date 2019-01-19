@@ -1,4 +1,4 @@
-<?php require_once "include/head.php"; ?>
+<?php require_once "include/head_views.php"; ?>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-4">
@@ -65,4 +65,4 @@
 			</div>
 		</div>
 	</div>
-<?php require_once "include/footer.php"; ?>
+<?php require_once "include/footer_views.php"; ?>
