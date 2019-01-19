@@ -65,12 +65,13 @@
 
 						else{
 							//hacer aparecer un cuadro con javascript
-									echo"
+									echo
+									"
 									<script>
 									alert ("."El nombre de usuario o la contraseña no son correctos".");
 									return false;
 									</script>
-									"
+									";
 						}
 						break;
 				}
@@ -78,12 +79,13 @@
 		}
 		else{
 			//mismo cuadro con javascript
-		echo"
+		echo
+		"
 		<script>
 		alert ("."El nombre de usuario o la contraseña no son correctos".");
 		return false;
 		</script>
-		"
+		";
 		}
 
 		mysqli_free_result($resultado);
