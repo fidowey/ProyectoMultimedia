@@ -187,6 +187,7 @@
 			apmat_vis=$apmat,
 			telefono_vis=$telefono,
 			sexo_vis=$sexo,
+			tipo_vis=$tipo_vis
 			pasaporte=$pasaporte,
 			fecha_nacvis=$fechnac,
 			email_vis=$email,
@@ -210,6 +211,8 @@
 			email_func=$email,
 			telefono_func=$telefono,
 			id_cargo=$id_cargo,
+			estado_cta=$estado_cta,
+			estado_func=$estado_func
 			pass_func=$pass_func
 			WHERE cod_vis=$codigo";
 			$sql2="
@@ -218,6 +221,24 @@
 			id_cargo=$id_cargo
 			nombre_cargo=$nombre_cargo
 			";
+			mysqli_close($db);
+	}
+
+	function registrarcuenta{
+			$db= mysqli_connect($host,$user,$pass,$db_name);
+			$sql ="
+			INSERT INTO CUENTA
+			id_cuenta,
+			est_cuenta,
+			pass_cuenta,
+			qr,
+			cod_vis
+			VALUES
+			$id,
+			$estado,
+			$password,
+			$qr,
+			$cod_vis";
 			mysqli_close($db);
 	}
 
