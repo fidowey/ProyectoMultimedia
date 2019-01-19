@@ -6,7 +6,7 @@
 		<img src="include/img/forestin.png" class="img-fluid rounded mx-auto d-block" >
     </div>
     <div class="col-md-4">
-		<form action="correo.php">
+		<form action="correo.php" method= "POST">
     		<div class="form-group">
       			<label >Nombre</label>
       			<input type="text"  class="form-control" name="nombre">
