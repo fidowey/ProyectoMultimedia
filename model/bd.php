@@ -30,17 +30,17 @@
 				{
 					case '1':
 						//redireccionar a la vista del adminnistrador general
-					header('Location: administrador.php');
+					$user='adminnistrador';
 						break;
 
 					case '2':
 						//redireccionar a la vista del subadministrador
-					header('Location: subadministrador.php');
+					$user='subadministrador';
 						break;
 
 					case '3':
 						//redireccionar a la vista del usuario general
-					header('Location: usuario.php');
+					$user='usuario';
 						break;
 					
 					default:
@@ -58,7 +58,7 @@
 
 						if($filas_vis>0){
 							//redireccionar a la vista del visitante frecuente
-							header('Location: visita.php');
+							$user='visitante';
 									mysqli_free_result($resultado_visita);
 									mysqli_close($db);
 						}

@@ -2,14 +2,14 @@ function validarR(){
 
 	var nombres, apellidos, rut, dv, telefono, email;
 
-	nombres = document.getElementById("nombres").value;
+	nombre = document.getElementById("nombre").value;
 	apellidos = document.getElementById("apellidos").value;
 	rut = document.getElementById("rut").value;
 	dv = document.getElementById("dv").value;
 	telefono = document.getElementById("telefono").value;
 	email= document.getElementById("email").value;
 
-	if(nombres === ""){
+	if(nombre === ""){
 		alert ("el campo nombres es invalido");
 		return false;
 	}

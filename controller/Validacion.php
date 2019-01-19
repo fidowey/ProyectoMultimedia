@@ -1,9 +1,9 @@
 <?php 
 	require_once 'model/bd.php';
-	$user=$_POST[''];
-	$pass=$_POST[''];
+	$email=$_POST['email'];
+	$password=$_POST['password'];
 
-	ValidacionUsuario ($user ,$pass);
+	ValidacionUsuario ($email ,$password);
 	session_start();
 	$_SESSION['user']=$user;
 	header("Location:#.html");

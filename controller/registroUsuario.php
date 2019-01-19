@@ -1,7 +1,10 @@
 <?php 
-	$nombre = $_POST[''];
-	$rut=$_POST[''];
-	$fechaNac=$_POST[''];
-	$sexo=$_POST[''];
+	$nombre = $_POST['nombre'];
+	$appat = $_POST['appat'];
+	$apmat = $_POST['apmat'];
+	$rut=$_POST['rut'];
+	$dv = $_POST['dv'];
+	$fechaNac=$_POST['fechaNac'];
+	$sexo=$_POST['sexo'];
 	
  ?>
