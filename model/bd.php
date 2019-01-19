@@ -127,7 +127,51 @@
 		else{
 		echo "Error: ".$sql."<br>".$bd->error;
 		}
-		mysqli_free_result($resultado);
+		mysqli_close($db);
+	}
+
+		function RegistrarPersonal(){
+		$db= mysqli_connect($host,$user,$pass,$db_name);
+		$sql ="
+		INSERT INTO PERSONAL
+		nombre_func,
+		appat_func,
+		apmat_func,
+		rut_func,
+		dv_func,
+		img_func,
+		privilegio,
+		email_func,
+		telefono_func,
+		id_cargo,
+		pass_func
+		VALUES
+		'$nombre',
+		'$appat',
+		'$apmat',
+		'$rut',
+		'$dv',
+		'$img',
+		'$privilegio',
+		'$email',
+		'$telefono',
+		'id_cargo',
+		'$pass_func'
+		)";
+		$sql2="
+		INSERT INTO CARGO
+		id_cargo,
+		nombre_cargo
+		VALUES
+		'$id_cargo',
+		'$nombre_cargo'
+		";
+		if ($bd->query($sql)===TRUE&&$bd->query($sql2)) {
+			echo "el registro se ingreso con exito";
+	}
+		else{
+		echo "Error: ".$sql."<br>".$bd->error;
+		}
 		mysqli_close($db);
 	}
 
