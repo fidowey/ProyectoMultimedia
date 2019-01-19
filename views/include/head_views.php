@@ -32,7 +32,7 @@
         				<a class="nav-link text-center" href="#">	Nosotros	</a>
       				</li>
       				<li class="nav-item">
-        				<a class="nav-link text-center " href="#">	Visitanos	</a>
+        				<a class="nav-link text-center " href="/ProyectoMultimedia/views/visitanos.php">	Visitanos	</a>
       				</li>
               <li class="nav-item">
                 <a class="nav-link text-center " href="/ProyectoMultimedia/views/registro.php">  Registrarse </a>
