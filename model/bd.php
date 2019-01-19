@@ -102,11 +102,11 @@
 		appat_vis,
 		apmat_vis,
 		telefono_vis
-		sexo_vis
-		edad_vis
+		sexo_vis,
+		edad_vis,
 		pasaporte,
-		fecha_nacvis
-		email_vis
+		fecha_nacvis,
+		email_vis,
 		img_vis
 		VALUES
 		'$rut',
@@ -173,6 +173,52 @@
 		echo "Error: ".$sql."<br>".$bd->error;
 		}
 		mysqli_close($db);
+	}
+
+	function updatevisitante{
+			$db= mysqli_connect($host,$user,$pass,$db_name);
+			$sql ="
+			UPDATE VISITANTE
+			SET
+			rut_vis=$rut,
+			dv_vis=$dv,
+			nombre_vis=$nombre,
+			appat_vis=$appat,
+			apmat_vis=$apmat,
+			telefono_vis=$telefono,
+			sexo_vis=$sexo,
+			pasaporte=$pasaporte,
+			fecha_nacvis=$fechnac,
+			email_vis=$email,
+			img_vis=$img
+			WHERE cod_vis=$codigo";
+			mysqli_close($db);
+	}
+
+	function updatefuncionario{
+			$db= mysqli_connect($host,$user,$pass,$db_name);
+			$sql ="
+			UPDATE PERSONAL
+			SET
+			nombre_func=$nombre,
+			appat_func=$appat,
+			apmat_func=$apmat,
+			rut_func=$rut,
+			dv_func=$dv,
+			img_func=$img,
+			privilegio=$privilegio,
+			email_func=$email,
+			telefono_func=$telefono,
+			id_cargo=$id_cargo,
+			pass_func=$pass_func
+			WHERE cod_vis=$codigo";
+			$sql2="
+			UPDATE CARGO
+			SET
+			id_cargo=$id_cargo
+			nombre_cargo=$nombre_cargo
+			";
+			mysqli_close($db);
 	}
 
  ?>
