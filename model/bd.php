@@ -94,8 +94,33 @@
 
 	function RegistrarUsuario(){
 		$db= mysqli_connect($host,$user,$pass,$db_name);
-		$sql ="insert into personal (rut, dv , nombres, apellido_p , apellido_m)
-		values('$rut','$dv','$nombre','$apellido_p','$apellido_m')";
+		$sql ="
+		INSERT INTO VISITANTE
+		rut_vis,
+		dv_vis,
+		nombre_vis,
+		appat_vis,
+		apmat_vis,
+		telefono_vis
+		sexo_vis
+		edad_vis
+		pasaporte,
+		fecha_nacvis
+		email_vis
+		img_vis
+		VALUES
+		'$rut',
+		'$dv',
+		'$nombre',
+		'$appat',
+		'$apmat',
+		'$telefono',
+		'$sexo',
+		'$edad',
+		'$pasaporte',
+		'$fecha_nacvis',
+		'$email'
+		)";
 		if ($bd->query($sql)===TRUE) {
 			echo "el registro se ingreso con exito";
 	}
