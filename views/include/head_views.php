@@ -4,25 +4,15 @@
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<title></title>
-
 	</head>
 	<body>
 	<div class="container">
 		<div class="row">
-			<div id="margen" class="col-12">
-				<br>
-				<br>
-				<br>
+			<div class="col-md-3">
+				<img src="include/img/conaf_logo2.png" class="img-fluid rounded mx-auto d-block"  alt="conaf_logo2">
 			</div>
-		</div>
-		<div class="row">
-			<div class="col-3">
-				<img src="include/img/conaf_logo2.png" class="img-responsive" width="369" height="128" alt="conaf_logo2">
-			</div>
-			<div class="col-6" style="text-align: center;">
-				<br>
-			<p><h1>BIENVENIDO</h1></p>
-			<br>				
+			<div class="col-md-6" >
+        <p class="text-center"><h1>BIENVENIDO</h1></p>				
 			</div>
 			<div class="col-3"></div>
 		</div>
