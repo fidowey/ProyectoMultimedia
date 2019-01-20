@@ -1,21 +1,23 @@
 <?php
-	$user ="root";
-	$pass="";
-	$db_name="conaf";
-	$host="localhost";
-	
-	if (mysqli_connect_errno()) {
+
+	function ValidacionUsuario ($email,$password){
+		$user ="root";
+		$pass="";
+		$db_name="conaf";
+		$host="localhost";
+
+		if (mysqli_connect_errno()) {
 		printf("fallo la conexion: %s",mysqli_connect_error());
 		exit();
-	}
-	function ValidacionUsuario ($email,$password,$user,$pass,$db_name,$host){
-		$db= mysqli_connect($user,$pass,$db_name,$host);
+
+		$db= mysqli_connect($host,$user,$pass,$db_name);
+
 		$sql =
 		"
 		SELECT email_func,pass_func,privilegio
 		FROM FUNCIONARIO
 		WHERE email='$email'
-		AND pass_func='$pass'
+		AND pass_func='$password'
 		";
 		$resultado=mysqli_query($db,$sql);
 
@@ -24,13 +26,13 @@
 		$filas=mysqli_num_rows($resultado);
 		if($filas>0)
 		{
-			if($email=='email'&& $pass=='pass_func')
+			if($email=='email'&& $password=='pass_func')
 			{
 				switch ('privilegio')
 				{
 					case '1':
 						//redireccionar a la vista del adminnistrador general
-					$user='adminnistrador';
+					$user='administrador';
 						break;
 
 					case '2':
@@ -49,7 +51,7 @@
 						"
 						SELECT email_vis,pass_cuenta FROM VISITANTE vis JOIN 
 						CUENTA cuen ON vis.cod_vis=cuen.cod_vis
-						WHERE email_vis='$email' AND pass_cuenta='$pass';
+						WHERE email_vis='$email' AND pass_cuenta='$password'
 						";
 
 						$resultado_visita=mysqli_query($db,$select_visita);
@@ -91,9 +93,9 @@
 		mysqli_free_result($resultado);
 		mysqli_close($db);
 }
+}
 
 	function RegistrarUsuario(){
-		$db= mysqli_connect($host,$user,$pass,$db_name);
 		$sql ="
 		INSERT INTO VISITANTE
 		rut_vis,
@@ -123,12 +125,12 @@
 		)";
 		if ($bd->query($sql)===TRUE) {
 			echo "el registro se ingreso con exito";
-	}
+		}
 		else{
 		echo "Error: ".$sql."<br>".$bd->error;
 		}
 		mysqli_close($db);
-	}
+		}
 
 		function RegistrarPersonal(){
 		$db= mysqli_connect($host,$user,$pass,$db_name);
@@ -176,7 +178,6 @@
 	}
 
 	function updatevisitante(){
-			$db= mysqli_connect($host,$user,$pass,$db_name);
 			$sql ="
 			UPDATE VISITANTE
 			SET
@@ -195,9 +196,7 @@
 			WHERE cod_vis=$codigo";
 			mysqli_close($db);
 	}
-
 	function updatefuncionario(){
-			$db= mysqli_connect($host,$user,$pass,$db_name);
 			$sql ="
 			UPDATE PERSONAL
 			SET
@@ -212,20 +211,19 @@
 			telefono_func=$telefono,
 			id_cargo=$id_cargo,
 			estado_cta=$estado_cta,
-			estado_func=$estado_func
+			estado_func=$estado_func,
 			pass_func=$pass_func
 			WHERE cod_vis=$codigo";
+
 			$sql2="
 			UPDATE CARGO
 			SET
-			id_cargo=$id_cargo
+			id_cargo=$id_cargo,
 			nombre_cargo=$nombre_cargo
 			";
 			mysqli_close($db);
 	}
-
 	function registrarcuenta(){
-			$db= mysqli_connect($host,$user,$pass,$db_name);
 			$sql ="
 			INSERT INTO CUENTA
 			id_cuenta,
@@ -241,5 +239,4 @@
 			$cod_vis";
 			mysqli_close($db);
 	}
-
- ?>
+?>
