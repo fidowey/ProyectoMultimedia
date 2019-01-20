@@ -102,8 +102,53 @@
 }
 
 	function RegistrarUsuario(){
+
+		$user ="root";
+		$pass="";
+		$db_name="conaf";
+		$host="localhost";
+
+		if (mysqli_connect_errno()) {
+		printf("fallo la conexion: %s",mysqli_connect_error());
+		exit();
+		}
+
+		$db= mysqli_connect($host,$user,$pass,$db_name);
+
+
+		$sel="
+		SELECT codebar_vis
+		FROM VISITANTE
+		";
+
+		$consulta=mysqli_query($db,$sel);
+		$resultado=mysqli_fetch_array($cosulta);
+		$filas=mysqli_num_rows($consulta);
+
+
+		$barcode=mt_rand(0000000000,9999999999); //creamos un numero al azar para el codigo de barra
+
+		while ($barcode==$resultado['codebar_vis']) {
+
+		$barcode=mt_rand(0000000000,9999999999); //en caso de repetirse, se vuelve a crear otro
+
+		}
+
+		$sel2=" 
+			SELECT MAX(cod_vis)
+			FROM VISITANTE
+		"; //seleccionamos el maximo codigo de visita y le sumamos 1 para añadirselo al proximo visitante
+
+		$consulta2=mysqli_query($db,$sel);
+		$resultado2=mysqli_fetch_array($cosulta);
+		$filas2=mysqli_num_rows($consulta);
+
+		$cov_vis=$resultado2['cod_vis']+1;
+
+
 		$sql ="
 		INSERT INTO VISITANTE
+		cod_vis,
 		rut_vis,
 		dv_vis,
 		nombre_vis,
@@ -115,8 +160,9 @@
 		pasaporte,
 		fecha_nacvis,
 		email_vis,
-		img_vis
+		codebar_vis
 		VALUES
+		'$cod_vis',
 		'$rut',
 		'$dv',
 		'$nombre',
@@ -127,7 +173,8 @@
 		'$edad',
 		'$pasaporte',
 		'$fecha_nacvis',
-		'$email'
+		'$email',
+		'$barcode'
 		)";
 		if ($bd->query($sql)===TRUE) {
 			echo "el registro se ingreso con exito";

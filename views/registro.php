@@ -11,7 +11,7 @@
 	<div class="row">
 		<div class="col-md-3"></div>
 		<div class="col-md-6">
-			<form action="../model/bd.php" method="POST" onsubmit="return validarR();">
+			<form action="../controller/registroUsuario.php" method="POST" onsubmit="return validarR();">
   				<div class="form-row">
     				<div class="form-group col-md-8">
       					<label for="inputCity">Rut</label>
