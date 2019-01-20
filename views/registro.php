@@ -4,7 +4,7 @@
 		<div class="col-md-4"></div>
 		<div class="col-md-4">	
 			<img src="include/img/conaf.jpg" class="img-fluid rounded mx-auto d-block" >
-			<small class="form-text text-muted">Por favor complete los campos para crear su cuenta </small>
+			<small class="form-text text-muted">Por favor complete los campos con asterisco para crear su cuenta </small>
 		</div>
 		<div class="col-md-4"></div>
 	</div>
@@ -37,34 +37,38 @@
     				</div>
     			</div>
     			<div class="form-group">
-    				<label >Nombre </label>
+    				<label >Nombre * </label>
     				<input type="text" class="form-control " name="nombre" required>
   				</div>
   				<div class="form-group">
-    				<label >Apellido Paterno </label>
+    				<label >Apellido Paterno *</label>
     				<input type="text" class="form-control" name="appat" required>
   				</div>
   				<div class="form-group">
-    				<label >Apellido Materno </label>
+    				<label >Apellido Materno * </label>
     				<input type="text" class="form-control" name="apmat" required>
   				</div>
   				<div class="form-group">
-    				<label >Fecha de nacimiento </label>
-    				<input type="date" class="form-control" placeholder="dd-mm-aaaa" required>
+    				<label >Fecha de nacimiento * </label>
+    				<input type="date" class="form-control" placeholder="dd-mm-aaaa" name="fechanac" required>
   				</div>
   				<div class="form-group ">
-      					<label for="inputState">Sexo</label>
+      					<label for="inputState">Sexo *</label>
       					<select id="inputState" class="form-control" name="sexo">
-        				<option selected>hombre</option>
-        				<option>mujer</option>
+        				<option value="M" selected>Masculino</option>
+        				<option value="F" >Femenino</option>
       					</select>
     			</div>
     			<div class="form-group">
-    				<label >Telefono </label>
-    				<input type="text" class="form-control" required>
+    				<label >Telefono * </label>
+    				<input type="text" class="form-control" name="telefono" required>
   				</div>
+          <div class="form-group">
+          <label >Numero Pasaporte </label>
+          <input type="text" class="form-control" name="pasaporte">
+          </div>
   				<div class="form-group">
-    				<label for="exampleInputEmail1">Email </label>
+    				<label for="exampleInputEmail1">Email * </label>
     				<input type="email" class="form-control" id="exampleInputEmail1" name="email" required>
     				<small id="emailHelp" class="form-text text-muted">No compartiremos tu informacion con terceros</small>
   				</div>
