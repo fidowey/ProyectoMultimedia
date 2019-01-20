@@ -1,6 +1,6 @@
 <?php
 
-	function ValidacionUsuario ($email,$password){
+	function login ($email,$password){
 		$user ="root";
 		$pass="";
 		$db_name="conaf";
@@ -15,8 +15,8 @@
 		$sql =
 		"
 		SELECT email_func,pass_func,privilegio
-		FROM FUNCIONARIO
-		WHERE email='$email'
+		FROM PERSONAL
+		WHERE email_func='$email'
 		AND pass_func='$password'
 		";
 		$resultado=mysqli_query($db,$sql);
@@ -26,23 +26,32 @@
 		$filas=mysqli_num_rows($resultado);
 		if($filas>0)
 		{
-			if($email=='email'&& $password=='pass_func')
+			if($email=='email_func'&& $password=='pass_func')
 			{
 				switch ('privilegio')
 				{
 					case '1':
 						//redireccionar a la vista del adminnistrador general
 					$user='administrador';
+						session_start();
+						$_SESSION['user']=$user;
+						header("Location:administrador.php");
 						break;
 
 					case '2':
 						//redireccionar a la vista del subadministrador
 					$user='subadministrador';
-						break;
+					session_start();
+					$_SESSION['user']=$user;
+					header("Location:subadministrador.php");
+					break;
 
 					case '3':
 						//redireccionar a la vista del usuario general
 					$user='usuario';
+					session_start();
+					$_SESSION['user']=$user;
+					header("Location:usuario.php");
 						break;
 					
 					default:
@@ -61,18 +70,17 @@
 						if($filas_vis>0){
 							//redireccionar a la vista del visitante frecuente
 							$user='visitante';
-									mysqli_free_result($resultado_visita);
-									mysqli_close($db);
+							session_start();
+							$_SESSION['user']=$user;
+							header("Location:visitante.php");
+							mysqli_free_result($resultado_visita);
+							mysqli_close($db);
 						}
 
 						else{
 							//hacer aparecer un cuadro con javascript
 									echo
-									"
-									<script>
-									alert ("."El nombre de usuario o la contraseña no son correctos".");
-									return false;
-									</script>
+									"usuario incorrecto
 									";
 						}
 						break;
@@ -82,11 +90,7 @@
 		else{
 			//mismo cuadro con javascript
 		echo
-		"
-		<script>
-		alert ("."El nombre de usuario o la contraseña no son correctos".");
-		return false;
-		</script>
+		"usuario incorrecto
 		";
 		}
 
