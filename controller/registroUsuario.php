@@ -1,10 +1,13 @@
 <?php 
+
+require_once'../model/bd.php';
+
 	$nombre = $_POST['nombre'];
 	$appat = $_POST['appat'];
 	$apmat = $_POST['apmat'];
 	$rut=$_POST['rut'];
 	$dv = $_POST['dv'];
-	$fechaNac=$_POST['fechaNac'];
+	$fechanac=$_POST['fechanac'];
 	$sexo=$_POST['sexo'];
 	$pasaporte=$_POST['pasaporte'];
 	$telefono=$_POST['telefono'];
@@ -59,6 +62,8 @@ if ($uploadOk == 0) {
 	$anionac= date("Y",$fechaNac); //extraemos el año de la fecha de nacimiento
 
 	$edad=$anioactual-$anionac; //hacemos el calculo de edad mediante una operacion matemática
+
+	RegistrarUsuario($nombre,$appat,$apmat,$rut,$dv,$fechanac,$sexo,$pasaporte,$telefono,$img);
 
 	
  ?>

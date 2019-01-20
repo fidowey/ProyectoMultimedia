@@ -101,7 +101,7 @@
 
 }
 
-	function RegistrarUsuario(){
+	function RegistrarUsuario($nombre,$appat,$apmat,$rut,$dv,$fechanac,$sexo,$pasaporte,$telefono,$img){
 
 		$user ="root";
 		$pass="";
