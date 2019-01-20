@@ -82,9 +82,8 @@
 
 						else{
 							//hacer aparecer un cuadro con javascript
-									echo
-									"usuario incorrecto
-									";
+									echo'<script>alert("Usuario incorrecto");</script>';
+									
 						}
 						break;
 				}
@@ -92,9 +91,8 @@
 		}
 		else{
 		//mismo cuadro con javascript
-		echo
-		"usuario incorrecto
-		";
+		echo'<script>alert("Usuario incorrecto");</script>';
+
 		}
 
 		mysqli_close($db);
