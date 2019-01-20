@@ -115,51 +115,58 @@
 
 
 		$sel="
-		SELECT codebar_vis
+		SELECT bar_codevis
 		FROM VISITANTE
 		";
 
 		$consulta=mysqli_query($db,$sel);
-		$resultado=mysqli_fetch_array($consulta);
-		$filas=mysqli_num_rows($consulta);
 
+		while ($valores = mysqli_fetch_array($consulta)) {
 
 		$barcode=mt_rand(0000000000,9999999999); //creamos un numero al azar para el codigo de barra
 
-		while ($barcode==$resultado['codebar_vis']) {
+		while ($barcode==$valores['bar_codevis']) {
 
 		$barcode=mt_rand(0000000000,9999999999); //en caso de repetirse, se vuelve a crear otro
 
 		}
+		}
 
 		$sel2=" 
-			SELECT MAX(cod_vis)
+			SELECT MAX(cod_vis) AS cod_vis
 			FROM VISITANTE
 		"; //seleccionamos el maximo codigo de visita y le sumamos 1 para añadirselo al proximo visitante
 
 		$consulta2=mysqli_query($db,$sel2);
-		$resultado2=mysqli_fetch_array($consulta2);
-		$filas2=mysqli_num_rows($consulta2);
 
-		$cod_vis=$resultado2['cod_vis']+1;
+		while ($valores2=mysqli_fetch_array($consulta2)) {
+			
+			$cod_vis=$valores2['cod_vis'];
+			$cod_vis=$cod_vis+1;
+			# code...
+		}
 
 
+		
 		$sql ="
 		INSERT INTO VISITANTE
+		(
 		cod_vis,
 		rut_vis,
 		dv_vis,
 		nombre_vis,
 		appat_vis,
 		apmat_vis,
-		telefono_vis
+		telefono_vis,
 		sexo_vis,
 		edad_vis,
 		pasaporte,
 		fecha_nacvis,
 		email_vis,
-		codebar_vis
+		bar_codevis
+		)
 		VALUES
+		(
 		'$cod_vis',
 		'$rut',
 		'$dv',
