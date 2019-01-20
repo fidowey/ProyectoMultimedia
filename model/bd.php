@@ -1,5 +1,4 @@
 <?php
-
 	function login ($email,$password){
 		$user ="root";
 		$pass="";
@@ -9,6 +8,7 @@
 		if (mysqli_connect_errno()) {
 		printf("fallo la conexion: %s",mysqli_connect_error());
 		exit();
+		}
 
 		$db= mysqli_connect($host,$user,$pass,$db_name);
 
@@ -19,11 +19,10 @@
 		WHERE email_func='$email'
 		AND pass_func='$password'
 		";
-		$resultado=mysqli_query($db,$sql);
+		$sesion=mysqli_query($db,$sql);
+		$resultado=mysqli_fetch_array($sesion);
+		$filas=mysqli_num_rows($sesion);
 
-
-//este if está orientado unicamente a los  funcionarios
-		$filas=mysqli_num_rows($resultado);
 		if($filas>0)
 		{
 			if($email==$resultado['email_func'] && $password==$resultado['pass_func'])
@@ -92,15 +91,14 @@
 			}
 		}
 		else{
-			//mismo cuadro con javascript
+		//mismo cuadro con javascript
 		echo
 		"usuario incorrecto
 		";
 		}
 
-		mysqli_free_result($resultado);
 		mysqli_close($db);
-}
+
 }
 
 	function RegistrarUsuario(){
