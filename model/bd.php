@@ -1,4 +1,4 @@
-<?php 
+<?php
 	$user ="root";
 	$pass="";
 	$db_name="conaf";
@@ -8,8 +8,8 @@
 		printf("fallo la conexion: %s",mysqli_connect_error());
 		exit();
 	}
-	function login ($email ,$pass){
-		$db= mysqli_connect($host,$user,$pass,$db_name);
+	function ValidacionUsuario ($email,$password,$user,$pass,$db_name,$host){
+		$db= mysqli_connect($user,$pass,$db_name,$host);
 		$sql =
 		"
 		SELECT email_func,pass_func,privilegio
@@ -90,7 +90,7 @@
 
 		mysqli_free_result($resultado);
 		mysqli_close($db);
-	}
+}
 
 	function RegistrarUsuario(){
 		$db= mysqli_connect($host,$user,$pass,$db_name);
@@ -175,7 +175,7 @@
 		mysqli_close($db);
 	}
 
-	function updatevisitante{
+	function updatevisitante(){
 			$db= mysqli_connect($host,$user,$pass,$db_name);
 			$sql ="
 			UPDATE VISITANTE
@@ -196,7 +196,7 @@
 			mysqli_close($db);
 	}
 
-	function updatefuncionario{
+	function updatefuncionario(){
 			$db= mysqli_connect($host,$user,$pass,$db_name);
 			$sql ="
 			UPDATE PERSONAL
@@ -224,7 +224,7 @@
 			mysqli_close($db);
 	}
 
-	function registrarcuenta{
+	function registrarcuenta(){
 			$db= mysqli_connect($host,$user,$pass,$db_name);
 			$sql ="
 			INSERT INTO CUENTA

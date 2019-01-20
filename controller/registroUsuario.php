@@ -10,7 +10,7 @@
 	$telefono=$_POST['telefono'];
 	$img = $_FILES['img'];
 
-	if ($img!=NULL) {
+	if ($img!=NULL) { //para el usuario esporadico no existe la imagen asi que comprobamos nulidad de imagen
 	$target_dir = "img/";
 	$target_file = $target_dir . $nombreproducto . $descripcion . '.png';
 	$uploadOk = 1;
@@ -54,8 +54,6 @@ if ($uploadOk == 0) {
     }
 }
 }
-
-
 	$hoy=getdate(); //obtenemos la fecha actual
 	$anioactual=date("Y",$hoy); //extraemos el año de la fecha actual
 	$anionac= date("Y",$fechaNac); //extraemos el año de la fecha de nacimiento
