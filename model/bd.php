@@ -26,32 +26,35 @@
 		$filas=mysqli_num_rows($resultado);
 		if($filas>0)
 		{
-			if($email=='email_func'&& $password=='pass_func')
+			if($email==$resultado['email_func'] && $password==$resultado['pass_func'])
 			{
-				switch ('privilegio')
+				switch ($resultado['privilegio'])
 				{
 					case '1':
+					echo"usted es el administrador";
 						//redireccionar a la vista del adminnistrador general
-					$user='administrador';
+						/*$user='administrador';
 						session_start();
 						$_SESSION['user']=$user;
-						header("Location:administrador.php");
+						header("Location:administrador.php");*/
 						break;
 
 					case '2':
 						//redireccionar a la vista del subadministrador
-					$user='subadministrador';
-					session_start();
-					$_SESSION['user']=$user;
-					header("Location:subadministrador.php");
+						/*$user='subadministrador';
+						session_start();
+						$_SESSION['user']=$user;
+						header("Location:subadministrador.php");*/
+						echo"usted es el subadministrador";
 					break;
 
 					case '3':
 						//redireccionar a la vista del usuario general
-					$user='usuario';
-					session_start();
-					$_SESSION['user']=$user;
-					header("Location:usuario.php");
+						/*$user='usuario';
+						session_start();
+						$_SESSION['user']=$user;
+						header("Location:usuario.php");*/
+						echo"usted es el usuario";
 						break;
 					
 					default:
@@ -69,12 +72,13 @@
 
 						if($filas_vis>0){
 							//redireccionar a la vista del visitante frecuente
-							$user='visitante';
+							/*$user='visitante';
 							session_start();
 							$_SESSION['user']=$user;
 							header("Location:visitante.php");
 							mysqli_free_result($resultado_visita);
-							mysqli_close($db);
+							mysqli_close($db);*/
+							echo "usted es visitante";
 						}
 
 						else{
