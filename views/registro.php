@@ -11,11 +11,11 @@
 	<div class="row">
 		<div class="col-md-3"></div>
 		<div class="col-md-6">
-			<form action="../controller/registroUsuario.php" method="POST" onsubmit="return validarR();">
+			<form action="../controller/registroUsuario.php" method="POST">
   				<div class="form-row">
     				<div class="form-group col-md-8">
       					<label for="inputCity">Rut</label>
-      					<input type="number" class="form-control" id="inputCity" name="rut">
+      					<input type="text" class="form-control" id="inputCity" name="rut" pattern="([0-9]{0,7,8}>
       					<small id="emailHelp" class="form-text text-muted">Ingrese rut sin digito verificador</small>
     				</div>
 
@@ -38,15 +38,18 @@
     			</div>
     			<div class="form-group">
     				<label >Nombre * </label>
-    				<input type="text" class="form-control " name="nombre" required>
+    				<input type="text" class="form-control " name="nombre" required pattern="([A-Za-z]{3,})"
+            title="No uses caracteres inválidos como números o signos">
   				</div>
   				<div class="form-group">
     				<label >Apellido Paterno *</label>
-    				<input type="text" class="form-control" name="appat" required>
+    				<input type="text" class="form-control" name="appat" required pattern="([A-Za-z]{3,})"
+            title="No uses caracteres inválidos como números o signos">
   				</div>
   				<div class="form-group">
     				<label >Apellido Materno * </label>
-    				<input type="text" class="form-control" name="apmat" required>
+    				<input type="text" class="form-control" name="apmat" required pattern="([A-Za-z]{3,})"
+            title="No uses caracteres inválidos como números o signos">
   				</div>
   				<div class="form-group">
     				<label >Fecha de nacimiento * </label>
@@ -61,7 +64,7 @@
     			</div>
     			<div class="form-group">
     				<label >Telefono * </label>
-    				<input type="text" class="form-control" name="telefono" required>
+    				<input type="text" class="form-control" name="telefono" required pattern="[0-9]{7,}">
   				</div>
           <div class="form-group">
           <label >Numero Pasaporte </label>
@@ -72,8 +75,6 @@
     				<input type="email" class="form-control" id="exampleInputEmail1" name="email" required>
     				<small id="emailHelp" class="form-text text-muted">No compartiremos tu informacion con terceros</small>
   				</div>
-  				<small id="emailHelp" class="form-text text-muted">
-  				los campos destacados en amarillo seran para tu inicio de sesion </small>
   				<div class="form-group form-check">
     				<input type="checkbox" class="form-check-input" id="exampleCheck1">
     				<label class="form-check-label" for="exampleCheck1">Check </label>

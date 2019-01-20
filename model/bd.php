@@ -101,7 +101,7 @@
 
 }
 
-	function RegistrarUsuario($nombre,$appat,$apmat,$rut,$dv,$fechanac,$sexo,$pasaporte,$telefono,$img){
+	function RegistrarUsuario($nombre,$appat,$apmat,$rut,$dv,$fechanac,$sexo,$pasaporte,$telefono,$img,$edad,$email){
 
 		$user ="root";
 		$pass="";
@@ -122,7 +122,7 @@
 		";
 
 		$consulta=mysqli_query($db,$sel);
-		$resultado=mysqli_fetch_array($cosulta);
+		$resultado=mysqli_fetch_array($consulta);
 		$filas=mysqli_num_rows($consulta);
 
 
@@ -139,11 +139,11 @@
 			FROM VISITANTE
 		"; //seleccionamos el maximo codigo de visita y le sumamos 1 para añadirselo al proximo visitante
 
-		$consulta2=mysqli_query($db,$sel);
-		$resultado2=mysqli_fetch_array($cosulta);
-		$filas2=mysqli_num_rows($consulta);
+		$consulta2=mysqli_query($db,$sel2);
+		$resultado2=mysqli_fetch_array($consulta2);
+		$filas2=mysqli_num_rows($consulta2);
 
-		$cov_vis=$resultado2['cod_vis']+1;
+		$cod_vis=$resultado2['cod_vis']+1;
 
 
 		$sql ="
@@ -172,15 +172,15 @@
 		'$sexo',
 		'$edad',
 		'$pasaporte',
-		'$fecha_nacvis',
+		'$fechanac',
 		'$email',
 		'$barcode'
 		)";
-		if ($bd->query($sql)===TRUE) {
+		if ($db->query($sql)===TRUE) {
 			echo "el registro se ingreso con exito";
 		}
 		else{
-		echo "Error: ".$sql."<br>".$bd->error;
+		echo "Error: ".$sql."<br>".$db->error;
 		}
 		mysqli_close($db);
 		}

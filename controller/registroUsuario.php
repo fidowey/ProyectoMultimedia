@@ -2,9 +2,9 @@
 
 require_once'../model/bd.php';
 
-	$nombre = $_POST['nombre'];
-	$appat = $_POST['appat'];
-	$apmat = $_POST['apmat'];
+	$nombre = strtoupper($_POST['nombre']);
+	$appat = strtoupper($_POST['appat']);
+	$apmat = strtoupper($_POST['apmat']);
 	$rut=$_POST['rut'];
 	$dv = $_POST['dv'];
 	$fechanac=$_POST['fechanac'];
@@ -12,8 +12,13 @@ require_once'../model/bd.php';
 	$pasaporte=$_POST['pasaporte'];
 	$telefono=$_POST['telefono'];
 	$img = $_FILES['img'];
+	$email = $_POST['email'];
 
-	if ($img!=NULL) { //para el usuario esporadico no existe la imagen asi que comprobamos nulidad de imagen
+	if(empty($img)){
+		$img=NULL;
+	}
+
+	if ($img!==NULL) { //para el usuario esporadico no existe la imagen asi que comprobamos nulidad de imagen
 	$target_dir = "img/";
 	$target_file = $target_dir . $nombreproducto . $descripcion . '.png';
 	$uploadOk = 1;
@@ -58,12 +63,12 @@ if ($uploadOk == 0) {
 }
 }
 	$hoy=getdate(); //obtenemos la fecha actual
-	$anioactual=date("Y",$hoy); //extraemos el año de la fecha actual
-	$anionac= date("Y",$fechaNac); //extraemos el año de la fecha de nacimiento
+	$anioactual=$hoy['year']; //extraemos el año de la fecha actual
+	$anionac= date("Y",strtotime($fechanac)); //extraemos el año de la fecha de nacimiento
 
 	$edad=$anioactual-$anionac; //hacemos el calculo de edad mediante una operacion matemática
 
-	RegistrarUsuario($nombre,$appat,$apmat,$rut,$dv,$fechanac,$sexo,$pasaporte,$telefono,$img);
+	RegistrarUsuario($nombre,$appat,$apmat,$rut,$dv,$fechanac,$sexo,$pasaporte,$telefono,$img,$edad,$email);
 
 	
  ?>
