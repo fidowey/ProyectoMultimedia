@@ -235,7 +235,7 @@
 		mysqli_close($db);
 	}
 
-	function updatevisitante(){
+	function updatevisitante($nombre,$appat,$apmat,$rut,$dv,$fechanac,$sexo,$pasaporte,$telefono,$edad,$email){
 			$sql ="
 			UPDATE VISITANTE
 			SET
@@ -254,6 +254,25 @@
 			WHERE cod_vis=$codigo";
 			mysqli_close($db);
 	}
+
+
+	function registrarcuenta($cod_vis,$estado,$password,$qr,$img){
+			$sql ="
+			INSERT INTO CUENTA
+			id_cuenta,
+			est_cuenta,
+			pass_cuenta,
+			qr,
+			cod_vis
+			VALUES
+			$id,
+			$estado,
+			$password,
+			$qr,
+			$cod_vis";
+			mysqli_close($db);
+	}
+
 	function updatefuncionario(){
 			$sql ="
 			UPDATE PERSONAL
@@ -279,22 +298,6 @@
 			id_cargo=$id_cargo,
 			nombre_cargo=$nombre_cargo
 			";
-			mysqli_close($db);
-	}
-	function registrarcuenta(){
-			$sql ="
-			INSERT INTO CUENTA
-			id_cuenta,
-			est_cuenta,
-			pass_cuenta,
-			qr,
-			cod_vis
-			VALUES
-			$id,
-			$estado,
-			$password,
-			$qr,
-			$cod_vis";
 			mysqli_close($db);
 	}
 ?>
