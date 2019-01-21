@@ -10,9 +10,6 @@
 	<div class="container">
 		<div class="row">
 			<div id="margen" class="col-12">
-				<br>
-				<br>
-				<br>
 			</div>
 		</div>
 		<div class="row">
