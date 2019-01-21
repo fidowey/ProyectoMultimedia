@@ -19,7 +19,7 @@ require_once'../model/bd.php';
 
 	$edad=$anioactual-$anionac; //hacemos el calculo de edad mediante una operacion matemática
 
-	RegistrarUsuario($nombre,$appat,$apmat,$rut,$dv,$fechanac,$sexo,$pasaporte,$telefono,$img,$edad,$email);
+	RegistrarUsuario($nombre,$appat,$apmat,$rut,$dv,$fechanac,$sexo,$pasaporte,$telefono,$edad,$email);
 
 	
  ?>
