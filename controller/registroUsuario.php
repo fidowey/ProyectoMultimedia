@@ -39,9 +39,6 @@ require_once'../model/bd.php';
          $s=($s+$rut%10*(9-$m++%6))%11;
      }
      $dv=chr($s?$s+47:75);
-
-     echo 'El digito verificador es: ',chr($s?$s+47:75);
-
      return $dv;
 
  	}
