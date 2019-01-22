@@ -29,6 +29,10 @@ require_once'../model/bd.php';
 	$edad=(substr($edad, 0, 2)); //substr es para obtener solo un digito, el 0 marca el punto de inicio de la cadena o numero, el 2 es el largo que tendrá la nueva cadena o numero
 	$dv= dv($rut);
 
+	if($dv==1){
+		$dv="k";
+	}
+
 	function dv($rut){
 	$s=1;
      for($m=0;$rut!=0;$rut/=10){
