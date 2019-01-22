@@ -14,10 +14,20 @@ require_once'../model/bd.php';
 	$email = $_POST['email'];
 
 	$hoy=getdate(); //obtenemos la fecha actual
-	$anioactual=$hoy['year']; //extraemos el año de la fecha actual
-	$anionac= date("Y",strtotime($fechanac)); //extraemos el año de la fecha de nacimiento
+	$anioactual=(int)$hoy['year'];
+	$mesactual=(int)$hoy['mon'];
+	$diactual=(int)$hoy['mday']; //extraemos el año de la fecha actual
 
-	$edad=$anioactual-$anionac; //hacemos el calculo de edad mediante una operacion matemática
+	$anionac= date("Y",strtotime($fechanac));
+	$mesnac= date("M",strtotime($fechanac));
+	$dianac= date("d",strtotime($fechanac));
+
+	$anionac=(int)$anionac;
+	$mesnac=(int)$mesnac;
+	$dianac=(int)$dianac;
+
+	$edad=(($anioactual.$mesactual.$diactual)-($anionac.$dianac.$mesnac));
+	$edad=(substr($edad, 0, 2));
 
 	RegistrarUsuario($nombre,$appat,$apmat,$rut,$dv,$fechanac,$sexo,$pasaporte,$telefono,$edad,$email);
 
