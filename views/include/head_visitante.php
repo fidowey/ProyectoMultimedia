@@ -36,7 +36,7 @@
               </li>
     			</ul>
           <!-- Button trigger modal -->
-          <button type="button" class="btn btn-primary btn-lg active bg-success" data-toggle="modal" data-target="#exampleModal">
+          <button type="button" href="../controller/cerrar_sesion.php" class="btn btn-primary btn-lg active bg-success" data-toggle="modal" data-target="#exampleModal">
           Cerrar sesion
           </button>
 		</nav>

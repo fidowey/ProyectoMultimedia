@@ -1,4 +1,9 @@
 <?php require_once "include/head_visitante.php"; ?>
+<?php require_once "../model/bd.php"; ?>
+<?php 
+$_SESSION['usuario'];
+$_SESSION['password'];
+ ?>
  	<div class="row">
  		<div class="col-md-8">
  			<div class="jumbotron jumbotron-fluid">
@@ -23,28 +28,26 @@
       					<th scope="col">ID</th>
      					<th scope="col">Fecha</th>
       					<th scope="col">Hora</th>
-      					<th scope="col">parque</th>
+      					<th scope="col">Parque</th>
     				</tr>
   				</thead>
   				<tbody>
+  				<?php
+
+  				$consulta=consultarvisitas($email,$password);
+  				$consulta=mysqli_query($db,$sel);
+
+				while ($valores = mysqli_fetch_array($consulta)) {
+  				echo"
     				<tr>
-      					<th scope="row">1</th>
-      					<td>Mark</td>
-      					<td>Otto</td>
-      					<td>@mdo</td>
+      					<th scope='row'>".$valores['id_vis']." </th>
+      					<td>".$valores['fecha_vis']."</td>
+      					<td>".$valores['hora_vis']."</td>
+      					<td>".$valores['nombre_parque']."</td>
     				</tr>
-    				<tr>
-      					<th scope="row">2</th>
-      					<td>Jacob</td>
-      					<td>Thornton</td>
-      					<td>@fat</td>
-    				</tr>
-    				<tr>
-      					<th scope="row">3</th>
-      					<td>Larry</td>
-      					<td>the Bird</td>
-      					<td>@twitter</td>
-    				</tr>
+    				";
+    			}
+?>
   				</tbody>
 			</table>
  		</div>

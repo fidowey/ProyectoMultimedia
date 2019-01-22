@@ -55,49 +55,39 @@
 						header("Location:usuario.php");*/
 						echo"usted es el usuario";
 						break;
-					
-					default:
-						//condiciones en caso de que el que se loguea no es un funcionario
-						$select_visita=
+				}
+						//condiciones en caso de que el que se loguea no es un funcionario			
+			}
+		}
+		else{
+
+		$select_visita=
 						"
-						SELECT email_vis,pass_cuenta FROM VISITANTE vis JOIN 
+						SELECT email_vis,pass_cuenta,est_cuenta FROM VISITANTE vis JOIN 
 						CUENTA cuen ON vis.cod_vis=cuen.cod_vis
 						WHERE email_vis='$email' AND pass_cuenta='$password'
 						";
 
 						$resultado_visita=mysqli_query($db,$select_visita);
-
+						$resultado=mysqli_fetch_array($resultado_visita);
 						$filas_vis=mysqli_num_rows($resultado_visita);
 
-						if($filas_vis>0){
+						if($filas_vis>0 && $resultado['est_cuenta']==1){
 							//redireccionar a la vista del visitante frecuente
-							/*$user='visitante';
+							$user='visitante';
 							session_start();
-							$_SESSION['user']=$user;
-							header("Location:visitante.php");
+							$_SESSION['usuario']=$email;
+							$_SESSION['password']=$password;
+							header("Location:../views/perfil_visitante.php");
 							mysqli_free_result($resultado_visita);
-							mysqli_close($db);*/
-							echo "usted es visitante";
+							mysqli_close($db);
 						}
-
 						else{
-							//hacer aparecer un cuadro con javascript
-									echo'<script>alert("Usuario incorrecto");</script>';
-									
+							echo'<script>alert("Usuario incorrecto");</script>';
 						}
-						break;
-				}
-			}
-		}
-		else{
-		//mismo cuadro con javascript
-		echo'<script>alert("Usuario incorrecto");</script>';
-
-		}
-
+			}				
 		mysqli_close($db);
-
-}
+	}
 
 	function RegistrarUsuario($nombre,$appat,$apmat,$rut,$dv,$fechanac,$sexo,$pasaporte,$telefono,$edad,$email){
 
@@ -300,4 +290,36 @@
 			";
 			mysqli_close($db);
 	}
+
+	function cosultarvisitante($email,$password){
+		$user ="root";
+		$pass="";
+		$db_name="conaf";
+		$host="localhost";
+
+
+
+		if (mysqli_connect_errno()) {
+		printf("fallo la conexion: %s",mysqli_connect_error());
+		exit();
+		}
+
+		$db= mysqli_connect($host,$user,$pass,$db_name);
+
+		$sql ="
+			SELECT * FROM VISITANTE
+			WHERE email_vis=$email AND pass_cuenta=$password";
+
+		}
+
+		function consultarvisitas($email,$password){
+		$consulta="
+		SELECT fecha_vis,hora_vis,cod_vis,nombre_parque FROM VISITA
+		NATURAL JOIN PARQUE NATURAL JOIN VISITANTE
+		WHERE email_vis=$email AND pass_cuenta=$password
+		";
+
+		return $consulta;
+
+		}
 ?>
