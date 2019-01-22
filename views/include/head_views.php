@@ -31,9 +31,6 @@
       				<li class="nav-item">
         				<a class="nav-link text-center" href="#">	Nosotros	</a>
       				</li>
-      				<li class="nav-item">
-        				<a class="nav-link text-center " href="/ProyectoMultimedia/views/visitanos.php">	Visitanos	</a>
-      				</li>
               <li class="nav-item">
                 <a class="nav-link text-center " href="/ProyectoMultimedia/views/registro.php">  Registrarse </a>
               </li>
@@ -62,10 +59,6 @@
                     <div class="form-group">
                       <label for="exampleInputPassword1">Contraseña</label>
                       <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password" enctype="multipart/form-data" required>
-                    </div>
-                    <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                      <label class="form-check-label" for="exampleCheck1">Check</label>
                     </div>
                     <button type="submit" class="btn btn-primary">Iniciar sesion</button>
                   </form>

@@ -31,18 +31,19 @@
         		<option>reclamo</option>
       			</select>
     		</div>
+        <div class="form-group">
+            <label >Parque</label>
+            <select  class="form-control" name="parque">
+            <option>Laguna El Peral</option>
+            <option>Parque Nacional La Campana</option>
+            <option>Lago Peñuelas</option>
+            </select>
+        </div>
 			<div class="form-group">
     			<label for="exampleFormControlTextarea1">Mensaje</label>
     			<textarea class="form-control" name="mensaje" rows="3"></textarea>
   			</div>
-  	    	<div class="form-check">
-      			<input class="form-check-input" type="checkbox" >
-      			<label class="form-check-label" >
-        		check
-      			</label>
-    		</div>
     <button type="submit" class="btn btn-primary">Enviar</button>
-
 </form>
     </div>
     <div class="col-md-4">
