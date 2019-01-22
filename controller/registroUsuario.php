@@ -6,7 +6,6 @@ require_once'../model/bd.php';
 	$appat = strtoupper($_POST['appat']);
 	$apmat = strtoupper($_POST['apmat']);
 	$rut=$_POST['rut'];
-	$dv = $_POST['dv'];
 	$fechanac=$_POST['fechanac'];
 	$sexo=$_POST['sexo'];
 	$pasaporte=$_POST['pasaporte'];
@@ -28,6 +27,25 @@ require_once'../model/bd.php';
 
 	$edad=(($anioactual.$mesactual.$diactual)-($anionac.$dianac.$mesnac));
 	$edad=(substr($edad, 0, 2)); //substr es para obtener solo un digito, el 0 marca el punto de inicio de la cadena o numero, el 2 es el largo que tendrá la nueva cadena o numero
+	$dv= dv($rut);
+
+	function dv($rut){
+	$s=1;
+     for($m=0;$rut!=0;$rut/=10){
+         $s=($s+$rut%10*(9-$m++%6))%11;
+     }
+     $dv=chr($s?$s+47:75);
+
+     echo 'El digito verificador es: ',chr($s?$s+47:75);
+
+     return $dv;
+
+ 	}
+
+ 	
+
+
+
 
 	RegistrarUsuario($nombre,$appat,$apmat,$rut,$dv,$fechanac,$sexo,$pasaporte,$telefono,$edad,$email);
 
