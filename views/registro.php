@@ -41,6 +41,10 @@
     				<label >Fecha de nacimiento * </label>
     				<input type="date" class="form-control" placeholder="dd-mm-aaaa" name="fechanac" required>
   				</div>
+            <div class="form-group">
+            <label >Direccion * </label>
+            <input type="text" class="form-control" name="direccion" required">
+          </div>
   				<div class="form-group ">
       					<label for="inputState">Sexo *</label>
       					<select id="inputState" class="form-control" name="sexo">

@@ -17,12 +17,12 @@ $password=$_SESSION['password'];
   					 while ($valores=mysqli_fetch_assoc($consulta)){
   					 echo"
     				<p class='lead'>Nombre: ".$valores['nombre_vis']."</p>
-    				<p class='lead'>Apellidos: ". $valores['appat_vis']." ".$valores['apmat_vis']."</p>
+    				<p class='lead'>Apellidos: ".$valores['appat_vis']." ".$valores['apmat_vis']."</p>
     				<p class='lead'>Rut: ".$valores['rut_vis']."-".$valores['dv_vis']."</p>
     				<p class='lead'>Fecha de nacimiento: ".$valores['fecha_nacvis']."</p>
     				<p class='lead'>Sexo: ".$valores['sexo_vis']."</p>
     				";
-    			}$nombre=$valores['nombre_vis'];
+    			}
     				?>
   				</div>
 			</div>

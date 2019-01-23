@@ -95,7 +95,7 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 		mysqli_close($db);
 	}
 
-	function RegistrarUsuario($nombre,$appat,$apmat,$rut,$dv,$fechanac,$sexo,$pasaporte,$telefono,$edad,$email){
+	function RegistrarUsuario($nombre,$appat,$apmat,$rut,$dv,$fechanac,$sexo,$pasaporte,$telefono,$edad,$email,$direccion){
 
 
 		global $db;
@@ -150,7 +150,8 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 		pasaporte,
 		fecha_nacvis,
 		email_vis,
-		bar_codevis
+		bar_codevis,
+		dir_vis
 		)
 		VALUES
 		(
@@ -166,7 +167,8 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 		'$pasaporte',
 		'$fechanac',
 		'$email',
-		'$barcode'
+		'$barcode',
+		'$direccion'
 		)";
 		if ($db->query($sql)===TRUE) {
 			echo "el registro se ingreso con exito";
@@ -222,28 +224,38 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 		mysqli_close($db);
 	}
 
-	function updatevisitante($nombre,$appat,$apmat,$rut,$dv,$fechanac,$sexo,$pasaporte,$telefono,$edad,$email){
+	function updatevisitante($cod_vis,$nombre,$appat,$apmat,$rut,$dv,$fechanac,$sexo,$pasaporte,$edad,$direccion,$email,$telefono,$img,$tipo_vis){
 
 		global $db;
 
 			$sql ="
 			UPDATE VISITANTE
 			SET
-			rut_vis=$rut,
-			dv_vis=$dv,
+			cod_vis=$cod_vis,
 			nombre_vis=$nombre,
 			appat_vis=$appat,
 			apmat_vis=$apmat,
-			telefono_vis=$telefono,
-			sexo_vis=$sexo,
-			tipo_vis=$tipo_vis
+			rut_vis=$rut,
+			dv_vis=$dv,
+			fecha_nacvis=$fechanac,
+			sexo_vis=$sexo
 			pasaporte=$pasaporte,
-			fecha_nacvis=$fechnac,
+			edad_vis=$edad,
+			dir_vis=$direccion,
 			email_vis=$email,
-			img_vis=$img
-			WHERE cod_vis=$codigo";
-			mysqli_close($db);
-	}
+			telefono_vis=$telefono
+			img_vis=$img,
+			tipo_vis=$tipo_vis
+			WHERE cod_vis=$cod_vis";
+
+					if ($db->query($sql)===TRUE) {
+			echo "actualizacion hecha con exito";
+		}
+		else{
+		echo "Error: ".$sql."<br>".$db->error;
+		}
+		mysqli_close($db);
+		}
 
 
 	function registrarcuenta($cod_vis,$estado,$password,$qr,$img){

@@ -6,6 +6,7 @@ require_once'../model/bd.php';
 	$appat = strtoupper($_POST['appat']);
 	$apmat = strtoupper($_POST['apmat']);
 	$rut=$_POST['rut'];
+	$direccion=$_POST['direccion'];
 	$fechanac=$_POST['fechanac'];
 	$sexo=$_POST['sexo'];
 	$pasaporte=$_POST['pasaporte'];
@@ -48,7 +49,7 @@ require_once'../model/bd.php';
 
 
 
-	RegistrarUsuario($nombre,$appat,$apmat,$rut,$dv,$fechanac,$sexo,$pasaporte,$telefono,$edad,$email);
+	RegistrarUsuario($nombre,$appat,$apmat,$rut,$dv,$fechanac,$sexo,$pasaporte,$telefono,$edad,$email,$direccion);
 
 	
  ?>
