@@ -232,20 +232,20 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 			UPDATE VISITANTE
 			SET
 			cod_vis=$cod_vis,
-			nombre_vis=$nombre,
-			appat_vis=$appat,
-			apmat_vis=$apmat,
-			rut_vis=$rut,
-			dv_vis=$dv,
-			fecha_nacvis=$fechanac,
-			sexo_vis=$sexo
-			pasaporte=$pasaporte,
+			nombre_vis='$nombre',
+			appat_vis='$appat',
+			apmat_vis='$apmat',
+			rut_vis='$rut',
+			dv_vis='$dv',
+			fecha_nacvis='$fechanac',
+			sexo_vis='$sexo',
+			pasaporte='$pasaporte',
 			edad_vis=$edad,
-			dir_vis=$direccion,
-			email_vis=$email,
-			telefono_vis=$telefono
-			img_vis=$img,
-			tipo_vis=$tipo_vis
+			dir_vis='$direccion',
+			email_vis='$email',
+			telefono_vis=$telefono,
+			img_vis='$img',
+			tipo_vis='$tipo_vis'
 			WHERE cod_vis=$cod_vis";
 
 					if ($db->query($sql)===TRUE) {
@@ -281,14 +281,14 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 			$sql ="
 			UPDATE PERSONAL
 			SET
-			nombre_func=$nombre,
-			appat_func=$appat,
-			apmat_func=$apmat,
-			rut_func=$rut,
-			dv_func=$dv,
-			img_func=$img,
-			privilegio=$privilegio,
-			email_func=$email,
+			nombre_func='$nombre',
+			appat_func='$appat',
+			apmat_func='$apmat',
+			rut_func='$rut',
+			dv_func='$dv',
+			img_func='$img',
+			privilegio='$privilegio',
+			email_func='$email',
 			telefono_func=$telefono,
 			id_cargo=$id_cargo,
 			estado_cta=$estado_cta,
