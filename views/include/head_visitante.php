@@ -1,4 +1,6 @@
-	<?php include_once "include/bootstrap_link_views.php"; ?>
+	<?php 
+  include_once "include/bootstrap_link_views.php";?>
+
 	<!DOCTYPE html>
 	<html>
 	<head>
@@ -12,7 +14,7 @@
 				<img src="include/img/conaf_logo2.png" class="img-fluid rounded mx-auto d-block"  alt="conaf_logo2">
 			</div>
 			<div class="col-md-6" >
-        <p class="text-center"><h1>BIENVENIDO   [EL nombre del brea]</h1></p>				
+        <p class="text-center"><h1>BIENVENIDO </h1></p>				
 			</div>
 			<div class="col-3"></div>
 		</div>
@@ -36,7 +38,7 @@
               </li>
     			</ul>
           <!-- Button trigger modal -->
-          <button type="button" href="../controller/cerrar_sesion.php" class="btn btn-primary btn-lg active bg-success" data-toggle="modal" data-target="#exampleModal">
+          <button type="button" onclick="window.location.href='../controller/cerrar_sesion.php'" class="btn btn-primary btn-lg active bg-success" data-toggle="modal" data-target="#exampleModal">
           Cerrar sesion
           </button>
 		</nav>

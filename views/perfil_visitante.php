@@ -1,19 +1,29 @@
-<?php require_once "include/head_visitante.php"; ?>
 <?php require_once "../model/bd.php"; ?>
-<?php 
-$_SESSION['usuario'];
-$_SESSION['password'];
- ?>
+<?php require_once "include/head_visitante.php";
+
+session_start();
+
+$email=$_SESSION['usuario'];
+$password=$_SESSION['password'];
+?>
+
+
  	<div class="row">
  		<div class="col-md-8">
  			<div class="jumbotron jumbotron-fluid">
   				<div class="container">
-    				<p class="lead">Nombre:[nombre del brea]</p>
-    				<p class="lead">Apellidos:[apellidos  del brea]</p>
-    				<p class="lead">Rut:[rut del brea]</p>
-    				<p class="lead">Nacionalidad:[pais del brea]</p>
-    				<p class="lead">Fecha de nacimiento:[cuando nacio el brea]</p>
-    				<p class="lead">Sexo:[sexo del brea]</p>
+  					<?php 
+  						$consulta=cosultarvisitante($email,$password);
+  					 while ($valores=mysqli_fetch_assoc($consulta)){
+  					 echo"
+    				<p class='lead'>Nombre: ".$valores['nombre_vis']."</p>
+    				<p class='lead'>Apellidos: ". $valores['appat_vis']." ".$valores['apmat_vis']."</p>
+    				<p class='lead'>Rut: ".$valores['rut_vis']."-".$valores['dv_vis']."</p>
+    				<p class='lead'>Fecha de nacimiento: ".$valores['fecha_nacvis']."</p>
+    				<p class='lead'>Sexo: ".$valores['sexo_vis']."</p>
+    				";
+    			}$nombre=$valores['nombre_vis'];
+    				?>
   				</div>
 			</div>
  		</div>
@@ -35,9 +45,9 @@ $_SESSION['password'];
   				<?php
 
   				$consulta=consultarvisitas($email,$password);
-  				$consulta=mysqli_query($db,$sel);
 
-				while ($valores = mysqli_fetch_array($consulta)) {
+  				while ($valores=mysqli_fetch_assoc($consulta)) {
+
   				echo"
     				<tr>
       					<th scope='row'>".$valores['id_vis']." </th>
@@ -46,7 +56,7 @@ $_SESSION['password'];
       					<td>".$valores['nombre_parque']."</td>
     				</tr>
     				";
-    			}
+    				}
 ?>
   				</tbody>
 			</table>

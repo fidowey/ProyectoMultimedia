@@ -1,16 +1,22 @@
 <?php
+
+$user ="root";
+$pass="";
+$db_name="conaf";
+$host="localhost";
+
+if (mysqli_connect_errno()) {
+printf("fallo la conexion: %s",mysqli_connect_error());
+exit();
+}
+
+$db= mysqli_connect($host,$user,$pass,$db_name);
+
+	
+
 	function login ($email,$password){
-		$user ="root";
-		$pass="";
-		$db_name="conaf";
-		$host="localhost";
-
-		if (mysqli_connect_errno()) {
-		printf("fallo la conexion: %s",mysqli_connect_error());
-		exit();
-		}
-
-		$db= mysqli_connect($host,$user,$pass,$db_name);
+		
+		global $db;
 
 		$sql =
 		"
@@ -91,17 +97,8 @@
 
 	function RegistrarUsuario($nombre,$appat,$apmat,$rut,$dv,$fechanac,$sexo,$pasaporte,$telefono,$edad,$email){
 
-		$user ="root";
-		$pass="";
-		$db_name="conaf";
-		$host="localhost";
 
-		if (mysqli_connect_errno()) {
-		printf("fallo la conexion: %s",mysqli_connect_error());
-		exit();
-		}
-
-		$db= mysqli_connect($host,$user,$pass,$db_name);
+		global $db;
 
 
 		$sel="
@@ -181,7 +178,7 @@
 		}
 
 		function RegistrarPersonal(){
-		$db= mysqli_connect($host,$user,$pass,$db_name);
+		global $db;
 		$sql ="
 		INSERT INTO PERSONAL
 		nombre_func,
@@ -226,6 +223,9 @@
 	}
 
 	function updatevisitante($nombre,$appat,$apmat,$rut,$dv,$fechanac,$sexo,$pasaporte,$telefono,$edad,$email){
+
+		global $db;
+
 			$sql ="
 			UPDATE VISITANTE
 			SET
@@ -247,6 +247,7 @@
 
 
 	function registrarcuenta($cod_vis,$estado,$password,$qr,$img){
+		global $db;
 			$sql ="
 			INSERT INTO CUENTA
 			id_cuenta,
@@ -264,6 +265,7 @@
 	}
 
 	function updatefuncionario(){
+		global $db;
 			$sql ="
 			UPDATE PERSONAL
 			SET
@@ -292,34 +294,27 @@
 	}
 
 	function cosultarvisitante($email,$password){
-		$user ="root";
-		$pass="";
-		$db_name="conaf";
-		$host="localhost";
-
-
-
-		if (mysqli_connect_errno()) {
-		printf("fallo la conexion: %s",mysqli_connect_error());
-		exit();
-		}
-
-		$db= mysqli_connect($host,$user,$pass,$db_name);
+		global $db;
 
 		$sql ="
-			SELECT * FROM VISITANTE
-			WHERE email_vis=$email AND pass_cuenta=$password";
+			SELECT * FROM VISITANTE NATURAL JOIN CUENTA
+			WHERE email_vis='$email' AND pass_cuenta=$password";
+
+			return mysqli_query($db,$sql);
+
 
 		}
 
 		function consultarvisitas($email,$password){
-		$consulta="
-		SELECT fecha_vis,hora_vis,cod_vis,nombre_parque FROM VISITA
-		NATURAL JOIN PARQUE NATURAL JOIN VISITANTE
-		WHERE email_vis=$email AND pass_cuenta=$password
-		";
+			global $db;
 
-		return $consulta;
+			$consulta="
+				SELECT fecha_vis,hora_vis,cod_vis,nombre_parque,id_vis FROM VISITA
+				NATURAL JOIN PARQUE NATURAL JOIN VISITANTE NATURAL JOIN CUENTA
+				WHERE email_vis='$email' AND pass_cuenta='$password'
+				";
 
+				return mysqli_query($db,$consulta);
 		}
+
 ?>
