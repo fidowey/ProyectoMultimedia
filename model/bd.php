@@ -20,8 +20,8 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 
 		$sql =
 		"
-		SELECT email_func,pass_func,privilegio
-		FROM PERSONAL
+		SELECT email_func,pass_func,privilegio,id_parque
+		FROM DETALLE_PARQUE
 		WHERE email_func='$email'
 		AND pass_func='$password'
 		";
@@ -36,30 +36,28 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 				switch ($resultado['privilegio'])
 				{
 					case '1':
-					echo"usted es el administrador";
 						//redireccionar a la vista del adminnistrador general
-						/*$user='administrador';
 						session_start();
-						$_SESSION['user']=$user;
-						header("Location:administrador.php");*/
+						$_SESSION['usuario']=$email;
+						$_SESSION['password']=$password;
+						header("Location:../views/perfil_admin.php");
 						break;
 
 					case '2':
 						//redireccionar a la vista del subadministrador
-						/*$user='subadministrador';
 						session_start();
-						$_SESSION['user']=$user;
-						header("Location:subadministrador.php");*/
-						echo"usted es el subadministrador";
+						$_SESSION['usuario']=$email;
+						$_SESSION['password']=$password;
+						$_SESSION['place']=$resultado['id_parque'];
+						header("Location:../views/perfil_subadmin.php");
 					break;
 
 					case '3':
 						//redireccionar a la vista del usuario general
-						/*$user='usuario';
 						session_start();
-						$_SESSION['user']=$user;
-						header("Location:usuario.php");*/
-						echo"usted es el usuario";
+						$_SESSION['usuario']=$email;
+						$_SESSION['password']=$password;
+						header("Location:../views/usuario.php");
 						break;
 				}
 						//condiciones en caso de que el que se loguea no es un funcionario			
@@ -328,5 +326,51 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 
 				return mysqli_query($db,$consulta);
 		}
+
+		function consultarvis1parque($id_parque){
+			global $db;
+
+			$consulta="
+			SELECT nombre_vis,appat_vis, apmat_vis, rut_vis, dv_vis, fecha_vis, hora_vis FROM VISITANTE NATURAL JOIN VISITA
+			WHERE id_parque=$id_parque";
+
+			return mysqli_query($db,$consulta);
+		}
+
+			function consultarfuncionario($email,$password){
+			global $db;
+
+			$consulta="
+			SELECT * FROM DETALLE_PARQUE
+			WHERE email_func='$email'
+			AND pass_func=$password";
+
+			return mysqli_query($db,$consulta);
+		}
+
+		function agendarvisita($email,$password){
+		global $db;
+
+		$sql="INSERT INTO prog_visita
+		hora_preprog_vis,
+		fecha_preprog_vis,
+		fecha_registro,
+		id_registro,
+		id_cuenta
+		VALUES
+		$hora,
+		'$fecha',
+		'$fecha_ahora',
+		id_registro,
+		id_cuenta"
+
+		if ($bd->query($sql)===TRUE&&$bd->query($sql2)) {
+			echo "el registro se ingreso con exito";
+		}
+		else{
+		echo "Error: ".$sql."<br>".$bd->error;
+		}
+		mysqli_close($db);
+	}
 
 ?>
