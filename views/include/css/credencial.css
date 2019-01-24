@@ -1,0 +1,93 @@
+.cred-front-iz{
+  width: 550px;
+  height: 400px;
+  background: url('./img/pase_adelante.jpg') no-repeat;
+}
+
+.cred-front-der{
+	width: 550px;
+	height: 400px;
+	background: url('./img/pase_atras.jpg') no-repeat; 
+}	
+.rut{
+	font-family: verdana;
+	color: #666464;
+	margin-top: 90px;
+	margin-left: 50px;
+	font-weight: bold;
+}
+
+.foto{
+	margin-top: 0px;
+}
+.foto-size{
+	display: block;
+	margin-top: 70px;
+	width: 150px;
+	height: 200px;
+}
+
+.apellidopaterno{
+	font-family: verdana;
+	color: #666464;
+	margin-left: 180px;
+	margin-top:-205px;
+	font-weight: bold;
+	font-size: 12px;
+}
+
+.apellidomaterno{
+	font-family: verdana;
+	color: #666464;
+	margin-left: 180px;
+	margin-top:-200px;
+	font-weight: bold;
+	font-size: 12px;
+}
+
+
+
+.nombre{
+	font-family: verdana;
+	color: #666464;
+	margin-left: 180px;
+	margin-top:28px;
+	font-weight: bold;
+	font-size: 12px;
+}
+
+.pasaporte{
+	font-family: verdana;
+	color: #666464;
+	margin-left: 180px;
+	margin-top:20px;
+	font-weight: bold;
+	font-size: 12px;
+}
+
+.sexo{
+	font-family: verdana;
+	color: #666464;
+	margin-left: 300px;
+	margin-top:-15px;
+	font-weight: bold;
+	font-size: 12px;
+}
+
+.fecha_nacimiento{
+	font-family: verdana;
+	color: #666464;
+	margin-left: 180px;
+	margin-top:  13px;
+	font-weight: bold;
+	font-size: 12px;
+}
+
+.documento{
+	font-family: verdana;
+	color: #666464;
+	margin-left: 300px;
+	margin-top:  -15px;
+	font-weight: bold;
+	font-size: 12px;
+}
