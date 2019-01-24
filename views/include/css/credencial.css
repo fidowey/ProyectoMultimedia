@@ -1,13 +1,13 @@
 .cred-front-iz{
   width: 550px;
   height: 400px;
-  background: url('./img/pase_adelante.jpg') no-repeat;
+  background: url('../img/pase_adelante.jpg') no-repeat;
 }
 
 .cred-front-der{
 	width: 550px;
 	height: 400px;
-	background: url('./img/pase_atras.jpg') no-repeat; 
+	background: url('../img/pase_atras.jpg') no-repeat; 
 }	
 .rut{
 	font-family: verdana;

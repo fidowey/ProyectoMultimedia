@@ -3,8 +3,8 @@
 
 
 <?php
-include "model/bd.php";
-include "controller/qr.php";
+include "../model/bd.php";
+include "../controller/qr.php";
 
 if(isset($_REQUEST['credencial_formulario'])) {
    $rut = $_REQUEST['rut'];
@@ -43,10 +43,10 @@ if(isset($_REQUEST['credencial_formulario'])) {
 	<meta charset="UTF-8">
 	<title>Document</title>
 
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="css/credencial.css">
-   <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-   <script type="text/javascript" src="js/bootstrap.js"></script>
+  <link rel="stylesheet" type="text/css" href="include/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="include/css/credencial.css">
+   <script type="text/javascript" src="include/js/jquery-3.3.1.min.js"></script>
+   <script type="text/javascript" src="include/js/bootstrap.js"></script>
 </head>
 <body>
   <div class="container">
