@@ -1,4 +1,4 @@
-<?php require_once "include/head_views.php";
+<?php require_once "include/head_subadmin.php";
 session_start();
 
 $email=$_SESSION['usuario'];
