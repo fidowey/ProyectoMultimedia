@@ -1,12 +1,21 @@
-<?php require_once "include/head_visitante.php"; ?>
+<?php require_once "include/head_visitante.php";
+
+session_start();
+$email=$_SESSION['usuario'];
+$password=$_SESSION['password'];
+$id_cuenta=$_SESSION['idcuenta'];
+
+ ?>
+
 	  <div class="row">
     <div class="col-md-4">
     </div>
     <div class="col-md-4">
-		<form name="agendar" action="agendar.php" method= "POST">
+		<form name="agendar" action="../controller/agendar.php" method= "POST">
   			<div class="form-group">
     			<label >Fecha de visita  </label>
-    			<input type="date" class="form-control" placeholder="dd-mm-aaaa" name="fechanac" required>
+    			<input type="date" class="form-control" placeholder="dd-mm-aaaa" name="fecha" required>
+          <input type="hidden" value="<?php echo $id_cuenta; ?>">
   			</div>
   	        <div class="form-group">
         	    <label >Hora </label>

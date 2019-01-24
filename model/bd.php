@@ -67,7 +67,7 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 
 		$select_visita=
 						"
-						SELECT email_vis,pass_cuenta,est_cuenta FROM VISITANTE vis JOIN 
+						SELECT email_vis,pass_cuenta,est_cuenta,id_cuenta FROM VISITANTE vis JOIN 
 						CUENTA cuen ON vis.cod_vis=cuen.cod_vis
 						WHERE email_vis='$email' AND pass_cuenta='$password'
 						";
@@ -76,12 +76,12 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 						$resultado=mysqli_fetch_array($resultado_visita);
 						$filas_vis=mysqli_num_rows($resultado_visita);
 
-						if($filas_vis>0 && $resultado['est_cuenta']==1){
+						if($filas_vis>0 && $resultado['est_cuenta']==1 && $resultado!=NULL){
 							//redireccionar a la vista del visitante frecuente
-							$user='visitante';
 							session_start();
 							$_SESSION['usuario']=$email;
 							$_SESSION['password']=$password;
+							$_SESSION['idcuenta'] = $id_cuenta=$resultado['id_cuenta'];
 							header("Location:../views/perfil_visitante.php");
 							mysqli_free_result($resultado_visita);
 							mysqli_close($db);
@@ -348,29 +348,46 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 			return mysqli_query($db,$consulta);
 		}
 
-		function agendarvisita($email,$password){
+
+		function agendarvisita($hora,$fecha,$fecha_ahora,$id_cuenta,$ruta){
+		
 		global $db;
 
-		$sql="INSERT INTO prog_visita
+		$consulta="
+			SELECT COUNT(id_registro) AS cuentareg FROM PROG_VISITA";
+
+		$sesion=mysqli_query($db,$consulta);
+		$resultado=mysqli_fetch_array($sesion);
+			
+				$id_registro=$resultado['cuentareg'];
+				$id_registro=$id_registro+1;
+			
+
+		$sql="INSERT INTO PROG_VISITA
+		(
 		hora_preprog_vis,
 		fecha_preprog_vis,
 		fecha_registro,
 		id_registro,
-		id_cuenta
+		id_cuenta,
+		id_ruta
+		)
 		VALUES
+		(
 		$hora,
 		'$fecha',
 		'$fecha_ahora',
-		id_registro,
-		id_cuenta"
+		$id_registro,
+		$id_cuenta,
+		'$ruta'
+		)";
 
-		if ($bd->query($sql)===TRUE&&$bd->query($sql2)) {
+		if ($db->query($sql)===TRUE) {
 			echo "el registro se ingreso con exito";
 		}
 		else{
-		echo "Error: ".$sql."<br>".$bd->error;
+		echo "Error: ".$sql."<br>".$db->error;
 		}
 		mysqli_close($db);
-	}
-
+		}
 ?>

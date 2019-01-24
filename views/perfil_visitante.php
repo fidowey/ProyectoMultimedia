@@ -2,10 +2,14 @@
 <?php require_once "include/head_visitante.php";
 
 session_start();
-
 $email=$_SESSION['usuario'];
 $password=$_SESSION['password'];
+$id_cuenta=$_SESSION['idcuenta'];
+
+echo $id_cuenta;
+
 ?>
+
 
 
  	<div class="row">
