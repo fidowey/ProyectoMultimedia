@@ -390,4 +390,26 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 		}
 		mysqli_close($db);
 		}
+
+		function consultarvisfrec(){
+		global $db;
+			
+			$consulta="
+			SELECT * FROM VISITANTE NATURAL JOIN CUENTA
+			WHERE tipo_vis='frecuente' AND est_cuenta=1";
+
+			return mysqli_query($db,$consulta);
+		}
+
+				function consultarvisfrec2(){
+		global $db;
+			
+			$consulta="
+			SELECT * FROM VISITANTE NATURAL JOIN CUENTA
+			WHERE tipo_vis='frecuente' AND est_cuenta=0";
+
+			return mysqli_query($db,$consulta);
+		}
+
+
 ?>
