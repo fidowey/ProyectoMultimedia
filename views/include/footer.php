@@ -1,5 +1,7 @@
 
 
+
+
 		<style>
 		#footer{
 		background-color:#dcedf5; 
@@ -28,6 +30,6 @@
 			</p>		
 		</div>
 </div>
-</body>
+</body> 
 
 </html>
