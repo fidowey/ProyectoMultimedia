@@ -103,32 +103,31 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 		SELECT bar_codevis
 		FROM VISITANTE
 		";
-
 		$consulta=mysqli_query($db,$sel);
 
-		while ($valores = mysqli_fetch_array($consulta)) {
-
-		$barcode=mt_rand(0000000000,9999999999); //creamos un numero al azar para el codigo de barra
-
-		while ($barcode==$valores['bar_codevis']) {
-
-		$barcode=mt_rand(0000000000,9999999999); //en caso de repetirse, se vuelve a crear otro
-
-		}
+		$barcode=mt_rand(0000000000,9999999999); //creamos un numero al azar
+		
+		while ($valores = mysqli_fetch_array($consulta)) 
+		{
+		//si el codigo de barra ya existe
+			if($barcode==$valores['bar_codevis']) 
+			{
+			//creamos un codigo nuevo
+			$barcode=mt_rand(0000000000,9999999999); //en caso de repetirse, se vuelve a crear otro
+			}
 		}
 
 		$sel2=" 
 			SELECT MAX(cod_vis) AS cod_vis
 			FROM VISITANTE
-		"; //seleccionamos el maximo codigo de visita y le sumamos 1 para añadirselo al proximo visitante
+		"; //seleccionamos el maximo codigo de visita
 
 		$consulta2=mysqli_query($db,$sel2);
 
 		while ($valores2=mysqli_fetch_array($consulta2)) {
 			
 			$cod_vis=$valores2['cod_vis'];
-			$cod_vis=$cod_vis+1;
-			# code...
+			$cod_vis=$cod_vis+1; //al cod vis le sumamos uno
 		}
 
 

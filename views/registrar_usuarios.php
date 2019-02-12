@@ -26,7 +26,7 @@ $id_parque=$_SESSION['place'];?>
   				<div class="form-row">
     				<div class="form-group ">
       					<label for="inputCity">Rut</label>
-      					<input type="text" class="form-control" id="inputCity" name="rut" pattern="([0-9]{0,7,8})" required>
+      					<input type="text" class="form-control" id="inputCity" name="rut" required pattern="[0-9]{7}">
       					<small id="emailHelp" class="form-text text-muted">Ingrese rut sin digito verificador</small>
     				</div>
     			</div>
