@@ -18,7 +18,7 @@
   				<div class="form-row">
     				<div class="form-group ">
       					<label for="inputCity">Rut</label>
-      					<input type="text" class="form-control" id="inputCity" name="rut" pattern="[0-9]{7,8}">
+      					<input type="text" class="form-control" id="inputCity" name="rut" pattern="[0-9]{0,7,8}">
       					<small id="emailHelp" class="form-text text-muted">Ingrese rut sin digito verificador</small>
     				</div>
     			</div>

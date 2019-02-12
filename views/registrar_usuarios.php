@@ -50,14 +50,7 @@ $id_parque=$_SESSION['place'];?>
             <input type="file" name="img" class="form-control-file" id="img" accept="image/*" required>
           </div>
           <div id="crop-select"></div>
-          
-  				<div class="form-group ">
-      				<label for="inputState">Privilegio *</label>
-      		<select id="privilegio" class="form-control" name="privilegio">
-          <option value="2">nivel 2</option>
-            <option value="3">nivel 3</option>
-          </select>
-    			</div>
+      		<input type="hidden" name="privilegio" value="3">
     			<div class="form-group">
     				<label >Telefono * </label>
     				<input type="text" class="form-control" name="telefono" required pattern="[0-9]{7,}">
