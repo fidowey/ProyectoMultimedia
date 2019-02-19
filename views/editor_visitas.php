@@ -71,10 +71,47 @@ $cod_vis=$_REQUEST['cod_vis'];
     				<input type="email" class="form-control" id="exampleInputEmail1" value="<?php echo $valores['email_vis']; ?>" name="email" required>
     				<small id="emailHelp" class="form-text text-muted">No compartiremos tu informacion con terceros</small>
   				</div>
+
+  				<div class="form-group">
+  				<input type="checkbox" name="Frecuente" id="Frecuente" value="Frecuente">
+            	Visitante Frecuente.
+  				</div>
+
+  				<div class="form-group">
+  				<p class="Frec">
+          		<label>
+            	Password:
+            	<input type="password" name="password" id="password">
+          		</label>
+        		</p>	
+  				</div>
   				<button type="submit" class="btn btn-primary">Modificar</button>
 			</form>
 </div>
 <?php } ?>
+
+<script>
+(document).ready(function(){
+
+                 $('#Frecuente').on('click', function(){
+                   var c = document.getElementById('Frecuente').checked;
+                   if (c) {
+
+                    $("#password").hide();
+
+                   }
+
+                   else {
+                     $("#password").show();
+
+                   }
+
+
+                 });
+
+                 });	
+
+</script>
 	
 </body>
 </html>
