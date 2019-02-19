@@ -38,9 +38,9 @@
         <td>".$valores["fecha_nacvis"]."</td>
         <td>".$valores["email_vis"]."</td>
         <td>".$valores["dir_vis"]."</td>
-        <td>"?> <form action="control_visitas.php" id="desactivar" method="POST"> <input type="hidden" name= "deactivate" id="deactivate">  <input type="submit" name="botondesactivar" value="Desactivar"> </form>
+        <td>"?> <form action="control_visitas.php" id="desactivar" method="POST"> <input type="hidden" name= "deactivate" id="deactivate">  <input type="submit" class="btn-danger" name="botondesactivar" value="Desactivar"> </form>
         <form action="editor_visitas.php" method="POST">
-        <input type="hidden" name="cod_vis" value="<?php echo $valores['cod_vis'] ?>">  <input type="submit" name="Editar" value="Editar"> </form>
+        <input type="hidden" name="cod_vis" value="<?php echo $valores['cod_vis'] ?>">  <input type="submit" class="btn-primary" name="Editar" value="Editar"> </form>
         <?php echo "</td>
         </tr> \n";
 
@@ -86,7 +86,7 @@
         <td>".$valores["email_vis"]."</td>
         <td>".$valores["dir_vis"]."</td>
         <td>"?> <form action="editor_visitas.php" method="POST">
-        <input type="hidden" name="cod_vis" value="<?php echo $valores['cod_vis'] ?>">  <input type="submit" name="Edicion" value="Editar"> </form> <?php echo "</td>
+        <input type="hidden" name="cod_vis" value="<?php echo $valores['cod_vis'] ?>">  <input type="submit" class="btn-primary" name="Edicion" value="Editar"> </form> <?php echo "</td>
         </tr> \n";
 
        } while ($valores = mysqli_fetch_array($consulta)); 
@@ -131,7 +131,7 @@
         <td>".$valores["fecha_nacvis"]."</td>
         <td>".$valores["email_vis"]."</td>
         <td>".$valores["dir_vis"]."</td>
-        <td>"?> <form action="control_visitas.php" id="activar" method="POST"> <input type="hidden" name= "activate" id="activate">  <input type="submit" name="botonactivar" value="Activar"> </form> <?php echo "</td>
+        <td>"?> <form action="control_visitas.php" id="activar" method="POST"> <input type="hidden" name= "activate" id="activate">  <input type="submit" class="btn-success" name="botonactivar" value="Activar"> </form> <?php echo "</td>
         </tr> \n";
 
        } while ($valores = mysqli_fetch_array($consulta)); 
