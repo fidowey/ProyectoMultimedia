@@ -70,5 +70,4 @@
 		</div>
 		<div class="col-md-3"></div>
 	</div>
- <script src="include/js/validar.js"></script>
 <?php require_once "include/footer_views.php"; ?>

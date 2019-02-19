@@ -489,5 +489,16 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 			return mysqli_query($db,$consulta);
 		}
 
+		function consultar1vis($cod_vis){
+		global $db;
+
+		$consulta="
+		SELECT * FROM VISITANTE
+		WHERE cod_vis=$cod_vis;
+		";
+
+		return mysqli_query($db,$consulta);
+		}
+
 
 ?>
