@@ -26,7 +26,7 @@ $id_parque=$_SESSION['place'];?>
   				<div class="form-row">
     				<div class="form-group ">
       					<label for="inputCity">Rut</label>
-      					<input type="text" class="form-control" id="inputCity" name="rut" required pattern="[0-9]{7}">
+      					<input type="text" class="form-control" id="inputCity" name="rut" required pattern="[0-9]{7,8}">
       					<small id="emailHelp" class="form-text text-muted">Ingrese rut sin digito verificador</small>
     				</div>
     			</div>
@@ -49,7 +49,6 @@ $id_parque=$_SESSION['place'];?>
             <label >Imagen * </label>
             <input type="file" name="img" class="form-control-file" id="img" accept="image/*" required>
           </div>
-          <div id="crop-select"></div>
       		<input type="hidden" name="privilegio" value="3">
     			<div class="form-group">
     				<label >Telefono * </label>
@@ -72,29 +71,6 @@ $id_parque=$_SESSION['place'];?>
 		</div>
 		<div class="col-md-3"></div>
 	</div>
-
-
-  <script>
-    $(function () {
-
-      // Initialise CropSelect
-      $('#crop-select').CropSelectJs();
-
-
-      // Handle file select change
-      $('#img').on('change', function() {
-        if (this.files && this.files[0]) {
-          var reader = new FileReader();
-          reader.onload = function (e) {
-            $('#crop-select').CropSelectJs('setImageSrc', e.target.result);
-          };
-          reader.readAsDataURL(this.files[0]);
-        }
-      });
-
-
-    });
-  </script>
 
 
 <?php require_once "include/footer_views.php"; ?>

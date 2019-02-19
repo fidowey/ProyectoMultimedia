@@ -479,5 +479,15 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 			return mysqli_query($db,$consulta);
 		}
 
+		function consultarvisitasgenerales(){
+		global $db;
+			$consulta="
+			SELECT * FROM VISITANTE
+			WHERE tipo_vis='esporadico'
+			";
+
+			return mysqli_query($db,$consulta);
+		}
+
 
 ?>

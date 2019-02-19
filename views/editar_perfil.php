@@ -15,8 +15,7 @@ $password=$_SESSION['password'];
              while ($valores=mysqli_fetch_assoc($sql)){
 ?>
     		<div class='form-group'>
-      			<label >Direccion</label>
-            <input type="hidden" name='cod_vis' value="<?php echo $valores['cod_vis']?>">
+          <input type="hidden" name='cod_vis' value="<?php echo $valores['cod_vis']?>">
             <input type="hidden" name='img' value="<?php echo $valores['img_vis']?>">
             <input type="hidden" name='nombre' value="<?php echo $valores['nombre_vis']?>">
             <input type="hidden" name='appat' value="<?php echo $valores['appat_vis']?>">
@@ -28,6 +27,8 @@ $password=$_SESSION['password'];
             <input type="hidden" name='pasaporte' value="<?php echo $valores['pasaporte']?>">
             <input type="hidden" name='edad' value="<?php echo $valores['edad_vis']?>">
             <input type="hidden" name='tipo_vis' value="<?php echo $valores['tipo_vis']?>">
+      			<label >Direccion</label>
+            
 
       			<input type='text'  class='form-control' name='direccion' required value="<?php echo $valores['dir_vis'];?>" required>
     		</div>
