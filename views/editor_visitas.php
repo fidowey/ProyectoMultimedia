@@ -17,6 +17,7 @@ $cod_vis=$_REQUEST['cod_vis'];
 <head>
 	<meta charset="UTF-8">
 	<title>Editor de visitas</title>
+  <script src="include/js/jquery.min.js"></script>
 </head>
 <body>
 	<div class="container">
@@ -78,39 +79,76 @@ $cod_vis=$_REQUEST['cod_vis'];
   				</div>
 
   				<div class="form-group">
-  				<p class="Frec">
-          		<label>
-            	Password:
-            	<input type="password" name="password" id="password">
-          		</label>
-        		</p>	
+            <input type="password" class="password" name="password" placeholder="password" id="password">
   				</div>
+          <div class="form-group">
+
+          <div class="form-group">
+            tomar foto con webcam
+            <input type="checkbox" name="imgck" id="imgck" value="imgck">
+          </div>
+          <div class="form-group">
+                <div id="my_camera"></div>
+                <br/>
+                <input type=button value="Take Snapshot" onClick="take_snapshot()">
+                <input type="hidden" name="image" class="image-tag">
+            </div>
+            <div class="col-md-6">
+                <div id="results">tu foto aparecera aqui...</div>
+            </div>
+            <div class="form-group">
+              <input type="file" >
+            </div>
   				<button type="submit" class="btn btn-primary">Modificar</button>
 			</form>
 </div>
 <?php } ?>
 
-<script>
-(document).ready(function(){
+<script type="text/javascript">
+$(document).ready(function(){
+  $('#Frecuente').on('change',function(){
+    if (this.checked) {
+     $("#password").show();
+     $("#imgck").show();
+    } else {
+     $("#password").hide();
+     $("#imgck").hide();
+    }  
+  })
+});
 
-                 $('#Frecuente').on('click', function(){
-                   var c = document.getElementById('Frecuente').checked;
-                   if (c) {
+</script>
 
-                    $("#password").hide();
+<script type="text/javascript">
+$(document).ready(function(){
+  $('#imgck').on('change',function(){
+    if (this.checked) {
+     $("#").show();
+    } else {
+     $("#").hide();
+     $("#img").show();
+    }  
+  })
+});
 
-                   }
+</script>
 
-                   else {
-                     $("#password").show();
-
-                   }
-
-
-                 });
-
-                 });	
-
+<script language="JavaScript">
+    Webcam.set({
+        width: 490,
+        height: 390,
+        image_format: 'jpeg',
+        jpeg_quality: 90
+    });
+  
+    Webcam.attach( '#my_camera' );
+  
+    function take_snapshot() {
+        Webcam.snap( function(data_uri) {
+            $(".image-tag").val(data_uri);
+            document.getElementById('results').innerHTML = '<img src="'+data_uri+'"/>';
+        } );
+    }
 </script>
 	
 </body>
