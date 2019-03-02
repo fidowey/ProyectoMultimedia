@@ -57,7 +57,7 @@ $id_parque=$_SESSION['place'];?>
             </div>
             
             <div class="form-group" id="file">
-              <input type="file" name="img" id="img">
+              <input type="file" name="img" id="img" accept="image/*">
             </div>
       		<input type="hidden" name="privilegio" value="3">
     			<div class="form-group">
