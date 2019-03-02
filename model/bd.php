@@ -324,31 +324,28 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 		}
 
 
-	function registrarcuenta($id,$est_cuenta,$password,$cod_vis){
+	function registrarcuenta($id_cuenta,$est_cuenta,$password,$cod_vis){
 		global $db;
 			$sql ="
-			INSERT INTO CUENTA
-			(
+			INSERT INTO CUENTA(
 			id_cuenta,
 			est_cuenta,
 			pass_cuenta,
 			cod_vis
 			)
 			VALUES(
-			'$id',
+			'$id_cuenta',
 			$est_cuenta,
 			'$password',
 			$cod_vis
-			)
-			";
+			)";
 
 			if ($db->query($sql)===TRUE) {
-			echo "actualizacion exitosa";
+			echo "insersión";
 			}
 			else{
 			echo "Error: ".$sql."<br>".$db->error;
 			}
-			mysqli_close($db);
 	}
 
 	function updatefuncionario(){

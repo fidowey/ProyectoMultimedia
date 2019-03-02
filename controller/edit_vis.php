@@ -54,7 +54,7 @@ require_once'../model/bd.php';
 	$consulta=consultarcuentas();
 	while ($valores = mysqli_fetch_array($consulta)) {
 		$id_cuenta=$valores['maxcuenta']+1;
-
+	}
 	if($imgck=='file')
 			{
 
@@ -119,9 +119,8 @@ require_once'../model/bd.php';
 							    $file = $target_dir . $target_file;
 							    file_put_contents($target_file, $image_base64);
 								}
-	registrarcuenta($cod_vis,$password,$id_cuenta,$est_cuenta,$cod_vis);
+	registrarcuenta($id_cuenta,$est_cuenta,$password,$cod_vis);
 
-	}
 	}
 
 	if($tipo_vis=="esporadico"){
@@ -131,7 +130,7 @@ require_once'../model/bd.php';
 	
 
 
-editarvisitante($cod_vis, $nombre, $appat, $apmat, $rut, $dv, $direccion, $fechanac, $pasaporte, $telefono, $edad, $email, $tipo_vis,$direccion, $target_file);
+editarvisitante($cod_vis,$nombre,$appat,$apmat,$rut,$dv,$direccion,$fechanac,$pasaporte,$telefono,$edad,$email,$tipo_vis,$target_file);
 	
 
 
