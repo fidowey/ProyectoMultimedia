@@ -9,7 +9,7 @@ $apmat = strtoupper($_POST['apmat']);
 $rut=$_POST['rut'];
 $telefono=$_POST['telefono'];
 $email = $_POST['email'];
-$img= $_FILES['img'];
+$img=$_FILES['img'];
 $privilegio=$_REQUEST['privilegio'];
 $password=$_REQUEST['password'];
 $estadofunc=$_REQUEST['estadofunc'];
@@ -44,7 +44,7 @@ $dv= dv($rut);
  	}
 
 $target_dir = "../views/include/img/";
-$target_file = $target_dir . $rut . $dv . '.png';
+$target_file = $target_dir . $rut . $nombre . '.png';
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 // Check if image file is a actual image or fake image
@@ -79,14 +79,16 @@ if ($uploadOk == 0) {
     echo "Sorry, your file was not uploaded.";
 // if everything is ok, try to upload file
 } else {
+    //
     if (move_uploaded_file($img["tmp_name"], $target_file)) {
         echo "The file ". basename( $img["name"]). " has been uploaded.";
+        //$target_file=imagecrop($target_file,['x' => 0, 'y' => 0, 'width' => 250, 'height' => 150]);
     } else {
         echo "Sorry, there was an error uploading your file.";
     }
 }
 
- RegistrarPersonal($nombre,$appat,$apmat,$rut,$dv,$telefono,$email,$img,$id_cargo,$id_parque,$privilegio,$password,$estadofunc,$estadocuenta);
+ RegistrarPersonal($nombre,$appat,$apmat,$rut,$dv,$telefono,$email,$target_file,$id_cargo,$id_parque,$privilegio,$password,$estadofunc,$estadocuenta);
 
 
 

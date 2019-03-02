@@ -5,11 +5,8 @@ $email=$_SESSION['usuario'];
 $password=$_SESSION['password'];
 $id_parque=$_SESSION['place'];?>
 
- <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-
-  <!-- CropSelectJs files -->
-  <link href="include/css/crop-select-js.min.css" rel="stylesheet" type="text/css" />
-  <script src="include/js/crop-select-js.min.js"></script>
+ <script src="include/js/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script>
 
 	<div class="row">
 		<div class="col-md-4"></div>
@@ -25,30 +22,43 @@ $id_parque=$_SESSION['place'];?>
 			<form action="../controller/registropersonal.php" method="POST" enctype="multipart/form-data">
   				<div class="form-row">
     				<div class="form-group ">
-      					<label for="inputCity">Rut</label>
-      					<input type="text" class="form-control" id="inputCity" name="rut" required pattern="[0-9]{7,8}">
+      					<label for="rut">Rut</label>
+      					<input type="text" class="form-control" id="rut" name="rut" required pattern="[0-9]{7,8}">
       					<small id="emailHelp" class="form-text text-muted">Ingrese rut sin digito verificador</small>
     				</div>
     			</div>
     			<div class="form-group">
-    				<label >Nombre * </label>
-    				<input type="text" class="form-control " name="nombre" required pattern="([A-Za-z]{3,})"
+    				<label for="nombre" >Nombre * </label>
+    				<input type="text" class="form-control " name="nombre" id="nombre" required pattern="([A-Za-z]{3,})"
             title="No uses caracteres inválidos como números o signos">
   				</div>
   				<div class="form-group">
-    				<label >Apellido Paterno *</label>
-    				<input type="text" class="form-control" name="appat" required pattern="([A-Za-z]{3,})"
+    				<label for="appat" >Apellido Paterno *</label>
+    				<input type="text" class="form-control" name="appat" id="appat" required pattern="([A-Za-z]{3,})"
             title="No uses caracteres inválidos como números o signos">
   				</div>
   				<div class="form-group">
-    				<label >Apellido Materno * </label>
-    				<input type="text" class="form-control" name="apmat" required pattern="([A-Za-z]{3,})"
+    				<label for="apmat">Apellido Materno * </label>
+    				<input type="text" class="form-control" name="apmat" id="apmat" required pattern="([A-Za-z]{3,})"
             title="No uses caracteres inválidos como números o signos">
   				</div>
-            <div class="form-group">
-            <label >Imagen * </label>
-            <input type="file" name="img" class="form-control-file" id="img" accept="image/*" required>
+          <div class="form-group">
+          <label for="apmat">Sacar foto con webcam </label>
+          <input type="checkbox" name="imgck" id="imgck" value="imgck" onclick="showcamera('imgck')" />
           </div>
+          <div class="form-group" id="camera" style="display:none;">
+                <div id="my_camera">foto</div>
+                <br/>
+                <input type=button name="imgcam" id="imgcam" value="Tomar Foto" onClick="take_snapshot()">
+                <input type="hidden" name="img" class="image-tag">
+                <div class="col-md-6">
+                <div id="results"></div>
+            </div>
+            </div>
+            
+            <div class="form-group" id="file">
+              <input type="file" name="img" id="img">
+            </div>
       		<input type="hidden" name="privilegio" value="3">
     			<div class="form-group">
     				<label >Telefono * </label>
@@ -71,6 +81,52 @@ $id_parque=$_SESSION['place'];?>
 		</div>
 		<div class="col-md-3"></div>
 	</div>
+
+  <script type="text/javascript">
+  function showcamera() {
+  // Get the checkbox
+  var imgck = document.getElementById("imgck");
+  // Get the output text
+  var checkbox = document.getElementById("camera").style.display;
+  var chboxs2 = document.getElementById("file").style.display;
+  var vista = "none";
+  var vista2= "block";
+
+        if(imgck.checked==true){
+         vista = "block";
+         vista2 ="none";
+         }
+        if(imgck.checked==false){
+         vista = "none";
+         vista2 = "block";
+         }
+
+    document.getElementById("camera").style.display = vista;
+    document.getElementById("file").style.display = vista2;
+}
+  //-->
+</script>
+
+
+
+<!-- Configure a few settings and attach camera -->
+<script language="JavaScript">
+    Webcam.set({
+        width: 490,
+        height: 390,
+        image_format: 'jpeg',
+        jpeg_quality: 90
+    });
+  
+    Webcam.attach( '#my_camera' );
+  
+    function take_snapshot() {
+        Webcam.snap( function(data_uri) {
+            $(".image-tag").val(data_uri);
+            document.getElementById('results').innerHTML = '<img src="'+data_uri+'"/>';
+        } );
+    }
+</script>
 
 
 <?php require_once "include/footer_views.php"; ?>
