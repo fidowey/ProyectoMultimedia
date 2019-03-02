@@ -324,21 +324,20 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 		}
 
 
-	function registrarcuenta($cod_vis,$estado,$password,$qr,$img){
+	function registrarcuenta($cod_vis,$id,$estado,$password,$img){
 		global $db;
 			$sql ="
 			INSERT INTO CUENTA
 			id_cuenta,
 			est_cuenta,
 			pass_cuenta,
-			qr,
 			cod_vis
 			VALUES
-			$id,
+			'$id',
 			$estado,
-			$password,
-			$qr,
-			$cod_vis";
+			'$password',
+			'$cod_vis'
+			";
 			mysqli_close($db);
 	}
 
@@ -393,6 +392,7 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 				";
 
 				return mysqli_query($db,$consulta);
+				mysqli_close($db);
 		}
 
 		function consultarvis1parque($id_parque){
@@ -403,6 +403,7 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 			WHERE id_parque=$id_parque";
 
 			return mysqli_query($db,$consulta);
+			mysqli_close($db);
 		}
 
 			function consultarfuncionario($email,$password){
@@ -414,6 +415,7 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 			AND pass_func=$password";
 
 			return mysqli_query($db,$consulta);
+			mysqli_close($db);
 		}
 
 
@@ -477,6 +479,7 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 			WHERE tipo_vis='frecuente' AND est_cuenta=0";
 
 			return mysqli_query($db,$consulta);
+			mysqli_close($db);
 		}
 
 		function consultarvisitasgenerales(){
@@ -487,6 +490,7 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 			";
 
 			return mysqli_query($db,$consulta);
+			mysqli_close($db);
 		}
 
 		function consultar1vis($cod_vis){
@@ -498,6 +502,50 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 		";
 
 		return mysqli_query($db,$consulta);
+		mysqli_close($db);
+		}
+
+		function editarvisitante($cod_vis,$nombre,$appat,$apmat,$rut,$dv,$direccion,$fechanac,$pasaporte,$telefono,$edad,$email,$tipo_vis,$target_file){
+		global $db;
+
+			$sql="
+			UPDATE VISITANTE
+			SET
+			nombre_vis='$nombre',
+			appat_vis='$appat',
+			apmat_vis='$apmat',
+			rut_vis='$rut',
+			dv_vis='$dv',
+			fecha_nacvis='$fechanac',
+			pasaporte='$pasaporte',
+			edad_vis=$edad,
+			dir_vis='$direccion',
+			email_vis='$email',
+			telefono_vis=$telefono,
+			tipo_vis='$tipo_vis',
+			img_vis=''
+
+			WHERE cod_vis=$cod_vis";
+
+			if ($db->query($sql)===TRUE) {
+			echo "actualizacion exitosa";
+			}
+			else{
+			echo "Error: ".$sql."<br>".$db->error;
+			}
+
+			mysqli_close($db);
+		}
+
+		function consultarcuentas(){
+		global $db;
+				
+		$consulta="
+		SELECT MAX(id_cuenta) as maxcuenta from cuenta
+		";
+
+		return mysqli_query($db,$consulta);
+		mysqli_close($db);
 		}
 
 

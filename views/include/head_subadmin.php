@@ -31,7 +31,7 @@
         				<a class="nav-link text-center" href="/ProyectoMultimedia/views/historial_visitas.php">	Ver historial visitas		</a>
       				</li>
       				<li class="nav-item ">
-        				<a class="nav-link text-center" href="/ProyectoMultimedia/views/perfil_usuarios.php">	Editar visitantes	</a>
+        				<a class="nav-link text-center" href="/ProyectoMultimedia/views/control_visitas_subadmin.php">	Editar visitantes	</a>
       				</li>
       				<li class="nav-item">
         				<a class="nav-link text-center" href="/ProyectoMultimedia/views/registrar_usuarios.php">	Registrar personal	</a>

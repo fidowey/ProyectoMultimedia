@@ -22,5 +22,5 @@ updatevisitante($cod_vis,$nombre,$appat,$apmat,$rut,$dv,$fechanac,$sexo,$pasapor
 
 
 
-
+header("Location:".$_SERVER['HTTP_REFERER']);  
  ?>

@@ -2,7 +2,6 @@
 
     <p>
         <?php
-        require_once'include/head_admin.php';
         require_once'../model/bd.php';
         require_once'include/bootstrap_link_views.php';
 
@@ -159,3 +158,5 @@ if(isset($_POST['activate'])){
 
 
  ?>
+
+</div>

@@ -18,4 +18,7 @@ $ruta=$_REQUEST['ruta'];
 agendarvisita($hora,$fecha,$hoy,$id_cuenta,$ruta);
 
 
+header("Location:".$_SERVER['HTTP_REFERER']);  
  ?>
+
+ 

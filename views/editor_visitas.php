@@ -31,6 +31,7 @@ $cod_vis=$_REQUEST['cod_vis'];
 				<form action="../controller/edit_vis.php" method="POST">
   				<div class="form-row">
     				<div class="form-group ">
+                <input type="hidden" name="cod_vis" value="<?php echo($cod_vis); ?>">
       					<label for="rut">Rut</label>
       					<input type="text" class="form-control" id="rut" name="rut" value="<?php echo $valores['rut_vis']; ?>" pattern="[0-9]{0,7,8}">
       					<small id="emailHelp" class="form-text text-muted">Ingrese rut sin digito verificador</small>
@@ -75,18 +76,21 @@ $cod_vis=$_REQUEST['cod_vis'];
   				</div>
 
   				<div class="form-group">
-  				<input type="checkbox" name="tipo_vis" id="tipo_vis" value="frecuente" onclick="showMe('frecuente')" />
-            	Visitante Frecuente.
+
+          <input type="radio" name="tipo_vis" value="esporadico" <?php echo ($valores['tipo_vis'] == "esporadico" ? 'checked="checked"': ''); ?> onclick="dontshowMe()" /> Esporadico<br>
+          <input type="radio" name="tipo_vis" value="frecuente" <?php echo ($valores['tipo_vis'] == "frecuente" ? 'checked="checked"': ''); ?> onclick="showMe()" /> Frecuente<br>
   				</div>
 
   	<div class="form-group" id="frecuente" style="display:none;">
 		<div class="form-group">
+      <input type="hidden" name="est_cuenta" value="1">
   		<label for="password" >Password * </label>
       <input type="password" id="password" class="password" name="password" placeholder="password" id="password">
       	</div>
     <div class="form-group">
-            tomar foto con webcam
-    <input type="checkbox" name="imgck" id="imgck" value="imgck" onclick="showcamera('imgck')" />
+
+          <input type="radio" name="imgck" value="file" onclick="showfile()" checked/> Subir foto por archivo <br>
+         <input type="radio" name="imgck" value="camera" onclick="showcamera()"> Subir foto por webcam <br>
           </div>
           <div class="form-group" id="camera" style="display:none;">
                 <div id="my_camera">foto</div>
@@ -108,44 +112,38 @@ $cod_vis=$_REQUEST['cod_vis'];
 </div>
 <?php } ?>
 
+
  <script type="text/javascript">
- 	function showMe() {
+  function dontshowMe() {
   // Get the checkbox
-  var tipo_vis = document.getElementById("tipo_vis");
-  // Get the output text
-  var chboxs = document.getElementById("frecuente").style.display;
-  var vis = "none";
-        if(tipo_vis.checked==true){
-         vis = "block"; }
-        if(tipo_vis.checked==false){
-         vis = "none"; }
-    document.getElementById("frecuente").style.display = vis;
+  document.getElementById('frecuente').style.display = 'none';
 }
   //-->
 </script>
 
 
  <script type="text/javascript">
- 	function showcamera() {
+ 	function showMe() {
   // Get the checkbox
-  var imgck = document.getElementById("imgck");
-  // Get the output text
-  var checkbox = document.getElementById("camera").style.display;
-  var chboxs2 = document.getElementById("file").style.display;
-  var vista = "none";
-  var vista2= "block";
+  document.getElementById('frecuente').style.display = 'block';
+}
+  //-->
+</script>
 
-        if(imgck.checked==true){
-         vista = "block";
-         vista2 ="none";
-         }
-        if(imgck.checked==false){
-         vista = "none";
-         vista2 = "block";
-         }
+ <script type="text/javascript">
+  function showcamera() {
+  // Get the checkbox
+  document.getElementById('camera').style.display = 'block';
+  document.getElementById('file').style.display = 'none';
+}
+  //-->
+</script>
 
-    document.getElementById("camera").style.display = vista;
-    document.getElementById("file").style.display = vista2;
+ <script type="text/javascript">
+  function showfile() {
+  // Get the checkbox
+  document.getElementById('file').style.display = 'block';
+  document.getElementById('camera').style.display = 'none';
 }
   //-->
 </script>
