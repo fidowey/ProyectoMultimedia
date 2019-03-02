@@ -554,11 +554,12 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 		mysqli_close($db);
 		}
 
-		function consultarfuncionarios(){
+		function consultarfuncionarios($email,$password){
 		global $db;
 			$consulta="
 			SELECT * FROM PERSONAL
 			WHERE estado_func=1 AND estado_cta=1
+			AND email_func!='$email'
 			";
 
 			return mysqli_query($db,$consulta);
@@ -635,7 +636,7 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 		$comuna_parque=$valores['comuna_parque'];
 		$cord_parque=$valores['cord_parque'];
 		$region_parque=$valores['region_parque'];
-		
+
 		$sql2 ="
 		INSERT INTO DETALLE_PARQUE
 		(

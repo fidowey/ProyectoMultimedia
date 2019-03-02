@@ -5,7 +5,12 @@ require_once('include/head_admin.php');
 require_once'include/bootstrap_link_views.php';
  require_once'../model/bd.php';
 
- $consulta=consultarfuncionarios();
+ session_start();
+
+$email=$_SESSION['usuario'];
+$password=$_SESSION['password'];
+
+ $consulta=consultarfuncionarios($email,$password);
                     
           while ($valores = mysqli_fetch_array($consulta)) {
 
