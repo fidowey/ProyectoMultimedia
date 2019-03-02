@@ -324,20 +324,30 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 		}
 
 
-	function registrarcuenta($cod_vis,$id,$estado,$password,$img){
+	function registrarcuenta($id,$est_cuenta,$password,$cod_vis){
 		global $db;
 			$sql ="
 			INSERT INTO CUENTA
+			(
 			id_cuenta,
 			est_cuenta,
 			pass_cuenta,
 			cod_vis
-			VALUES
+			)
+			VALUES(
 			'$id',
-			$estado,
+			$est_cuenta,
 			'$password',
-			'$cod_vis'
+			$cod_vis
+			)
 			";
+
+			if ($db->query($sql)===TRUE) {
+			echo "actualizacion exitosa";
+			}
+			else{
+			echo "Error: ".$sql."<br>".$db->error;
+			}
 			mysqli_close($db);
 	}
 
@@ -506,10 +516,10 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 		}
 
 		function editarvisitante($cod_vis,$nombre,$appat,$apmat,$rut,$dv,$direccion,$fechanac,$pasaporte,$telefono,$edad,$email,$tipo_vis,$target_file){
+
 		global $db;
 
-			$sql="
-			UPDATE VISITANTE
+			$sql="UPDATE VISITANTE
 			SET
 			nombre_vis='$nombre',
 			appat_vis='$appat',
@@ -523,8 +533,7 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 			email_vis='$email',
 			telefono_vis=$telefono,
 			tipo_vis='$tipo_vis',
-			img_vis=''
-
+			img_vis='$target_file'
 			WHERE cod_vis=$cod_vis";
 
 			if ($db->query($sql)===TRUE) {

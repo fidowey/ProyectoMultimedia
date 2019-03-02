@@ -12,6 +12,7 @@ require_once'../model/bd.php';
 	$telefono=$_POST['telefono'];
 	$email = $_POST['email'];
 	$tipo_vis=$_POST['tipo_vis'];
+	$imgck=$_REQUEST['imgck'];
 
 	$hoy=getdate(); //obtenemos la fecha actual
 	$anioactual=(int)$hoy['year']; //el (int) es para convertir una variable a entero
@@ -53,12 +54,11 @@ require_once'../model/bd.php';
 	$consulta=consultarcuentas();
 	while ($valores = mysqli_fetch_array($consulta)) {
 		$id_cuenta=$valores['maxcuenta']+1;
-	}
 
-			if($imgck=='file')
+	if($imgck=='file')
 			{
 
-								$img=$_FILES['img'];
+							$img=$_FILES['img'];
 
 							$target_dir = "../views/include/img/";
 							$target_file = $target_dir . $rut . $nombre . '.png';
@@ -103,35 +103,35 @@ require_once'../model/bd.php';
 							        echo "Sorry, there was an error uploading your file.";
 							    }
 								}				
+								}
 
-			}
-			if ($imgck=='camera') {
-				# code...
-			}{
-			$img = $_POST['image'];
-		    $target_dir = "../views/include/img/";
-		  
-		    $image_parts = explode(";base64,", $img);
-		    $image_type_aux = explode("image/", $image_parts[0]);
-		    $image_type = $image_type_aux[1];
-		  
-		    $image_base64 = base64_decode($image_parts[1]);
-		    $target_file = $target_dir . $rut . $nombre . '.png';
-		  
-		    $file = $target_dir . $target_file;
-		    file_put_contents($target_file, $image_base64);
-
-
-			}
-
+								if ($imgck=='camera') {
+								$img = $_POST['image'];
+							    $target_dir = "../views/include/img/";
+							  
+							    $image_parts = explode(";base64,", $img);
+							    $image_type_aux = explode("image/", $image_parts[0]);
+							    $image_type = $image_type_aux[1];
+							  
+							    $image_base64 = base64_decode($image_parts[1]);
+							    $target_file = $target_dir . $rut . $nombre . '.png';
+							  
+							    $file = $target_dir . $target_file;
+							    file_put_contents($target_file, $image_base64);
+								}
 	registrarcuenta($cod_vis,$password,$id_cuenta,$est_cuenta,$cod_vis);
 
 	}
-	else{
-		$target_file=null;
 	}
 
-editarvisitante($cod_vis,$nombre,$appat,$apmat,$rut,$dv,$direccion,$fechanac,$pasaporte,$telefono,$edad,$email,$direccion,$tipo_vis,$target_file);
+	if($tipo_vis=="esporadico"){
+		$target_file='';
+	}	
+
+	
+
+
+editarvisitante($cod_vis, $nombre, $appat, $apmat, $rut, $dv, $direccion, $fechanac, $pasaporte, $telefono, $edad, $email, $tipo_vis,$direccion, $target_file);
 	
 
 

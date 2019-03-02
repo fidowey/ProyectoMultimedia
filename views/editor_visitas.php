@@ -28,7 +28,7 @@ $cod_vis=$_REQUEST['cod_vis'];
              while ($valores=mysqli_fetch_assoc($sql)){
 ?>
 
-				<form action="../controller/edit_vis.php" method="POST">
+				<form action="../controller/edit_vis.php" method="POST" enctype="multipart/form-data">
   				<div class="form-row">
     				<div class="form-group ">
                 <input type="hidden" name="cod_vis" value="<?php echo($cod_vis); ?>">
