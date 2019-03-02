@@ -3,35 +3,14 @@
 
 
 <?php
-include "../model/bd.php";
+session_start();
+$email=$_SESSION['usuario'];
+$password=$_SESSION['password'];
+$id_cuenta=$_SESSION['idcuenta'];
+
+
+require_once "../model/bd.php";
 include "../controller/qr.php";
-
-if(isset($_REQUEST['credencial_formulario'])) {
-   $rut = $_REQUEST['rut'];
-   $apellidoPaterno = $_REQUEST['apellidoPaterno'];
-   $apellidoMaterno = $_REQUEST['apellidoMaterno'];
-   $nombre = $_REQUEST['nombre'];
-   $pasaporte = $_REQUEST['pasaporte'];
-   $sexo = $_REQUEST['sexo'];
-   $fechaNacimiento = $_REQUEST['fechaNacimiento'];
-
-
-	if(RegistrarUsuario($nombre,$appat,$apmat,$rut,$dv,$fechanac,$sexo,$pasaporte,$telefono,$edad,$email)){
-      mkdir('personas/'.$rut,0700);
-      $dir = "personas/".$rut.'/';
-      $sep=explode('image/',$_FILES['foto']['type']); // Separamos image/ 
-      $tipo=$sep[1];
-      $foto = $rut.'.'.$tipo;
-      move_uploaded_file($_FILES['foto']['tmp_name'], $dir.$foto);
-      $imagen = "personas/".$rut.'/'.$foto;
-      $name = $dir."QR-".$rut.".png";
-      cargarCodigoQr($dir,$name,$rut);
-
-   }else{
-      echo "No se pudo guardar nada"; 
-   }
- 
-}
 
 ?>
 
@@ -55,17 +34,27 @@ if(isset($_REQUEST['credencial_formulario'])) {
     </div>
     <div class="row">
       <div class="col-md-6 cred-front-iz">
-      <div class="foto"><img src="<?php echo $imagen; ?>" class="foto-size"></div>
-      <div class="apellidopaterno"><?php echo $apellidoPaterno; ?></div>
-      <div class="apellidomaterno"><?php echo $apellidoMaterno; ?></div>
-      <div class="nombre"><?php echo $nombre; ?></div>
-      <div class="pasaporte"><?php echo $pasaporte; ?></div>
-      <div class="sexo"><?php echo $sexo; ?></div>
-      <div class="fecha_nacimiento"><?php echo $fechaNacimiento; ?></div>
-      <div class="rut"><?php echo $rut; ?></div>
+<?php 
+      $consulta=cosultarvisitante($email,$password);
+      
 
+      
+             while ($valores=mysqli_fetch_assoc($consulta)){
+               $img=$valores['img_vis'];
+    
+ ?>
       </div>
       <div class="col-md-6 cred-front-der">
+        <br>
+        <br>
+        <br>
+      <?php 
+      echo "&nbsp &nbsp &nbsp"."&nbsp".
+            $valores['appat_vis']."&nbsp".
+            $valores['apmat_vis']."&nbsp".
+            $valores['nombre_vis'];
+      }?>
+        
     
       </div>
     </div>

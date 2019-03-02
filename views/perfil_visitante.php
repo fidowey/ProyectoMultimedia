@@ -6,19 +6,20 @@ $email=$_SESSION['usuario'];
 $password=$_SESSION['password'];
 $id_cuenta=$_SESSION['idcuenta'];
 
-echo $id_cuenta;
-
 ?>
 
 
 
- 	<div class="row">
- 		<div class="col-md-8">
- 			<div class="jumbotron jumbotron-fluid">
+
   				<div class="container">
+              <div class="row">
+            <div class="col-md-6">
   					<?php 
   						$consulta=cosultarvisitante($email,$password);
   					 while ($valores=mysqli_fetch_assoc($consulta)){
+
+            $img=$valores['img_vis'];
+
   					 echo"
     				<p class='lead'>Nombre: ".$valores['nombre_vis']."</p>
     				<p class='lead'>Apellidos: ".$valores['appat_vis']." ".$valores['apmat_vis']."</p>
@@ -26,8 +27,12 @@ echo $id_cuenta;
     				<p class='lead'>Fecha de nacimiento: ".$valores['fecha_nacvis']."</p>
     				<p class='lead'>Sexo: ".$valores['sexo_vis']."</p>
     				";
-    			}
+    			   }
     				?>
+            </div>
+            <div class="col-md-6">
+              <img src="<?php echo $img; ?>" class="img-circle" alt="profile-pic" width="304" height="236">
+            </div>
   				</div>
 			</div>
  		</div>
