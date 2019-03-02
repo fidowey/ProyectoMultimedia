@@ -135,3 +135,5 @@ editarvisitante($cod_vis,$nombre,$appat,$apmat,$rut,$dv,$direccion,$fechanac,$pa
 
 
  ?>
+
+ <script>window.history.go(-2)</script>

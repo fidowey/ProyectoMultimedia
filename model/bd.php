@@ -554,5 +554,27 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 		mysqli_close($db);
 		}
 
+		function consultarfuncionarios(){
+		global $db;
+			$consulta="
+			SELECT * FROM PERSONAL
+			WHERE estado_func=1 AND estado_cta=1
+			";
+
+			return mysqli_query($db,$consulta);
+			mysqli_close($db);
+		}
+
+		function consultarfuncionariosbloqueados(){
+		global $db;
+			$consulta="
+			SELECT * FROM PERSONAL
+			WHERE estado_func=0 AND estado_cta=0
+			";
+
+			return mysqli_query($db,$consulta);
+			mysqli_close($db);
+		}
+
 
 ?>
