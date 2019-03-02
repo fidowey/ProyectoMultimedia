@@ -176,7 +176,7 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 		mysqli_close($db);
 		}
 
-		function RegistrarPersonal($nombre,$appat,$apmat,$rut,$dv,$telefono,$email,$img,$id_cargo,$id_parque,$privilegio,$password,$estadofunc,$estadocuenta){
+		function RegistrarPersonal($nombre,$appat,$apmat,$rut,$dv,$telefono,$email,$target_file,$id_cargo,$id_parque,$privilegio,$password,$estadofunc,$estadocuenta){
 		global $db;
 
 		$sel="
@@ -218,7 +218,7 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 		'$apmat',
 		'$rut',
 		'$dv',
-		'$img',
+		'$target_file',
 		'$privilegio',
 		'$email',
 		$telefono,
@@ -575,6 +575,125 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 			return mysqli_query($db,$consulta);
 			mysqli_close($db);
 		}
+
+		function registraradmin($nombre,$appat,$apmat,$rut,$dv,$telefono,$email,$target_file,$id_cargo,$privilegio,$password,$estadofunc,$estadocuenta){
+				global $db;
+
+		$sql ="
+		INSERT INTO PERSONAL
+		(
+		nombre_func,
+		appat_func,
+		apmat_func,
+		rut_func,
+		dv_func,
+		img_func,
+		privilegio,
+		email_func,
+		telefono_func,
+		estado_cta,
+		estado_func,
+		id_cargo,
+		pass_func
+		)
+		VALUES
+		(
+		'$nombre',
+		'$appat',
+		'$apmat',
+		'$rut',
+		'$dv',
+		'$target_file',
+		'$privilegio',
+		'$email',
+		$telefono,
+		'$estadocuenta',
+		'$estadofunc',
+		'$id_cargo',
+		'$password'
+		)";
+
+		
+		if ($db->query($sql)===TRUE) {
+			echo "el registro se ingreso con exito";
+	}
+		else{
+		echo "Error: ".$sql."<br>".$db->error;
+		}
+
+
+		$sel="
+		SELECT * FROM PARQUE
+		";
+
+		$consulta=mysqli_query($db,$sel);
+
+		while ($valores = mysqli_fetch_array($consulta)) {
+
+		$id_parque=$valores['id_parque'];
+		$nombre_parque=$valores['nombre_parque'];
+		$comuna_parque=$valores['comuna_parque'];
+		$cord_parque=$valores['cord_parque'];
+		$region_parque=$valores['region_parque'];
+		
+		$sql2 ="
+		INSERT INTO DETALLE_PARQUE
+		(
+		nombre_func,
+		appat_func,
+		apmat_func,
+		rut_func,
+		dv_func,
+		img_func,
+		privilegio,
+		email_func,
+		telefono_func,
+		estado_cta,
+		estado_func,
+		id_cargo,
+		pass_func,
+		id_parque,
+		nombre_parque,
+		comuna_parque,
+		cord_parque,
+		region_parque
+		)
+		VALUES(
+		'$nombre',
+		'$appat',
+		'$apmat',
+		'$rut',
+		'$dv',
+		'$target_file',
+		$privilegio,
+		'$email',
+		$telefono,
+		$estadocuenta,
+		$estadofunc,
+		$id_cargo,
+		'$password',
+		$id_parque,
+		'$nombre_parque',
+		'$comuna_parque',
+		'$cord_parque',
+		'$region_parque'
+		)";
+
+		if ($db->query($sql2)===TRUE) {
+			echo "el registro se ingreso con exito";
+	}
+		else{
+		echo "Error: ".$sql2."<br>".$db->error;
+		}
+
+
+		}
+
+		
+
+
+		mysqli_close($db);
+	}
 
 
 ?>

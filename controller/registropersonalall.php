@@ -1,8 +1,6 @@
 <?php 
 require_once'../model/bd.php';
 
-$id_parque=$_POST['id_parque'];
-
 $nombre = strtoupper($_POST['nombre']);
 $appat = strtoupper($_POST['appat']);
 $apmat = strtoupper($_POST['apmat']);
@@ -16,7 +14,7 @@ $estadofunc=$_REQUEST['estadofunc'];
 $estadocuenta=$_REQUEST['estadocuenta'];
 $dv= dv($rut);
 
-	if($dv==1){ 
+	if($dv==1){
 		$dv="k";
 	}
 
@@ -28,14 +26,6 @@ $dv= dv($rut);
      $dv=chr($s?$s+47:75);
      return $dv;
 
- 	}
-
- 	switch ($privilegio) {
- 		case '3':
- 			# code...
- 		$id_cargo=3;
- 			break;
- 		
  	}
 
 if($imgck=='file')
@@ -102,9 +92,24 @@ if($imgck=='file')
                                 $file = $target_dir . $target_file;
                                 file_put_contents($target_file, $image_base64);
                                 }
-*/
- RegistrarPersonal($nombre,$appat,$apmat,$rut,$dv,$telefono,$email,$target_file,$id_cargo,$id_parque,$privilegio,$password,$estadofunc,$estadocuenta);
 
-header("Location:".$_SERVER['HTTP_REFERER']);  
+switch ($privilegio) {
+        case '1':
+        $id_cargo=1;
+        registraradmin($nombre,$appat,$apmat,$rut,$dv,$telefono,$email,$target_file,$id_cargo,$privilegio,$password,$estadofunc,$estadocuenta);
+            break;
+
+        case '2':
+        $id_cargo=2;
+        RegistrarPersonal($nombre,$appat,$apmat,$rut,$dv,$telefono,$email,$target_file,$id_cargo,$id_parque,$privilegio,$password,$estadofunc,$estadocuenta);
+            break;
+
+        case '3':
+        $id_cargo=3;
+        RegistrarPersonal($nombre,$appat,$apmat,$rut,$dv,$telefono,$email,$target_file,$id_cargo,$id_parque,$privilegio,$password,$estadofunc,$estadocuenta);
+            break;
+        
+    }
+    header("Location:".$_SERVER['HTTP_REFERER']);  
 
  ?>

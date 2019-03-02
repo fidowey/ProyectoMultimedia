@@ -18,7 +18,7 @@ $password=$_SESSION['password'];?>
     <div class="col-md-3"></div>
     <div class="col-md-6">
             <small class="form-text text-muted">Por favor complete los campos con asterisco para crear su cuenta </small>
-      <form action="../controller/registropersonal.php" method="POST" enctype="multipart/form-data">
+      <form action="../controller/registropersonalall.php" method="POST" enctype="multipart/form-data">
           <div class="form-row">
             <div class="form-group ">
                 <label for="rut">Rut</label>
