@@ -33,6 +33,8 @@ if($imgck=='file')
 
                             $img=$_FILES['img'];
 
+                            if($img!==''){
+
                             $target_dir = "../views/include/img/";
                             $target_file = $target_dir . $rut . $nombre . '.png';
                             $uploadOk = 1;
@@ -76,6 +78,7 @@ if($imgck=='file')
                                     echo "Sorry, there was an error uploading your file.";
                                 }
                                 }               
+                                }
                                 }
 
                                 if ($imgck=='camera') {
