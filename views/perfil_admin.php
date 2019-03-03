@@ -38,5 +38,5 @@ $password=$_SESSION['password'];
     </div>
  		<div class="col-md-2"></div>
  	</div>
-<?php require_once "include/footer_visitante.php"; ?>
+<?php require_once "include/footer_views.php"; ?>
   </div>

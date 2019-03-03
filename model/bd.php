@@ -264,7 +264,7 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 		'$apmat',
 		'$rut',
 		'$dv',
-		'$img',
+		'$target_file',
 		$privilegio,
 		'$email',
 		$telefono,

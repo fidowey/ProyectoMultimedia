@@ -102,9 +102,9 @@ if($imgck=='file')
                                 $file = $target_dir . $target_file;
                                 file_put_contents($target_file, $image_base64);
                                 }
-*/
+                                
  RegistrarPersonal($nombre,$appat,$apmat,$rut,$dv,$telefono,$email,$target_file,$id_cargo,$id_parque,$privilegio,$password,$estadofunc,$estadocuenta);
 
-header("Location:".$_SERVER['HTTP_REFERER']);  
+header("Location:".$_SERVER['HTTP_REFERER']);
 
  ?>
