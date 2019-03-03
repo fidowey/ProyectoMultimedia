@@ -9,15 +9,13 @@ $id_parque=$_SESSION['place'];
 
 ?>
 
-
+<div class="container">
  	<div class="row">
- 		<div class="col-md-8">
- 			<div class="jumbotron jumbotron-fluid">
-  				<div class="container">
-  					
+ 		<div class="col-md-6">
             <?php 
   						$consulta=consultarfuncionario($email,$password);
   					 while ($valores=mysqli_fetch_assoc($consulta)){
+              $img=$valores['img_func'];
   					 echo"
     				<p class='lead'>Nombre: ".$valores['nombre_func']."</p>
     				<p class='lead'>Apellidos: ".$valores['appat_func']." ".$valores['apmat_func']."</p>
@@ -25,8 +23,12 @@ $id_parque=$_SESSION['place'];
     				";
     			}
     				?>
-  				</div>
-			</div>
+  	</div>
+    <div class="col-md-6">
+
+      <img src="<?php echo $img; ?>" class="img-circle" alt="profile-pic" width="304" height="236">
+
+    </div>
  		</div>
  		<div class="col-md-2"></div>
  	</div>
