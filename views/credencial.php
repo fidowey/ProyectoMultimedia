@@ -59,6 +59,11 @@ include "../controller/qr.php";
       </div>
     </div>
   </div>
+
+<a href="../tcpdf/pdf/documento.php" target = "blank">
+<button class="btn btn-warning pull-right" style="margin:100px;">Imprimir credencial</button>
+</a>
+
 </body>
 </html>
 
