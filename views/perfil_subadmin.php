@@ -15,7 +15,9 @@ $id_parque=$_SESSION['place'];
             <?php 
   						$consulta=consultarfuncionario($email,$password);
   					 while ($valores=mysqli_fetch_assoc($consulta)){
+
               $img=$valores['img_func'];
+              echo "$img";
   					 echo"
     				<p class='lead'>Nombre: ".$valores['nombre_func']."</p>
     				<p class='lead'>Apellidos: ".$valores['appat_func']." ".$valores['apmat_func']."</p>
