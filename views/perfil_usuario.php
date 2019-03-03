@@ -1,12 +1,13 @@
 
 
 <?php require_once "../model/bd.php"; ?>
-<?php require_once "include/head_admin.php";
+<?php require_once "include/head_user.php";
 
 session_start();
 
 $email=$_SESSION['usuario'];
 $password=$_SESSION['password'];
+$id_parque=$_SESSION['place'];
 
 ?>
 

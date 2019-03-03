@@ -42,15 +42,16 @@ $id_parque=$_SESSION['place'];?>
     				<input type="text" class="form-control" name="apmat" id="apmat" required pattern="([A-Za-z]{3,})"
             title="No uses caracteres inválidos como números o signos">
   				</div>
-          <div class="form-group">
-          <label for="apmat">Sacar foto con webcam </label>
-          <input type="checkbox" name="imgck" id="imgck" value="imgck" onclick="showcamera('imgck')" />
+           <div class="form-group">
+
+          <input type="radio" name="imgck" value="file" onclick="showfile()" checked/> Subir foto por archivo <br>
+         <input type="radio" name="imgck" value="camera" onclick="showcamera()"> Subir foto por webcam <br>
           </div>
           <div class="form-group" id="camera" style="display:none;">
                 <div id="my_camera">foto</div>
                 <br/>
                 <input type=button name="imgcam" id="imgcam" value="Tomar Foto" onClick="take_snapshot()">
-                <input type="hidden" name="img" class="image-tag">
+                <input type="hidden" name="image" class="image-tag">
                 <div class="col-md-6">
                 <div id="results"></div>
             </div>
@@ -82,29 +83,21 @@ $id_parque=$_SESSION['place'];?>
 		<div class="col-md-3"></div>
 	</div>
 
-  <script type="text/javascript">
+   <script type="text/javascript">
   function showcamera() {
   // Get the checkbox
-  var imgck = document.getElementById("imgck");
-  // Get the output text
-  var checkbox = document.getElementById("camera").style.display;
-  var chboxs2 = document.getElementById("file").style.display;
-  var vista = "none";
-  var vista2= "block";
-
-        if(imgck.checked==true){
-         vista = "block";
-         vista2 ="none";
-         }
-        if(imgck.checked==false){
-         vista = "none";
-         vista2 = "block";
-         }
-
-    document.getElementById("camera").style.display = vista;
-    document.getElementById("file").style.display = vista2;
+  document.getElementById('camera').style.display = 'block';
+  document.getElementById('file').style.display = 'none';
 }
   //-->
+</script>
+
+ <script type="text/javascript">
+  function showfile() {
+  // Get the checkbox
+  document.getElementById('file').style.display = 'block';
+  document.getElementById('camera').style.display = 'none';
+}
 </script>
 
 

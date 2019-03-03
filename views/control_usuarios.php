@@ -36,7 +36,7 @@ $password=$_SESSION['password'];
         <td>".$valores["privilegio"]."</td>
         <td>"?> <form action="control_usuarios.php" id="desactivar" method="POST"> <input type="hidden" name= "deactivate" id="deactivate">  <input type="submit" class="btn-danger" name="botondesactivar" value="Desactivar"> </form>
         <form action="editor_usuarios.php" method="POST">
-        <input type="hidden" name="cod_vis" value="<?php echo $valores['rut_func'] ?>">  <input type="submit" class="btn-primary" name="Editar" value="Editar"> </form>
+        <input type="hidden" name="rut" value="<?php echo $valores['rut_func'] ?>">  <input type="submit" class="btn-primary" name="Editar" value="Editar"> </form>
         <?php echo "</td>
         </tr> \n";
 
