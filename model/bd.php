@@ -714,7 +714,7 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 	mysqli_close($db);
 	}
 
-	function updateadmin($nombre,$appat,$apmat,$rut,$telefono,$email,$privilegio,$password,$dv){
+	function updateadmin($nombre,$appat,$apmat,$rut,$telefono,$email,$privilegio,$password,$dv,$target_file){
 		global $db;
 
 		$sel="
@@ -778,14 +778,40 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 	mysqli_close($db);	
 	}
 
-	function updatesubadmin($nombre,$appat,$apmat,$rut,$telefono,$email,$privilegio,$password,$dv){
+	function updatesubadmin($nombre,$appat,$apmat,$telefono,$email,$privilegio,$password,$target_file,$rut){
 		global $db;
+
+		$sql="UPDATE PERSONAL SET
+		nombre_func=$nombre,
+		appat_func=$appat,
+		apmat_func=$apmat,
+		img_func=$target_file,
+		privilegio=$privilegio,
+		email_func=$email,
+		telefono_func=$telefono,
+		id_cargo=$id_cargo,
+		pass_func=$password
+		WHERE rut_func=$rut
+		";
 
 	mysqli_close($db);	
 	}
 
-	function updateuser($nombre,$appat,$apmat,$rut,$telefono,$email,$privilegio,$password,$dv){
+	function updateuser($nombre,$appat,$apmat,$rut,$telefono,$email,$privilegio,$password,$dv,$target_file){
 		global $db;
+
+		$sql="UPDATE PERSONAL SET
+		nombre_func=$nombre,
+		appat_func=$appat,
+		apmat_func=$apmat,
+		img_func=$target_file,
+		privilegio=$privilegio,
+		email_func=$email,
+		telefono_func=$telefono,
+		id_cargo=$id_cargo,
+		pass_func=$password
+		WHERE rut_func=$rut
+		";
 
 	mysqli_close($db);	
 	}

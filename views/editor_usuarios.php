@@ -30,13 +30,6 @@ $rut_func=$_REQUEST['rut_func'];
 
              ?>
       <form action="../controller/edit_user.php" method="POST" enctype="multipart/form-data">
-          <div class="form-row">
-            <div class="form-group ">
-                <label for="rut">Rut</label>
-                <input type="text" class="form-control" value="<?php echo $valores['rut_func']; ?>" id="rut" name="rut" required pattern="[0-9]{7,8}">
-                <small id="emailHelp" class="form-text text-muted">Ingrese rut sin digito verificador</small>
-            </div>
-          </div>
           <div class="form-group">
             <label for="nombre" >Nombre * </label>
             <input type="text" class="form-control " value="<?php echo $valores['nombre_func']; ?>" name="nombre" id="nombre" required pattern="([A-Za-z]{3,})"
@@ -83,7 +76,7 @@ $rut_func=$_REQUEST['rut_func'];
             </div>
             
             <div class="form-group" id="file">
-              <input type="file" name="img" id="img" accept="image/*">
+              <input type="file" name="img" id="img" value="<?php echo $valores['appat_func']; ?>" accept="image/*">
             </div>
           <div class="form-group">
             <label >Telefono * </label>
