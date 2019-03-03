@@ -24,7 +24,7 @@
   			<div class="collapse navbar-collapse bg-info" id="navbarSupportedContent">
     			<ul class="navbar-nav mr-auto text-center ">
             <li class="nav-item active">
-                <a class="nav-link text-center" href="/ProyectoMultimedia/views/perfil_user.php"> Ver tu perfil  </a>
+                <a class="nav-link text-center" href="/ProyectoMultimedia/views/perfil_usuario.php"> Ver tu perfil  </a>
               </li>
       				<li class="nav-item ">
         				<a class="nav-link text-center" href="/ProyectoMultimedia/views/control_visitas_usuario.php">	Cuentas Visitantes	</a>

@@ -110,6 +110,6 @@ switch ($privilegio) {
             break;
         
     }
-    header("Location:".$_SERVER['HTTP_REFERER']);  
+      
 
  ?>

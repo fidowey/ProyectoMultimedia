@@ -57,7 +57,8 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 						session_start();
 						$_SESSION['usuario']=$email;
 						$_SESSION['password']=$password;
-						header("Location:../views/usuario.php");
+						$_SESSION['place']=$resultado['id_parque'];
+						header("Location:../views/perfil_usuario.php");
 						break;
 				}
 						//condiciones en caso de que el que se loguea no es un funcionario			
