@@ -714,7 +714,7 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 	mysqli_close($db);
 	}
 
-	function updateadmin($nombre,$appat,$apmat,$rut,$telefono,$email,$privilegio,$password,$dv,$target_file){
+	function updateadmin($nombre,$appat,$apmat,$rut,$telefono,$email,$privilegio,$password,$dv,$target_file,$id_cargo){
 		global $db;
 
 		$sel="
@@ -775,43 +775,64 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 		)";
 	}
 
-	mysqli_close($db);	
+			if ($db->query($sql2)===TRUE) {
+			echo "el registro se ingreso con exito";
 	}
-
-	function updatesubadmin($nombre,$appat,$apmat,$telefono,$email,$privilegio,$password,$target_file,$rut){
-		global $db;
-
-		$sql="UPDATE PERSONAL SET
-		nombre_func=$nombre,
-		appat_func=$appat,
-		apmat_func=$apmat,
-		img_func=$target_file,
-		privilegio=$privilegio,
-		email_func=$email,
-		telefono_func=$telefono,
-		id_cargo=$id_cargo,
-		pass_func=$password
-		WHERE rut_func=$rut
-		";
+		else{
+		echo "Error: ".$sql2."<br>".$db->error;
+		}
 
 	mysqli_close($db);	
 	}
 
-	function updateuser($nombre,$appat,$apmat,$rut,$telefono,$email,$privilegio,$password,$dv,$target_file){
+	function updatesubadmin($nombre,$appat,$apmat,$telefono,$email,$privilegio,$password,$target_file,$rut,$id_cargo){
 		global $db;
 
 		$sql="UPDATE PERSONAL SET
-		nombre_func=$nombre,
-		appat_func=$appat,
-		apmat_func=$apmat,
-		img_func=$target_file,
+		nombre_func='$nombre',
+		appat_func='$appat',
+		apmat_func='$apmat',
+		img_func='$target_file',
 		privilegio=$privilegio,
-		email_func=$email,
+		email_func='$email',
 		telefono_func=$telefono,
 		id_cargo=$id_cargo,
-		pass_func=$password
+		pass_func='$password'
 		WHERE rut_func=$rut
 		";
+
+		if ($db->query($sql)===TRUE) {
+			echo "el registro se ingreso con exito";
+	}
+		else{
+		echo "Error: ".$sql."<br>".$db->error;
+		}
+
+	mysqli_close($db);	
+	}
+
+	function updateuser($nombre,$appat,$apmat,$rut,$telefono,$email,$privilegio,$password,$dv,$target_file,$id_cargo){
+		global $db;
+
+		$sql="UPDATE PERSONAL SET
+		nombre_func='$nombre',
+		appat_func='$appat',
+		apmat_func='$apmat',
+		img_func='$target_file',
+		privilegio=$privilegio,
+		email_func='$email',
+		telefono_func=$telefono,
+		id_cargo=$id_cargo,
+		pass_func='$password'
+		WHERE rut_func=$rut
+		";
+
+		if ($db->query($sql)===TRUE) {
+			echo "el registro se ingreso con exito";
+		}
+		else{
+		echo "Error: ".$sql."<br>".$db->error;
+		}
 
 	mysqli_close($db);	
 	}

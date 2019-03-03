@@ -6,7 +6,7 @@ session_start();
 $email=$_SESSION['usuario'];
 $password=$_SESSION['password'];
 
-$rut_func=$_REQUEST['rut_func'];
+$rut=$_REQUEST['rut'];
 ?>
 
   <script src="include/js/jquery.min.js"></script>
@@ -25,11 +25,12 @@ $rut_func=$_REQUEST['rut_func'];
             <small class="form-text text-muted">Editar trabajador </small>
 
             <?php 
-            $sql=consultarpareditar($rut_func);
+            $sql=consultarpareditar($rut);
              while ($valores=mysqli_fetch_assoc($sql)){
 
              ?>
       <form action="../controller/edit_user.php" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="rut" value="<?php echo $valores['rut_func']; ?>" >
           <div class="form-group">
             <label for="nombre" >Nombre * </label>
             <input type="text" class="form-control " value="<?php echo $valores['nombre_func']; ?>" name="nombre" id="nombre" required pattern="([A-Za-z]{3,})"

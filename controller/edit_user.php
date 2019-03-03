@@ -96,17 +96,17 @@ if($imgck=='file')
 switch ($privilegio) {
         case '1':
         $id_cargo=1;
-        registraradmin($nombre,$appat,$apmat,$rut,$dv,$telefono,$email,$target_file,$id_cargo,$privilegio,$password,$estadofunc,$estadocuenta);
+        updateadmin($nombre,$appat,$apmat,$rut,$telefono,$email,$privilegio,$password,$dv,$id_cargo);
             break;
 
         case '2':
         $id_cargo=2;
-        RegistrarPersonal($nombre,$appat,$apmat,$rut,$dv,$telefono,$email,$target_file,$id_cargo,$id_parque,$privilegio,$password,$estadofunc,$estadocuenta);
+        updatesubadmin($nombre,$appat,$apmat,$telefono,$email,$privilegio,$password,$target_file,$rut,$id_cargo);
             break;
 
         case '3':
         $id_cargo=3;
-        RegistrarPersonal($nombre,$appat,$apmat,$rut,$dv,$telefono,$email,$target_file,$id_cargo,$id_parque,$privilegio,$password,$estadofunc,$estadocuenta);
+        updateuser($nombre,$appat,$apmat,$rut,$telefono,$email,$privilegio,$password,$dv,$target_file,$id_cargo);
             break;
         
     }
