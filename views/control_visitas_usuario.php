@@ -1,3 +1,5 @@
+
+
 <?php 
 require_once('include/head_user.php');
 require_once('control_visitas.php');
