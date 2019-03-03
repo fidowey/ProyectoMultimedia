@@ -96,7 +96,7 @@ if($imgck=='file')
 switch ($privilegio) {
         case '1':
         $id_cargo=1;
-        updateadmin($nombre,$appat,$apmat,$rut,$telefono,$email,$privilegio,$password,$dv,$id_cargo);
+        updateadmin($nombre,$appat,$apmat,$rut,$telefono,$email,$privilegio,$password,$dv,$target_file,$id_cargo);
             break;
 
         case '2':

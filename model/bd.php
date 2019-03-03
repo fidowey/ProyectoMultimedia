@@ -705,9 +705,6 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 			WHERE rut_func=$rut_func
 			";
 
-			$consulta2="
-			SELECT * FROM DETALLE_PARQUE
-			WHERE rut_func=$rut_func";
 
 	return mysqli_query($db,$consulta);
 
@@ -717,7 +714,37 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 	function updateadmin($nombre,$appat,$apmat,$rut,$telefono,$email,$privilegio,$password,$dv,$target_file,$id_cargo){
 		global $db;
 
-		$sel="
+		$sql="UPDATE PERSONAL SET
+		nombre_func='$nombre',
+		appat_func='$appat',
+		apmat_func='$apmat',
+		img_func='$target_file',
+		privilegio=$privilegio,
+		email_func='$email',
+		telefono_func=$telefono,
+		id_cargo=$id_cargo,
+		pass_func='$password'
+		WHERE rut_func=$rut
+		";
+
+		if ($db->query($sql)===TRUE) {
+
+
+		$sql2="UPDATE DETALLE_PARQUE SET
+		nombre_func='$nombre',
+		appat_func='$appat',
+		apmat_func='$apmat',
+		img_func='$target_file',
+		privilegio=$privilegio,
+		email_func='$email',
+		telefono_func=$telefono,
+		id_cargo=$id_cargo,
+		pass_func='$password'
+		WHERE rut_func=$rut
+		";
+
+		if ($db->query($sql2)===FALSE) {
+			$sel="
 		SELECT * FROM PARQUE
 		";
 
@@ -731,7 +758,7 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 		$cord_parque=$valores['cord_parque'];
 		$region_parque=$valores['region_parque'];
 
-		$sql2 ="
+		$sql3 ="
 		INSERT INTO DETALLE_PARQUE
 		(
 		nombre_func,
@@ -774,6 +801,9 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 		'$region_parque'
 		)";
 	}
+		}
+}
+		
 
 			if ($db->query($sql2)===TRUE) {
 			echo "el registro se ingreso con exito";
@@ -785,10 +815,23 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 	mysqli_close($db);	
 	}
 
-	function updatesubadmin($nombre,$appat,$apmat,$telefono,$email,$privilegio,$password,$target_file,$rut,$id_cargo){
+	function updatesubadmin($nombre,$appat,$apmat,$rut,$telefono,$email,$privilegio,$password,$dv,$id_cargo){
 		global $db;
 
 		$sql="UPDATE PERSONAL SET
+		nombre_func='$nombre',
+		appat_func='$appat',
+		apmat_func='$apmat',
+		img_func='$target_file',
+		privilegio=$privilegio,
+		email_func='$email',
+		telefono_func=$telefono,
+		id_cargo=$id_cargo,
+		pass_func='$password'
+		WHERE rut_func=$rut
+		";
+
+		$sql2="UPDATE DETALLE_PARQUE SET
 		nombre_func='$nombre',
 		appat_func='$appat',
 		apmat_func='$apmat',
@@ -806,6 +849,13 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 	}
 		else{
 		echo "Error: ".$sql."<br>".$db->error;
+		}
+
+		if ($db->query($sql2)===TRUE) {
+			echo "el registro se ingreso con exito";
+	}
+		else{
+		echo "Error: ".$sql2."<br>".$db->error;
 		}
 
 	mysqli_close($db);	
@@ -827,11 +877,31 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 		WHERE rut_func=$rut
 		";
 
+		$sql2="UPDATE DETALLE_PARQUE SET
+		nombre_func='$nombre',
+		appat_func='$appat',
+		apmat_func='$apmat',
+		img_func='$target_file',
+		privilegio=$privilegio,
+		email_func='$email',
+		telefono_func=$telefono,
+		id_cargo=$id_cargo,
+		pass_func='$password'
+		WHERE rut_func=$rut
+		";
+
 		if ($db->query($sql)===TRUE) {
 			echo "el registro se ingreso con exito";
 		}
 		else{
 		echo "Error: ".$sql."<br>".$db->error;
+		}
+
+		if ($db->query($sql2)===TRUE) {
+			echo "el registro se ingreso con exito";
+		}
+		else{
+		echo "Error: ".$sql2."<br>".$db->error;
 		}
 
 	mysqli_close($db);	
