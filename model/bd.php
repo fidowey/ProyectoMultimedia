@@ -291,7 +291,7 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 		mysqli_close($db);
 	}
 
-	function updatevisitante($cod_vis,$nombre,$appat,$apmat,$rut,$dv,$fechanac,$sexo,$pasaporte,$edad,$direccion,$email,$telefono,$img,$tipo_vis){
+	function updatevisitante($cod_vis,$nombre,$appat,$apmat,$rut,$dv,$fechanac,$sexo,$pasaporte,$edad,$direccion,$email,$telefono,$tipo_vis){
 
 		global $db;
 
@@ -311,7 +311,6 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 			dir_vis='$direccion',
 			email_vis='$email',
 			telefono_vis=$telefono,
-			img_vis='$img',
 			tipo_vis='$tipo_vis'
 			WHERE cod_vis=$cod_vis";
 
@@ -908,6 +907,46 @@ function updatesubadmin($nombre,$appat,$apmat,$rut,$telefono,$email,$privilegio,
 
 	mysqli_close($db);	
 	}
+
+	function registrovisita($codebar,$id_parque,$horario,$fecha){
+		global $db;
+
+		$consulta="
+		SELECT * FROM VISITANTE
+		WHERE codebar_vis=$codebar"
+		;
+
+		while ($valores = mysqli_fetch_array($consulta)) {
+			$cod_visita=$valores['cod_vis'];
+
+			$consulta2="SELECT MAX(id_vis) AS maxvis from VISITA";
+
+			while ($resultado = mysqli_fetch_array($consulta2)) {
+
+				$id_visita=$resultado['maxvis']+1;
+			
+
+			$sql="INSERT INTO VISITA
+			fecha_vis,
+			hora_vis,
+			id_vis,
+			cod_vis,
+			id_parque
+			VALUES
+			$fecha,
+			$horario,
+			$id_visita,
+			$cod_visita,
+			$id_parque
+			";
+		}
+		}
+		}
+
+
+
+
+
 
 
 ?>

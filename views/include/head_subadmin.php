@@ -36,6 +36,9 @@
       				<li class="nav-item">
         				<a class="nav-link text-center" href="/ProyectoMultimedia/views/registrar_usuarios.php">	Registrar personal	</a>
       				</li>
+              <li class="nav-item">
+                <a class="nav-link text-center" href="/ProyectoMultimedia/views/registrar_visitas_subadmin.php">  Registrar Visita  </a>
+              </li>
     			</ul>
           <!-- Button trigger modal -->
           <button type="button" onclick="window.location.href='../controller/cerrar_sesion.php'" class="btn btn-primary btn-lg active bg-success" data-toggle="modal" data-target="#exampleModal">
