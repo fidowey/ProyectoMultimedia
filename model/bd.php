@@ -815,7 +815,7 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 	mysqli_close($db);	
 	}
 
-	function updatesubadmin($nombre,$appat,$apmat,$rut,$telefono,$email,$privilegio,$password,$dv,$id_cargo){
+function updatesubadmin($nombre,$appat,$apmat,$rut,$telefono,$email,$privilegio,$password,$dv,$id_cargo,$target_file){
 		global $db;
 
 		$sql="UPDATE PERSONAL SET
@@ -860,6 +860,8 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 
 	mysqli_close($db);	
 	}
+
+	
 
 	function updateuser($nombre,$appat,$apmat,$rut,$telefono,$email,$privilegio,$password,$dv,$target_file,$id_cargo){
 		global $db;

@@ -101,7 +101,7 @@ switch ($privilegio) {
 
         case '2':
         $id_cargo=2;
-        updatesubadmin($nombre,$appat,$apmat,$telefono,$email,$privilegio,$password,$target_file,$rut,$id_cargo);
+        updatesubadmin($nombre,$appat,$apmat,$rut,$telefono,$email,$privilegio,$password,$dv,$id_cargo,$target_file);
             break;
 
         case '3':
