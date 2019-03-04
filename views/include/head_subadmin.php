@@ -6,8 +6,19 @@
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<title></title>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript">
+function cargarDatos() {
+// En la linea siguiente cambia la IP por la que esté usando tu arduino
+$.getJSON("http://192.168.1.205").done( function(datos){ 
+$("#tempVal").text(datos.temperatura);
+$("#uptimeVal").text(datos.uptime);
+});
+}
+</script>
 	</head>
-	<body>
+	<body onLoad="cargarDatos();">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-3">
