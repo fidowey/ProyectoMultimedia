@@ -1,7 +1,5 @@
 <?php require_once "include/head_visitante.php"; ?>
 
-
-
 <?php
 session_start();
 $email=$_SESSION['usuario'];
@@ -10,7 +8,6 @@ $id_cuenta=$_SESSION['idcuenta'];
 
 
 require_once "../model/bd.php";
-
 
 ?>
 
@@ -23,16 +20,18 @@ require_once "../model/bd.php";
   if(!file_exists($dir))
     mkdir($dir);
   
+
   $filename = $dir.'test.png';
   
   $tamanio = 3;
   $level = 'H';
   $frameSize = 1;
-  $contenido = 'hola';
-
+  $contenido = $_SESSION;
+  $contenido = json_encode($contenido);
+  
   QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
   
-  echo '<img src="'.$filename.'" />';
+  $miqr = '<img src="'.$filename.'" style="margin-top:34%;margin-left:55%;" />';
 
 ?>
 
@@ -52,6 +51,7 @@ require_once "../model/bd.php";
     <div class="row">
       <h3 class="text-center">Credencial</h3>
     </div>
+
     <div class="row">
       <div class="col-md-6 cred-front-iz">
 <?php 
@@ -61,13 +61,16 @@ require_once "../model/bd.php";
       
              while ($valores=mysqli_fetch_assoc($consulta)){
                $img=$valores['img_vis'];
+
     
  ?>
+
       </div>
       <div class="col-md-6 cred-front-der">
         <br>
         <br>
         <br>
+
       <?php 
       echo "&nbsp &nbsp &nbsp"."&nbsp".
             $valores['appat_vis']."&nbsp".
@@ -75,9 +78,10 @@ require_once "../model/bd.php";
             $valores['nombre_vis'];
       }?>
         
-    
+       <?php echo $miqr; ?>
       </div>
     </div>
+
   </div>
 
 <a href="../tcpdf/pdf/documento.php" target = "blank">

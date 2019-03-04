@@ -3,7 +3,8 @@
   <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title></title>
+    <title>CONAF | Corporacion Nacional Forestal</title>
+    <link rel="icon" href="views/include/img/conaf.jpg" type="image/jpg" sizes="16x16">
   </head>
   <body>
   <div class="container">
