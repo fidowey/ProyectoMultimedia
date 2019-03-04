@@ -10,11 +10,31 @@ $id_cuenta=$_SESSION['idcuenta'];
 
 
 require_once "../model/bd.php";
-include "../controller/qr.php";
+
 
 ?>
 
+<?php
+  
+  require '../phpqrcode/qrlib.php';
+  
+  $dir = 'temp/';
+  
+  if(!file_exists($dir))
+    mkdir($dir);
+  
+  $filename = $dir.'test.png';
+  
+  $tamanio = 3;
+  $level = 'H';
+  $frameSize = 1;
+  $contenido = 'hola';
 
+  QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
+  
+  echo '<img src="'.$filename.'" />';
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">

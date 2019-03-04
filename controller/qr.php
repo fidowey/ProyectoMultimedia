@@ -2,7 +2,7 @@
 
 
 function cargarCodigoQr($directorio,$name,$rut){
-   include '../views/include/phpqrcode/qrlib.php';
+   include '../phpqrcode/qrlib.php';
     $dir = $directorio;
 
    $filename = $name;
