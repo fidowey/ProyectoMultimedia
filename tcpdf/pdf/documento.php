@@ -43,8 +43,10 @@ foreach ($respuesta as $row => $item) {
 $html2 = <<<EOF
 
 	<table style="border: 1px solid #333; text-align:center; line-height: 20px; font-size:10px">
-		
-
+		<tr>
+			<td style="border: 1px solid #666; background-color:#333; color:#fff">Nombre</td>
+			<td style="border: 1px solid #666; background-color:#333; color:#fff">Email</td>
+		</tr>
 	</table>
 
 EOF;
