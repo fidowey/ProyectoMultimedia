@@ -34,9 +34,10 @@ $html1 = <<<EOF
 
 EOF;
 
-$pdf->writeHTML($html1, false, false, false, false, ''); 
+$pdf->writeHTML($html1, false, false, false, false, '');
 
-$respuesta = consultarvisitante($email,$password);
+
+//$respuesta = consultarvisitante($email,$password);
 
 foreach ($respuesta as $row => $item) {
 

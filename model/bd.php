@@ -382,7 +382,7 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 
 		$sql ="
 			SELECT * FROM VISITANTE NATURAL JOIN CUENTA
-			WHERE email_vis='$email' AND pass_cuenta=$password";
+			WHERE email_vis='$email' AND pass_cuenta='$password'";
 
 			return mysqli_query($db,$sql);
 
