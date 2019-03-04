@@ -33,6 +33,8 @@ if($imgck=='file')
 
                             $img=$_FILES['img'];
 
+                            if($img!==''){
+
                             $target_dir = "../views/include/img/";
                             $target_file = $target_dir . $rut . $nombre . '.png';
                             $uploadOk = 1;
@@ -77,6 +79,7 @@ if($imgck=='file')
                                 }
                                 }               
                                 }
+                                }
 
                                 if ($imgck=='camera') {
                                 $img = $_POST['image'];
@@ -96,12 +99,12 @@ if($imgck=='file')
 switch ($privilegio) {
         case '1':
         $id_cargo=1;
-        updateadmin($nombre,$appat,$apmat,$rut,$telefono,$email,$privilegio,$password,$dv,$id_cargo);
+        updateadmin($nombre,$appat,$apmat,$rut,$telefono,$email,$privilegio,$password,$dv,$target_file,$id_cargo);
             break;
 
         case '2':
         $id_cargo=2;
-        updatesubadmin($nombre,$appat,$apmat,$telefono,$email,$privilegio,$password,$target_file,$rut,$id_cargo);
+        updatesubadmin($nombre,$appat,$apmat,$rut,$telefono,$email,$privilegio,$password,$dv,$id_cargo,$target_file);
             break;
 
         case '3':

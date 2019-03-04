@@ -77,7 +77,7 @@ $rut=$_REQUEST['rut'];
             </div>
             
             <div class="form-group" id="file">
-              <input type="file" name="img" id="img" value="<?php echo $valores['appat_func']; ?>" accept="image/*">
+              <input type="file" name="img" id="img" value="<?php echo $valores['img_func']; ?>" accept="image/*">
             </div>
           <div class="form-group">
             <label >Telefono * </label>

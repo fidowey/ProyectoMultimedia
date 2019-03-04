@@ -19,7 +19,6 @@
                 <td><b>Codigo</b></td>
                 <td><b>Sexo</b></td>
                <td><b>Edad</b></td>
-               <td><b>Fecha de Nacimiento</b></td>
                <td><b>Email</b></td>
                <td><b>Direccion</b></td>
                <td><b>Funciones</b></td></tr> \n"; 
@@ -34,7 +33,6 @@
         <td>".$valores["bar_codevis"]."</td>
         <td>".$valores["sexo_vis"]."</td>
         <td>".$valores["edad_vis"]."</td>
-        <td>".$valores["fecha_nacvis"]."</td>
         <td>".$valores["email_vis"]."</td>
         <td>".$valores["dir_vis"]."</td>
         <td>"?> <form action="control_visitas.php" id="desactivar" method="POST"> <input type="hidden" name= "deactivate" id="deactivate">  <input type="submit" class="btn-danger" name="botondesactivar" value="Desactivar"> </form>

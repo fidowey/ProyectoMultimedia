@@ -291,7 +291,7 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 		mysqli_close($db);
 	}
 
-	function updatevisitante($cod_vis,$nombre,$appat,$apmat,$rut,$dv,$fechanac,$sexo,$pasaporte,$edad,$direccion,$email,$telefono,$img,$tipo_vis){
+	function updatevisitante($cod_vis,$nombre,$appat,$apmat,$rut,$dv,$fechanac,$sexo,$pasaporte,$edad,$direccion,$email,$telefono,$tipo_vis){
 
 		global $db;
 
@@ -311,7 +311,6 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 			dir_vis='$direccion',
 			email_vis='$email',
 			telefono_vis=$telefono,
-			img_vis='$img',
 			tipo_vis='$tipo_vis'
 			WHERE cod_vis=$cod_vis";
 
@@ -705,9 +704,6 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 			WHERE rut_func=$rut_func
 			";
 
-			$consulta2="
-			SELECT * FROM DETALLE_PARQUE
-			WHERE rut_func=$rut_func";
 
 	return mysqli_query($db,$consulta);
 
@@ -717,7 +713,37 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 	function updateadmin($nombre,$appat,$apmat,$rut,$telefono,$email,$privilegio,$password,$dv,$target_file,$id_cargo){
 		global $db;
 
-		$sel="
+		$sql="UPDATE PERSONAL SET
+		nombre_func='$nombre',
+		appat_func='$appat',
+		apmat_func='$apmat',
+		img_func='$target_file',
+		privilegio=$privilegio,
+		email_func='$email',
+		telefono_func=$telefono,
+		id_cargo=$id_cargo,
+		pass_func='$password'
+		WHERE rut_func=$rut
+		";
+
+		if ($db->query($sql)===TRUE) {
+
+
+		$sql2="UPDATE DETALLE_PARQUE SET
+		nombre_func='$nombre',
+		appat_func='$appat',
+		apmat_func='$apmat',
+		img_func='$target_file',
+		privilegio=$privilegio,
+		email_func='$email',
+		telefono_func=$telefono,
+		id_cargo=$id_cargo,
+		pass_func='$password'
+		WHERE rut_func=$rut
+		";
+
+		if ($db->query($sql2)===FALSE) {
+			$sel="
 		SELECT * FROM PARQUE
 		";
 
@@ -731,7 +757,7 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 		$cord_parque=$valores['cord_parque'];
 		$region_parque=$valores['region_parque'];
 
-		$sql2 ="
+		$sql3 ="
 		INSERT INTO DETALLE_PARQUE
 		(
 		nombre_func,
@@ -774,6 +800,9 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 		'$region_parque'
 		)";
 	}
+		}
+}
+		
 
 			if ($db->query($sql2)===TRUE) {
 			echo "el registro se ingreso con exito";
@@ -785,10 +814,23 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 	mysqli_close($db);	
 	}
 
-	function updatesubadmin($nombre,$appat,$apmat,$telefono,$email,$privilegio,$password,$target_file,$rut,$id_cargo){
+function updatesubadmin($nombre,$appat,$apmat,$rut,$telefono,$email,$privilegio,$password,$dv,$id_cargo,$target_file){
 		global $db;
 
 		$sql="UPDATE PERSONAL SET
+		nombre_func='$nombre',
+		appat_func='$appat',
+		apmat_func='$apmat',
+		img_func='$target_file',
+		privilegio=$privilegio,
+		email_func='$email',
+		telefono_func=$telefono,
+		id_cargo=$id_cargo,
+		pass_func='$password'
+		WHERE rut_func=$rut
+		";
+
+		$sql2="UPDATE DETALLE_PARQUE SET
 		nombre_func='$nombre',
 		appat_func='$appat',
 		apmat_func='$apmat',
@@ -808,8 +850,17 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 		echo "Error: ".$sql."<br>".$db->error;
 		}
 
+		if ($db->query($sql2)===TRUE) {
+			echo "el registro se ingreso con exito";
+	}
+		else{
+		echo "Error: ".$sql2."<br>".$db->error;
+		}
+
 	mysqli_close($db);	
 	}
+
+	
 
 	function updateuser($nombre,$appat,$apmat,$rut,$telefono,$email,$privilegio,$password,$dv,$target_file,$id_cargo){
 		global $db;
@@ -827,6 +878,19 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 		WHERE rut_func=$rut
 		";
 
+		$sql2="UPDATE DETALLE_PARQUE SET
+		nombre_func='$nombre',
+		appat_func='$appat',
+		apmat_func='$apmat',
+		img_func='$target_file',
+		privilegio=$privilegio,
+		email_func='$email',
+		telefono_func=$telefono,
+		id_cargo=$id_cargo,
+		pass_func='$password'
+		WHERE rut_func=$rut
+		";
+
 		if ($db->query($sql)===TRUE) {
 			echo "el registro se ingreso con exito";
 		}
@@ -834,8 +898,55 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 		echo "Error: ".$sql."<br>".$db->error;
 		}
 
+		if ($db->query($sql2)===TRUE) {
+			echo "el registro se ingreso con exito";
+		}
+		else{
+		echo "Error: ".$sql2."<br>".$db->error;
+		}
+
 	mysqli_close($db);	
 	}
+
+	function registrovisita($codebar,$id_parque,$horario,$fecha){
+		global $db;
+
+		$consulta="
+		SELECT * FROM VISITANTE
+		WHERE codebar_vis=$codebar"
+		;
+
+		while ($valores = mysqli_fetch_array($consulta)) {
+			$cod_visita=$valores['cod_vis'];
+
+			$consulta2="SELECT MAX(id_vis) AS maxvis from VISITA";
+
+			while ($resultado = mysqli_fetch_array($consulta2)) {
+
+				$id_visita=$resultado['maxvis']+1;
+			
+
+			$sql="INSERT INTO VISITA
+			fecha_vis,
+			hora_vis,
+			id_vis,
+			cod_vis,
+			id_parque
+			VALUES
+			$fecha,
+			$horario,
+			$id_visita,
+			$cod_visita,
+			$id_parque
+			";
+		}
+		}
+		}
+
+
+
+
+
 
 
 ?>

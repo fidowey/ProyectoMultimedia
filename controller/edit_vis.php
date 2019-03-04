@@ -59,6 +59,7 @@ require_once'../model/bd.php';
 			{
 
 							$img=$_FILES['img'];
+							 if($img!==''){
 
 							$target_dir = "../views/include/img/";
 							$target_file = $target_dir . $rut . $nombre . '.png';
@@ -104,6 +105,7 @@ require_once'../model/bd.php';
 							    }
 								}				
 								}
+							}
 
 								if ($imgck=='camera') {
 								$img = $_POST['image'];
