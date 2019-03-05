@@ -14,6 +14,17 @@ $estadofunc=$_REQUEST['estadofunc'];
 $estadocuenta=$_REQUEST['estadocuenta'];
 $dv= dv($rut);
 
+$target_file= "../views/include/img/" . $rut . $nombre . '.png';
+
+if (file_exists($target_file)) {
+    $target_file= "../views/include/img/" . $rut . $nombre . '.png';
+} else {
+    $target_file= "../views/include/img/" . 'default.jpg';
+}
+
+
+
+
 	if($dv==1){
 		$dv="k";
 	}
@@ -30,11 +41,14 @@ $dv= dv($rut);
 
 if($imgck=='file')
             {
+            $img=$_FILES['img'];
 
-                            $img=$_FILES['img'];
+            if (!empty($_FILES['img']['name']))
+            {
 
-                            if($img!==''){
+                            
 
+                            
                             $target_dir = "../views/include/img/";
                             $target_file = $target_dir . $rut . $nombre . '.png';
                             $uploadOk = 1;
@@ -78,8 +92,9 @@ if($imgck=='file')
                                     echo "Sorry, there was an error uploading your file.";
                                 }
                                 }               
-                                }
-                                }
+            }
+        }
+
 
                                 if ($imgck=='camera') {
                                 $img = $_POST['image'];
@@ -104,12 +119,14 @@ switch ($privilegio) {
 
         case '2':
         $id_cargo=2;
-        updatesubadmin($nombre,$appat,$apmat,$rut,$telefono,$email,$privilegio,$password,$dv,$id_cargo,$target_file);
+        $id_parque=$_REQUEST['id_parque'];
+        updatesubadmin($nombre,$appat,$apmat,$rut,$telefono,$email,$privilegio,$password,$dv,$id_cargo,$target_file,$id_parque);
             break;
 
         case '3':
         $id_cargo=3;
-        updateuser($nombre,$appat,$apmat,$rut,$telefono,$email,$privilegio,$password,$dv,$target_file,$id_cargo);
+        $id_parque=$_REQUEST['id_parque'];
+        updateuser($nombre,$appat,$apmat,$rut,$telefono,$email,$privilegio,$password,$dv,$target_file,$id_cargo,$id_parque);
             break;
         
     }

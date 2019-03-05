@@ -11,10 +11,10 @@ $mesactual=(int)$hoy['mon'];
 $diactual=(int)$hoy['mday']; 
 
 $horaactual=(int)$hoy['hours'];
-$minutoactual=(int)$hoy['minutes']
+$minutoactual=(int)$hoy['minutes'];
 
 $horario=$horaactual.$minutoactual;
-$fecha=$anioactual..$mesactual.$diactual;
+$fecha=$anioactual.$mesactual.$diactual;
 
 
-registro_visita($codebar,$id_parque,$horario,$fecha);
+registrovisita($codebar,$id_parque,$horario,$fecha);

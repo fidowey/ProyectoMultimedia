@@ -103,7 +103,7 @@ $cod_vis=$_REQUEST['cod_vis'];
             </div>
             
             <div class="form-group" id="file">
-              <input type="file" name="img" id="img" value="<?php echo $valores['img_vis']; ?>" >
+              <input type="file" name="img" id="img" >
             </div>
             </div>
   				<button type="submit" class="btn btn-primary">Modificar</button>

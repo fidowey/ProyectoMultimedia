@@ -726,24 +726,19 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 		WHERE rut_func=$rut
 		";
 
-		if ($db->query($sql)===TRUE) {
 
-
-		$sql2="UPDATE DETALLE_PARQUE SET
-		nombre_func='$nombre',
-		appat_func='$appat',
-		apmat_func='$apmat',
-		img_func='$target_file',
-		privilegio=$privilegio,
-		email_func='$email',
-		telefono_func=$telefono,
-		id_cargo=$id_cargo,
-		pass_func='$password'
+		$sql2="DELETE FROM DETALLE_PARQUE
 		WHERE rut_func=$rut
 		";
 
-		if ($db->query($sql2)===FALSE) {
-			$sel="
+		if ($db->query($sql2)===TRUE) {
+			echo "eliminacion exitosa";
+		}
+		else{
+		echo "Error: ".$sql2."<br>".$db->error;
+		}
+
+		$sel="
 		SELECT * FROM PARQUE
 		";
 
@@ -756,6 +751,8 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 		$comuna_parque=$valores['comuna_parque'];
 		$cord_parque=$valores['cord_parque'];
 		$region_parque=$valores['region_parque'];
+		$estadocuenta=1;
+		$estadofunc=1;
 
 		$sql3 ="
 		INSERT INTO DETALLE_PARQUE
@@ -799,22 +796,24 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 		'$cord_parque',
 		'$region_parque'
 		)";
-	}
-		}
-}
-		
 
-			if ($db->query($sql2)===TRUE) {
-			echo "el registro se ingreso con exito";
+							if ($db->query($sql3)===TRUE) {
+			echo "el registro se ingreso con exito para adminnistrador";
 	}
 		else{
-		echo "Error: ".$sql2."<br>".$db->error;
+		echo "Error: ".$sql3."<br>".$db->error;
 		}
+
+		}
+		
+
+			
+
 
 	mysqli_close($db);	
 	}
 
-function updatesubadmin($nombre,$appat,$apmat,$rut,$telefono,$email,$privilegio,$password,$dv,$id_cargo,$target_file){
+function updatesubadmin($nombre,$appat,$apmat,$rut,$telefono,$email,$privilegio,$password,$dv,$id_cargo,$target_file,$id_parque){
 		global $db;
 
 		$sql="UPDATE PERSONAL SET
@@ -843,6 +842,9 @@ function updatesubadmin($nombre,$appat,$apmat,$rut,$telefono,$email,$privilegio,
 		WHERE rut_func=$rut
 		";
 
+		$sql3="DELETE FROM DETALLE_PARQUE
+		WHERE rut_func=$rut AND id_parque<>$id_parque";
+
 		if ($db->query($sql)===TRUE) {
 			echo "el registro se ingreso con exito";
 	}
@@ -855,6 +857,13 @@ function updatesubadmin($nombre,$appat,$apmat,$rut,$telefono,$email,$privilegio,
 	}
 		else{
 		echo "Error: ".$sql2."<br>".$db->error;
+		}
+
+		if ($db->query($sql3)===TRUE) {
+			echo "el registro se ingreso con exito";
+	}
+		else{
+		echo "Error: ".$sql3."<br>".$db->error;
 		}
 
 	mysqli_close($db);	
@@ -862,7 +871,7 @@ function updatesubadmin($nombre,$appat,$apmat,$rut,$telefono,$email,$privilegio,
 
 	
 
-	function updateuser($nombre,$appat,$apmat,$rut,$telefono,$email,$privilegio,$password,$dv,$target_file,$id_cargo){
+	function updateuser($nombre,$appat,$apmat,$rut,$telefono,$email,$privilegio,$password,$dv,$target_file,$id_cargo,$id_parque){
 		global $db;
 
 		$sql="UPDATE PERSONAL SET
@@ -891,6 +900,9 @@ function updatesubadmin($nombre,$appat,$apmat,$rut,$telefono,$email,$privilegio,
 		WHERE rut_func=$rut
 		";
 
+		$sql3="DELETE FROM DETALLE_PARQUE
+		WHERE rut_func=$rut AND id_parque<>$id_parque";
+
 		if ($db->query($sql)===TRUE) {
 			echo "el registro se ingreso con exito";
 		}
@@ -903,6 +915,13 @@ function updatesubadmin($nombre,$appat,$apmat,$rut,$telefono,$email,$privilegio,
 		}
 		else{
 		echo "Error: ".$sql2."<br>".$db->error;
+		}
+
+		if ($db->query($sql3)===TRUE) {
+			echo "el registro se ingreso con exito";
+	}
+		else{
+		echo "Error: ".$sql3."<br>".$db->error;
 		}
 
 	mysqli_close($db);	
@@ -913,7 +932,7 @@ function updatesubadmin($nombre,$appat,$apmat,$rut,$telefono,$email,$privilegio,
 
 		$consulta="
 		SELECT * FROM VISITANTE
-		WHERE codebar_vis=$codebar"
+		WHERE bar_codevis=$codebar"
 		;
 
 		while ($valores = mysqli_fetch_array($consulta)) {
@@ -939,8 +958,16 @@ function updatesubadmin($nombre,$appat,$apmat,$rut,$telefono,$email,$privilegio,
 			$cod_visita,
 			$id_parque
 			";
+
+			if ($db->query($sql)===TRUE) {
+			echo "el registro se ingreso con exito";
+		}
+		else{
+		echo "Error: ".$sql."<br>".$db->error;
 		}
 		}
+		}
+
 		}
 
 

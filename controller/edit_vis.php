@@ -58,8 +58,8 @@ require_once'../model/bd.php';
 	if($imgck=='file')
 			{
 
-							$img=$_FILES['img'];
-							 if($img!==''){
+							
+							 if(isset($img=$_FILES['img']) && !empty($img=$_FILES['img'])){//ocuoar funcion de largo de cadena , entonces si el largo de la cadena esta vacio no hace nada
 
 							$target_dir = "../views/include/img/";
 							$target_file = $target_dir . $rut . $nombre . '.png';
@@ -134,8 +134,7 @@ require_once'../model/bd.php';
 
 editarvisitante($cod_vis,$nombre,$appat,$apmat,$rut,$dv,$direccion,$fechanac,$pasaporte,$telefono,$edad,$email,$tipo_vis,$target_file);
 	
-
-
+echo"
+ <script>window.history.go(-2)</script>";
  ?>
 
- <script>window.history.go(-2)</script>
