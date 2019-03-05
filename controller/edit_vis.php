@@ -31,6 +31,14 @@ require_once'../model/bd.php';
 	$edad=(substr($edad, 0, 2)); //substr es para obtener solo un digito, el 0 marca el punto de inicio de la cadena o numero, el 2 es el largo que tendrá la nueva cadena o numero
 	$dv= dv($rut);
 
+	$target_file= "../views/include/img/" . $rut . $nombre . '.png';
+
+	if (file_exists($target_file)) {
+    $target_file= "../views/include/img/" . $rut . $nombre . '.png';
+} else {
+    $target_file= "../views/include/img/" . 'default.jpg';
+}
+
 	if($dv==1){
 		$dv="k";
 	}
@@ -55,11 +63,17 @@ require_once'../model/bd.php';
 	while ($valores = mysqli_fetch_array($consulta)) {
 		$id_cuenta=$valores['maxcuenta']+1;
 	}
+
+
 	if($imgck=='file')
-			{
+            {
+            $img=$_FILES['img'];
+
+            if (!empty($_FILES['img']['name']))
+            {
 
 							
-							 if(isset($img=$_FILES['img']) && !empty($img=$_FILES['img'])){//ocuoar funcion de largo de cadena , entonces si el largo de la cadena esta vacio no hace nada
+							 if (!empty($_FILES['img']['name'])){
 
 							$target_dir = "../views/include/img/";
 							$target_file = $target_dir . $rut . $nombre . '.png';
@@ -105,7 +119,9 @@ require_once'../model/bd.php';
 							    }
 								}				
 								}
-							}
+			}
+			}
+			
 
 								if ($imgck=='camera') {
 								$img = $_POST['image'];
@@ -134,7 +150,5 @@ require_once'../model/bd.php';
 
 editarvisitante($cod_vis,$nombre,$appat,$apmat,$rut,$dv,$direccion,$fechanac,$pasaporte,$telefono,$edad,$email,$tipo_vis,$target_file);
 	
-echo"
- <script>window.history.go(-2)</script>";
  ?>
 
