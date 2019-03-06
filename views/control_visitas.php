@@ -57,6 +57,7 @@
               </div>
             </div>
           </div>
+          <!-- Fin del modal -->
         <form action="editor_visitas.php" method="POST">
         <input type="hidden" name="cod_vis" value="<?php echo $valores['cod_vis'] ?>">  <input type="submit" class="btn-primary" name="Editar" value="Editar"> </form>
         <?php echo "</td>
