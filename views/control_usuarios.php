@@ -21,8 +21,6 @@ $password=$_SESSION['password'];
                 <td><b>Apellido Paterno</b></td>
                 <td><b>Apellido Materno</b></td>
                 <td><b>Email</b></td>
-                <td><b>estado funcionario</b></td>
-                <td><b>Nivel</b></td>
                 <td><b>Funciones</b></td></tr> \n"; 
    do { 
      $idcomparador=$valores['rut_func'];
@@ -32,11 +30,13 @@ $password=$_SESSION['password'];
         <td>".$valores["appat_func"]."</td>
         <td>".$valores["apmat_func"]."</td>
         <td>".$valores["email_func"]."</td>
-        <td>".$valores["estado_func"]."</td>
-        <td>".$valores["privilegio"]."</td>
-        <td>"?> <form action="control_usuarios.php" id="desactivar" method="POST"> <input type="hidden" name= "deactivate" id="deactivate">  <input type="submit" class="btn-danger" name="botondesactivar" value="Desactivar"> </form>
+        <td>"?>
+          <form action="control_usuarios.php" id="desactivar" method="POST">
+          <input type="hidden" name= "deactivate" id="deactivate">
+          <input type="submit" class="btn-danger" name="botondesactivar" value="Desactivar"> </form>
           <!-- Boton que manda al modal -->
-          <button type="button" class="btn btn-primary btn-lg  active bg-success" data-toggle="modal" data-target="#exampleModal"> Ver ficha </button>
+          <button type="button" class="btn-secondary" data-toggle="modal" data-target="#exampleModal"> Ver ficha </button>
+
           <!-- Modal -->
           <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -48,7 +48,38 @@ $password=$_SESSION['password'];
                   </button>
                 </div>
                 <div class="modal-body">
-                    <!-- En este espacio ira la informacion del visitante -->
+
+
+                <?php
+
+                echo $idcomparador;
+ 
+                  switch ($valores["id_cargo"]) {
+                    case '1':
+                      $id_parque="CONTROL TOTAL";
+                      $privilegio="ADMINISTRADOR GENERAL";
+                      break;
+
+                    case '2':
+                      $id_parque="CONTROL TOTAL";
+                      $privilegio="SUBADMINISTRADOR DE PARQUE";
+                      break;
+
+                    case '3':
+                      $id_parque=$valores["id_parque"];
+                      $privilegio="EMPLEADO";
+                      break;
+                  }
+
+                  echo "NOMBRE DEL FUNCIONARIO: ". $valores["nombre_func"]."<br>";
+                  echo "APELLIDO PATERNO DEL FUNCIONARIO: ". $valores["appat_func"]."<br>";
+                  echo "APELLIDO MATERNO DEL FUNCIONARIO: ". $valores["apmat_func"]."<br>";
+                  echo "NUMERO DE TELEFONO DEL FUNCIONARIO: ". $valores["telefono_func"]."<br>";
+                  echo "CARGO DEL FUNCIONARIO: ". $privilegio ."<br>";
+                  echo "<img lenght=150 width=150 src=".$valores["img_func"].">";
+
+                                          
+                 ?>   
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -58,7 +89,8 @@ $password=$_SESSION['password'];
           </div>
           <!-- Fin del modal -->
         <form action="editor_usuarios.php" method="POST">
-        <input type="hidden" name="rut" value="<?php echo $valores['rut_func'] ?>">  <input type="submit" class="btn-primary" name="Editar" value="Editar"> </form>
+        <input type="hidden" name="rut" value="<?php echo $valores['rut_func'] ?>"> 
+        <input type="submit" class="btn-primary" name="Editar" value="Editar"> </form>
         <?php echo "</td>
         </tr> \n";
 
@@ -76,14 +108,14 @@ Usuarios Bloqueados
 
             echo "<table class='table table-hover'>";
             echo "<tr><td><b>Rut</b></td>
-                 <td><b>Dv</b></td>
-                 <td><b>Nombre</b></td>
-                <td><b>Apellido Paterno</b></td>
-                <td><b>Apellido Materno</b></td>
-                <td><b>Email</b></td>
-                <td><b>estado funcionario</b></td>
-                <td><b>Nivel</b></td>
-                <td><b>Funciones</b></td></tr> \n"; 
+                  <td><b>Dv</b></td>
+                  <td><b>Nombre</b></td>
+                  <td><b>Apellido Paterno</b></td>
+                  <td><b>Apellido Materno</b></td>
+                  <td><b>Email</b></td>
+                  <td><b>estado funcionario</b></td>
+                  <td><b>Nivel</b></td>
+                  <td><b>Funciones</b></td></tr> \n"; 
    do { 
      $idcomparador=$valores['rut_func'];
       echo "<tr><td>".$valores["rut_func"]."</td>
@@ -122,3 +154,4 @@ if(isset($_POST['activate'])){
 
 
  ?>
+

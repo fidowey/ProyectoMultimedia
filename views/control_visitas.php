@@ -2,6 +2,30 @@
 
     <p>
         <?php
+        session_start();
+
+        $email=$_SESSION['usuario'];
+        $password=$_SESSION['password'];
+        $privilegio=$_SESSION['privilegio'];
+
+        switch ($privilegio) {
+          case '1':
+            require_once('include/head_admin.php');
+            break;
+
+            case '2':
+            require_once('include/head_subadmin.php');
+            break;
+
+            case '3':
+            require_once('include/head_user.php');
+            break;
+          
+          default:
+            # code...
+            break;
+        }
+
         require_once'../model/bd.php';
         require_once'include/bootstrap_link_views.php';
 

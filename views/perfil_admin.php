@@ -5,8 +5,9 @@
 
 session_start();
 
-$email=$_SESSION['usuario'];
-$password=$_SESSION['password'];
+        $email=$_SESSION['usuario'];
+        $password=$_SESSION['password'];
+        $privilegio=$_SESSION['privilegio'];
 
 ?>
 

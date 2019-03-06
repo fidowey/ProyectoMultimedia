@@ -31,7 +31,7 @@ require_once "../model/bd.php";
   
   QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
   
-  $miqr = '<img src="'.$filename.'" style="margin-top:34%;margin-left:55%;" />';
+  $miqr = '<img src="'.$filename.'" class=img-fluid rounded mx-auto d-block;" />';
 
 ?>
 
@@ -52,8 +52,7 @@ require_once "../model/bd.php";
       <h3 class="text-center">Credencial</h3>
     </div>
 
-    <div class="row">
-      <div class="col-md-6 cred-front-iz">
+
 <?php 
       $consulta=cosultarvisitante($email,$password);
       
@@ -63,27 +62,41 @@ require_once "../model/bd.php";
                $img=$valores['img_vis'];
 
     
- ?>
 
+?>
+    <div class="row">
+      <div class="col-md-6 cred-front-iz">
+      <div class="col-md-3">
+        <p>
+        <?php
+        echo $valores['rut_vis'];  ?>
+      </p>
+      </div>
+      <div class="col-md-3">
+        <br>
+        <br>
+        <br>
+        <?php echo $miqr; ?>
+      </div>
+    
       </div>
       <div class="col-md-6 cred-front-der">
         <br>
         <br>
         <br>
-
       <?php 
       echo "&nbsp &nbsp &nbsp"."&nbsp".
             $valores['appat_vis']."&nbsp".
             $valores['apmat_vis']."&nbsp".
             $valores['nombre_vis'];
       }?>
-        
-       <?php echo $miqr; ?>
-      </div>
+      <br>
+      <br>
+      <br>
+       </div>
     </div>
 
   </div>
-
 <a href="../tcpdf/pdf/documento.php" target = "blank">
 <button class="btn btn-warning pull-right" style="margin:100px;">Imprimir credencial</button>
 </a>

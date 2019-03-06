@@ -20,7 +20,7 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 
 		$sql =
 		"
-		SELECT email_func,pass_func,privilegio,id_parque
+		SELECT email_func,pass_func,privilegio,id_parque,estado_cta
 		FROM DETALLE_PARQUE
 		WHERE email_func='$email'
 		AND pass_func='$password'
@@ -33,6 +33,13 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 		{
 			if($email==$resultado['email_func'] && $password==$resultado['pass_func'])
 			{
+				if ($resultado['estado_cta']==0) {
+				header("Location:../views/baneado.php");
+				}
+
+				else{
+
+
 				switch ($resultado['privilegio'])
 				{
 					case '1':
@@ -40,6 +47,7 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 						session_start();
 						$_SESSION['usuario']=$email;
 						$_SESSION['password']=$password;
+						$_SESSION['privilegio']=$resultado['privilegio'];
 						header("Location:../views/perfil_admin.php");
 						break;
 
@@ -49,18 +57,21 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 						$_SESSION['usuario']=$email;
 						$_SESSION['password']=$password;
 						$_SESSION['place']=$resultado['id_parque'];
+						$_SESSION['privilegio']=$resultado['privilegio'];
 						header("Location:../views/perfil_subadmin.php");
 					break;
 
 					case '3':
-						//redireccionar a la vista del usuario general
+						//redireccionar a la vista del usuario empleado
 						session_start();
 						$_SESSION['usuario']=$email;
 						$_SESSION['password']=$password;
 						$_SESSION['place']=$resultado['id_parque'];
+						$_SESSION['privilegio']=$resultado['privilegio'];
 						header("Location:../views/perfil_usuario.php");
 						break;
 				}
+			}
 						//condiciones en caso de que el que se loguea no es un funcionario			
 			}
 		}
@@ -87,6 +98,10 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 							mysqli_free_result($resultado_visita);
 							mysqli_close($db);
 						}
+						else if($resultado['est_cuenta']==1){
+							header("Location:../views/baneado.php");
+						}
+
 						else{
 							echo'<script>alert("Usuario incorrecto");</script>';
 						}
@@ -969,7 +984,6 @@ function updatesubadmin($nombre,$appat,$apmat,$rut,$telefono,$email,$privilegio,
 		}
 
 		}
-
 
 
 
