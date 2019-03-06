@@ -1,5 +1,4 @@
-	<?php 
-  include_once "include/bootstrap_link_views.php";?>
+	<?php include_once "include/bootstrap_link_views.php";?>
 
 	<!DOCTYPE html>
 	<html>
@@ -24,19 +23,8 @@
   			</button>
   			<div class="collapse navbar-collapse bg-info" id="navbarSupportedContent">
     			<ul class="navbar-nav mr-auto text-center ">
-      				<li class="nav-item active">
-        				<a class="nav-link text-center text-white" href="/ProyectoMultimedia/views/perfil_visitante.php">	Perfil		</a>
-      				</li>
-      				<li class="nav-item ">
-        				<a class="nav-link text-center text-white" href="/ProyectoMultimedia/views/editar_perfil.php">	Editar perfil	</a>
-      				</li>
-      				<li class="nav-item">
-        				<a class="nav-link text-center text-white" href="/ProyectoMultimedia/views/Credencial.php">	Credencial	</a>
-      				</li>
-              <li class="nav-item">
-                <a class="nav-link text-center text-white" href="/ProyectoMultimedia/views/agendar_visita.php">  Agendar visita </a>
-              </li>
     			</ul>
+        </div>
           <!-- Button trigger modal -->
           <button type="button" onclick="window.location.href='../controller/cerrar_sesion.php'" class="btn btn-primary btn-lg active bg-success" data-toggle="modal" data-target="#exampleModal">
           Cerrar sesion

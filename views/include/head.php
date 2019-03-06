@@ -24,16 +24,16 @@
         <div class="collapse navbar-collapse bg-info" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto text-center ">
               <li class="nav-item active">
-                <a class="nav-link text-center" href="index.php">  Inicio    </a>
+                <a class="nav-link text-center text-white" href="index.php">  Inicio    </a>
               </li>
               <li class="nav-item ">
-                <a class="nav-link text-center" href="views/contacto.php">  Contacto  </a>
+                <a class="nav-link text-center text-white" href="views/contacto.php">  Contacto  </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-center" href="#"> Nosotros  </a>
+                <a class="nav-link text-center text-white" href="#"> Nosotros  </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-center " href="views/registro.php">  Registrarse </a>
+                <a class="nav-link text-center text-white" href="views/registro.php">  Registrarse </a>
               </li>
           </ul>
           <!-- Button trigger modal -->

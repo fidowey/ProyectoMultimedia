@@ -36,19 +36,19 @@ $("#uptimeVal").text(datos.uptime);
   			<div class="collapse navbar-collapse bg-info" id="navbarSupportedContent">
     			<ul class="navbar-nav mr-auto text-center ">
             <li class="nav-item active">
-                <a class="nav-link text-center" href="/ProyectoMultimedia/views/perfil_subadmin.php"> Ver tu perfil  </a>
+                <a class="nav-link text-center text-white" href="/ProyectoMultimedia/views/perfil_subadmin.php"> Ver tu perfil  </a>
               </li>
       				<li class="nav-item active">
-        				<a class="nav-link text-center" href="/ProyectoMultimedia/views/historial_visitas.php">	Ver historial visitas		</a>
+        				<a class="nav-link text-center text-white" href="/ProyectoMultimedia/views/historial_visitas.php">	Ver historial visitas		</a>
       				</li>
       				<li class="nav-item ">
-        				<a class="nav-link text-center" href="/ProyectoMultimedia/views/control_visitas_subadmin.php">	Editar visitantes	</a>
+        				<a class="nav-link text-center text-white" href="/ProyectoMultimedia/views/control_visitas_subadmin.php">	Editar visitantes	</a>
       				</li>
       				<li class="nav-item">
-        				<a class="nav-link text-center" href="/ProyectoMultimedia/views/registrar_usuarios.php">	Registrar personal	</a>
+        				<a class="nav-link text-center text-white" href="/ProyectoMultimedia/views/registrar_usuarios.php">	Registrar personal	</a>
       				</li>
               <li class="nav-item">
-                <a class="nav-link text-center" href="/ProyectoMultimedia/views/registrar_visitas_subadmin.php">  Registrar Visita  </a>
+                <a class="nav-link text-center text-white" href="/ProyectoMultimedia/views/registrar_visitas_subadmin.php">  Registrar Visita  </a>
               </li>
     			</ul>
           <!-- Button trigger modal -->
