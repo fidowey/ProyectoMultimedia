@@ -982,29 +982,29 @@ function updatesubadmin($nombre,$appat,$apmat,$rut,$telefono,$email,$privilegio,
 		}
 		}
 		}
+}
+		
 
-		}
-
-		function selecttodosvisitantes {
+		function selecttodosvisitantes(){
 			global $db;
 
 			$consulta="
 			SELECT * FROM VISITANTE
 			";
 
-			return($db,$consulta);
-
+			return mysqli_query($db,$consulta);
+			mysql_close($db);
 		}
 
-		function selecttodostrabajadores {
+		function selecttodostrabajadores(){
 			global $db;
 
 			$consulta="
 			SELECT * FROM PERSONAL
 			";
 
-			return($db,$consulta);
-
+			return mysqli_query($db,$consulta);
+			mysql_close($db);
 		}
 
 
