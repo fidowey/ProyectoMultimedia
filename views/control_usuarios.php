@@ -35,6 +35,28 @@ $password=$_SESSION['password'];
         <td>".$valores["estado_func"]."</td>
         <td>".$valores["privilegio"]."</td>
         <td>"?> <form action="control_usuarios.php" id="desactivar" method="POST"> <input type="hidden" name= "deactivate" id="deactivate">  <input type="submit" class="btn-danger" name="botondesactivar" value="Desactivar"> </form>
+          <!-- Boton que manda al modal -->
+          <button type="button" class="btn btn-primary btn-lg  active bg-success" data-toggle="modal" data-target="#exampleModal"> Ver ficha </button>
+          <!-- Modal -->
+          <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Ficha de Funcionario</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <!-- En este espacio ira la informacion del visitante -->
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Fin del modal -->
         <form action="editor_usuarios.php" method="POST">
         <input type="hidden" name="rut" value="<?php echo $valores['rut_func'] ?>">  <input type="submit" class="btn-primary" name="Editar" value="Editar"> </form>
         <?php echo "</td>
