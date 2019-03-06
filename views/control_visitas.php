@@ -59,7 +59,9 @@
         <td>".$valores["edad_vis"]."</td>
         <td>".$valores["email_vis"]."</td>
         <td>".$valores["dir_vis"]."</td>
-        <td>"?> <form action="control_visitas.php" id="desactivar" method="POST"> <input type="hidden" name= "deactivate" id="deactivate">  <input type="submit" class="btn-danger" name="botondesactivar" value="Desactivar"> </form>
+        <td>"?> <form action="control_visitas.php" id="desactivar" method="POST">
+               <input type="hidden" name= "deactivate" id="deactivate"> 
+               <input type="submit" class="btn-danger" name="botondesactivar" value="Desactivar"> </form>
           <!-- Boton que manda al modal -->
           <button type="button" class="btn btn-primary btn-lg  active bg-success" data-toggle="modal" data-target="#exampleModal"> Ver ficha </button>
           <!-- Modal -->

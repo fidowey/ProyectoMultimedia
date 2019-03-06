@@ -985,6 +985,28 @@ function updatesubadmin($nombre,$appat,$apmat,$rut,$telefono,$email,$privilegio,
 
 		}
 
+		function selecttodosvisitantes {
+			global $db;
+
+			$consulta="
+			SELECT * FROM VISITANTE
+			";
+
+			return($db,$consulta);
+
+		}
+
+		function selecttodostrabajadores {
+			global $db;
+
+			$consulta="
+			SELECT * FROM PERSONAL
+			";
+
+			return($db,$consulta);
+
+		}
+
 
 
 
