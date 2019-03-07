@@ -961,7 +961,9 @@ function updatesubadmin($nombre,$appat,$apmat,$rut,$telefono,$email,$privilegio,
 		WHERE codebar_vis=$codebar
 		";
 
-		while ($valores=mysqli_fetch_array($sel)) {
+		$consulta=mysqli_query($db,$sel);
+
+		while ($valores=mysqli_fetch_array($consulta)) {
 			$cod_visita=$valores['cod_vis'];
 
 			$consulta2="SELECT MAX(id_vis) AS maxvis from VISITA";

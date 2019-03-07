@@ -14,7 +14,7 @@
         Si eres un visitante nuevo que está en busca de aventuras no dudes en agendar una visita por aca. Debes registrarte para poder llevar un historial de visitas .Si no nos visitas por primera vez no olvides en iniciar sesion 
            </p>
             <small class="form-text text-muted">Por favor complete los campos con asterisco para crear su cuenta </small>
-			<form action="../controller/registroUsuario.php" method="POST">
+			<form action="../controller/generar_pdf.php" method="POST">
   				<div class="form-row">
     				<div class="form-group ">
       					<label for="inputCity">Rut</label>

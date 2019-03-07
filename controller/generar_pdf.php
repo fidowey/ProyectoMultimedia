@@ -1,8 +1,8 @@
 <?php
 
 // Include the main TCPDF library (search for installation path).
-require_once('../tcpdf/tcpdf_include.php');
-require_once(dirname(__FILE__).'/tcpdf.php');
+require_once('../tcpdf/pdf/tcpdf_include.php');
+require_once('../tcpdf/tcpdf.php');
 include('registroUsuario.php');
 // create new PDF document
 $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
@@ -13,7 +13,7 @@ $pdf->SetAuthor('CONAF');
 $pdf->SetTitle('Reporte CONAF');
 
 // set default header data
-$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE.'', PDF_HEADER_STRING);
+$pdf->SetHeaderData(PDF_HEADER_TITLE.'');
 
 // set header and footer fonts
 $pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
@@ -31,7 +31,6 @@ $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
 $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
 
 // set image scale factor
-$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 
 // set some language-dependent strings (optional)
 if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
