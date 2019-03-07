@@ -18,3 +18,7 @@ $fecha=$anioactual.$mesactual.$diactual;
 
 
 registrovisita($codebar,$id_parque,$horario,$fecha);
+
+header("Location:".$_SERVER['HTTP_REFERER']);
+
+?>
