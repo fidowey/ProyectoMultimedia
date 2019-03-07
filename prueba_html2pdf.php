@@ -1,7 +1,7 @@
 <?php 
 	require './vendor/autoload.php';
 	use Spipu\Html2Pdf\Html2Pdf;
-	include('/controller/registroUsuario.php');
+	
 
 	$html = '<h1>Visitantes registrados</h1>
 <h2>Datos personales</h2>
