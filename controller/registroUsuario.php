@@ -50,7 +50,7 @@ require_once'../model/bd.php';
 
 
 	RegistrarUsuario($nombre,$appat,$apmat,$rut,$dv,$fechanac,$sexo,$pasaporte,$telefono,$edad,$email,$direccion);
-
+	
 header("Location:".$_SERVER['HTTP_REFERER']);
 
  ?>

@@ -8,6 +8,8 @@
         $password=$_SESSION['password'];
         $privilegio=$_SESSION['privilegio'];
 
+
+        
         switch ($privilegio) {
           case '1':
             require_once('include/head_admin.php');
@@ -28,7 +30,7 @@
 
         require_once'../model/bd.php';
         require_once'include/bootstrap_link_views.php';
-
+        echo "Visitantes Frecuentes";
         $consulta=consultarvisfrec();
                     
           while ($valores = mysqli_fetch_array($consulta)) {
@@ -204,5 +206,9 @@ if(isset($_POST['activate'])){
 
 
  ?>
+
+  <a href="../controller/excel_visitas.php" target = "blank">
+<input type="button"  class="btn-secondary" value="Generar Excel">
+</a>
 
 </div>

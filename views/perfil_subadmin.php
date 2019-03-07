@@ -21,6 +21,7 @@ $privilegio=$_SESSION['privilegio'];
     				<p class='lead'>Nombre: ".$valores['nombre_func']."</p>
     				<p class='lead'>Apellidos: ".$valores['appat_func']." ".$valores['apmat_func']."</p>
     				<p class='lead'>Rut: ".$valores['rut_func']."-".$valores['dv_func']."</p>
+            <p class='lead'>Parque asignado: ".$id_parque."</p>
     				";
     			}
     				?>
