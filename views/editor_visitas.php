@@ -42,6 +42,7 @@ switch ($privilegio) {
 	<div class="container">
 
 <?php
+$cod_vis=$_REQUEST['cod_vis'];
 		 $sql=consultar1vis($cod_vis);
              while ($valores=mysqli_fetch_assoc($sql)){
 ?>
