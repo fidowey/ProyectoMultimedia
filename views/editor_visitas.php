@@ -5,6 +5,24 @@ require_once'../model/bd.php';
 session_start();
 $email=$_SESSION['usuario'];
 $password=$_SESSION['password'];
+$privilegio=$_SESSION['privilegio'];
+
+switch ($privilegio) {
+  case '1':
+    # code
+  require_once("include/head_admin.php");
+    break;
+  case '2':
+    # code
+  require_once("include/head_subadmin.php");
+    break;
+  
+    case '3':
+    # code
+  require_once("include/head_user.php");
+    break;
+
+}
 
 
 $cod_vis=$_REQUEST['cod_vis'];

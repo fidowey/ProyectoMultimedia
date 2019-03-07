@@ -6,6 +6,7 @@ session_start();
 $email=$_SESSION['usuario'];
 $password=$_SESSION['password'];
 $id_parque=$_SESSION['place'];
+$privilegio=$_SESSION['privilegio'];
 
 ?>
 
