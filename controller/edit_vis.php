@@ -149,6 +149,8 @@ require_once'../model/bd.php';
 
 
 editarvisitante($cod_vis,$nombre,$appat,$apmat,$rut,$dv,$direccion,$fechanac,$pasaporte,$telefono,$edad,$email,$tipo_vis,$target_file);
+
+header("Location:".$_SERVER['HTTP_REFERER']);
 	
  ?>
 
