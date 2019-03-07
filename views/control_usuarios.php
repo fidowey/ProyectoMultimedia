@@ -153,5 +153,8 @@ if(isset($_POST['activate'])){
 }
 
 
- ?>
 
+ ?>
+ <a href="../controller/excel_trabajadores.php" target = "blank">
+<input type="button"  class="btn-secondary" value="Generar Excel">
+</a>

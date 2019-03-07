@@ -515,6 +515,17 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 			mysqli_close($db);
 		}
 
+		function consultarvisitasgenerales1parque($id_parque){
+		global $db;
+			$consulta="
+			SELECT * FROM VISITANTE
+			WHERE tipo_vis='esporadico' AND 
+			";
+
+			return mysqli_query($db,$consulta);
+			mysqli_close($db);
+		}
+
 		function consultar1vis($cod_vis){
 		global $db;
 
@@ -945,12 +956,12 @@ function updatesubadmin($nombre,$appat,$apmat,$rut,$telefono,$email,$privilegio,
 	function registrovisita($codebar,$id_parque,$horario,$fecha){
 		global $db;
 
-		$consulta="
+		$sel="
 		SELECT * FROM VISITANTE
-		WHERE bar_codevis=$codebar"
-		;
+		WHERE codebar_vis=$codebar
+		";
 
-		while ($valores = mysqli_fetch_array($consulta)) {
+		while ($valores=mysqli_fetch_array($sel)) {
 			$cod_visita=$valores['cod_vis'];
 
 			$consulta2="SELECT MAX(id_vis) AS maxvis from VISITA";
@@ -1005,6 +1016,28 @@ function updatesubadmin($nombre,$appat,$apmat,$rut,$telefono,$email,$privilegio,
 
 			return mysqli_query($db,$consulta);
 			mysql_close($db);
+		}
+
+		function consultarvisitasmasculinas(){
+			global $db;
+
+			$consulta="SELECT COUNT(id_vis) AS vismas FROM VISITA
+			NATURAL JOIN VISITANTE WHERE sexo_vis='M'";
+
+			return mysqli_query($db,$consulta);
+			mysql_close($db);
+
+		}
+
+		function consultarvisitasfemeninas(){
+			global $db;
+
+			$consulta="SELECT COUNT(id_vis) AS visfem FROM VISITA
+			NATURAL JOIN VISITANTE WHERE sexo_vis='F'";
+
+			return mysqli_query($db,$consulta);
+			mysql_close($db);
+
 		}
 
 
