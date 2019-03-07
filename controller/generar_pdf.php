@@ -2,6 +2,7 @@
 
 // Include the main TCPDF library (search for installation path).
 require_once('../tcpdf/tcpdf_include.php');
+require_once(dirname(__FILE__).'/tcpdf.php');
 require_once('registroUsuario.php');
 // create new PDF document
 $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
