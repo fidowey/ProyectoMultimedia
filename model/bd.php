@@ -313,14 +313,12 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 			$sql ="
 			UPDATE VISITANTE
 			SET
-			cod_vis=$cod_vis,
 			nombre_vis='$nombre',
 			appat_vis='$appat',
 			apmat_vis='$apmat',
 			rut_vis='$rut',
 			dv_vis='$dv',
 			fecha_nacvis='$fechanac',
-			sexo_vis='$sexo',
 			pasaporte='$pasaporte',
 			edad_vis=$edad,
 			dir_vis='$direccion',
@@ -341,6 +339,14 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 
 	function registrarcuenta($id_cuenta,$est_cuenta,$password,$cod_vis){
 		global $db;
+			$sq="UPDATE CUENTA
+			SET
+			pass_cuenta='$password',
+			est_cuenta=$est_cuenta,
+			password=$password
+			";
+
+			if ($db->query($sq)===FALSE) {
 			$sql ="
 			INSERT INTO CUENTA(
 			id_cuenta,
@@ -354,6 +360,7 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 			'$password',
 			$cod_vis
 			)";
+			}
 
 			if ($db->query($sql)===TRUE) {
 			echo "insersión";
@@ -538,7 +545,7 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 		mysqli_close($db);
 		}
 
-		function editarvisitante($cod_vis,$nombre,$appat,$apmat,$rut,$dv,$direccion,$fechanac,$pasaporte,$telefono,$edad,$email,$tipo_vis,$target_file){
+		function editarvisitante($cod_vis,$nombre,$appat,$apmat,$rut,$dv,$direccion,$fechanac,$pasaporte,$telefono,$edad,$email,$tipo_vis,$target_file,$comentario){
 
 		global $db;
 
@@ -556,8 +563,13 @@ $db= mysqli_connect($host,$user,$pass,$db_name);
 			email_vis='$email',
 			telefono_vis=$telefono,
 			tipo_vis='$tipo_vis',
-			img_vis='$target_file'
+			img_vis='$target_file',
+			comentario='$comentario'
 			WHERE cod_vis=$cod_vis";
+
+			if ($tipo_vis="esporadico")
+				$del="DELETE FROM CUENTA
+				WHERE cod_vis=$cod_vis";
 
 			if ($db->query($sql)===TRUE) {
 			echo "actualizacion exitosa";
@@ -895,6 +907,23 @@ function updatesubadmin($nombre,$appat,$apmat,$rut,$telefono,$email,$privilegio,
 	mysqli_close($db);	
 	}
 
+	function visita($codebar,$fecha,$horario,$id_parque){
+		global $db;
+		
+		$consulta="SELECT cod_vis FROM VISITANTE
+		WHERE bar_codevis=$codebar";
+
+		mysqli_query($db,$consulta);
+
+		if ($db->query($consulta)===TRUE) {
+			echo "el registro se ingreso con exito";
+		}
+		else{
+		echo "Error: ".$consulta."<br>".$db->error;
+		}
+		mysql_close($db);
+		}
+
 	
 
 	function updateuser($nombre,$appat,$apmat,$rut,$telefono,$email,$privilegio,$password,$dv,$target_file,$id_cargo,$id_parque){
@@ -953,49 +982,31 @@ function updatesubadmin($nombre,$appat,$apmat,$rut,$telefono,$email,$privilegio,
 	mysqli_close($db);	
 	}
 
-	function registrovisita($codebar,$id_parque,$horario,$fecha){
+	function consultarfichafunc($idcomparador){
 		global $db;
-
 		$sel="
-		SELECT * FROM VISITANTE
-		WHERE codebar_vis=$codebar
+		SELECT * FROM PERSONAL NATURAL JOIN DETALLE_PARQUE
+		WHERE rut_func=$idcomparador
 		";
 
-		$consulta=mysqli_query($db,$sel);
+		return mysqli_query($db,$sel);
 
-		while ($valores=mysqli_fetch_array($consulta)) {
-			$cod_visita=$valores['cod_vis'];
+		mysql_close($db);
 
-			$consulta2="SELECT MAX(id_vis) AS maxvis from VISITA";
-
-			while ($resultado = mysqli_fetch_array($consulta2)) {
-
-				$id_visita=$resultado['maxvis']+1;
-			
-
-			$sql="INSERT INTO VISITA
-			fecha_vis,
-			hora_vis,
-			id_vis,
-			cod_vis,
-			id_parque
-			VALUES
-			$fecha,
-			$horario,
-			$id_visita,
-			$cod_visita,
-			$id_parque
-			";
-
-			if ($db->query($sql)===TRUE) {
-			echo "el registro se ingreso con exito";
 		}
-		else{
-		echo "Error: ".$sql."<br>".$db->error;
+
+		function consultarfichavis($idcomparador){
+		global $db;
+		$sel="
+		SELECT * FROM VISITANTE
+		WHERE rut_vis=$idcomparador
+		";
+
+		return mysqli_query($db,$sel);
+
+		mysql_close($db);
+
 		}
-		}
-		}
-}
 		
 
 		function selecttodosvisitantes(){
@@ -1008,6 +1019,9 @@ function updatesubadmin($nombre,$appat,$apmat,$rut,$telefono,$email,$privilegio,
 			return mysqli_query($db,$consulta);
 			mysql_close($db);
 		}
+
+
+		
 
 		function selecttodostrabajadores(){
 			global $db;
@@ -1041,9 +1055,6 @@ function updatesubadmin($nombre,$appat,$apmat,$rut,$telefono,$email,$privilegio,
 			mysql_close($db);
 
 		}
-
-
-
 
 
 

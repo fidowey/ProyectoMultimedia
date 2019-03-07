@@ -8,6 +8,8 @@
         $password=$_SESSION['password'];
         $privilegio=$_SESSION['privilegio'];
 
+
+        
         switch ($privilegio) {
           case '1':
             require_once('include/head_admin.php');
@@ -21,14 +23,14 @@
             require_once('include/head_user.php');
             break;
           
-          default:
+          default: 
             # code...
             break;
         }
 
         require_once'../model/bd.php';
         require_once'include/bootstrap_link_views.php';
-
+        echo "Visitantes Frecuentes";
         $consulta=consultarvisfrec();
                     
           while ($valores = mysqli_fetch_array($consulta)) {
@@ -62,30 +64,13 @@
         <td>"?> <form action="control_visitas.php" id="desactivar" method="POST">
                <input type="hidden" name= "deactivate" id="deactivate"> 
                <input type="submit" class="btn-danger" name="botondesactivar" value="Desactivar"> </form>
-          <!-- Boton que manda al modal -->
-          <button type="button" class="btn btn-primary btn-lg  active bg-success" data-toggle="modal" data-target="#exampleModal"> Ver ficha </button>
-          <!-- Modal -->
-                    <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Ficha de visitante</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                    <!-- En este espacio ira la informacion del visitante -->
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Fin del modal -->
+          <form action="ver_ficha_vis.php">
+            <input type="hidden" name="rut" value="<?php echo $valores['rut_vis']; ?>"> 
+            <input type="submit" class="secondary" value="Ver Ficha">
+          </form>
+          
         <form action="editor_visitas.php" method="POST">
-        <input type="hidden" name="cod_vis" value="<?php echo $valores['cod_vis'] ?>">  <input type="submit" class="btn-primary" name="Editar" value="Editar"> </form>
+        <input type="hidden" name="cod_vis" value="<?php echo $valores['cod_vis']; ?>">  <input type="submit" class="btn-primary" name="Editar" value="Editar"> </form>
         <?php echo "</td>
         </tr> \n";
 
@@ -205,4 +190,9 @@ if(isset($_POST['activate'])){
 
  ?>
 
+  <a href="../controller/excel_visitas.php" target = "blank">
+<input type="button"  class="btn-secondary" value="Generar Excel">
+</a>
+
 </div>
+<?php require_once('include/footer_views.php'); ?>

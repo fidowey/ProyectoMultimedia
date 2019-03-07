@@ -131,7 +131,7 @@ switch ($privilegio) {
         
     }
 
-    header("Location:".$_SERVER['HTTP_REFERER']);
+    header("Location: ../views/control_usuarios.php");
       
 
  ?>

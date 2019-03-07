@@ -25,7 +25,7 @@ switch ($privilegio) {
 }
 
 
-$cod_vis=$_REQUEST['cod_vis'];
+
 
  ?>
 
@@ -124,6 +124,11 @@ $cod_vis=$_REQUEST['cod_vis'];
               <input type="file" name="img" id="img" >
             </div>
             </div>
+            
+            <div class="form-group">
+
+          <textarea name="comentario" id="" cols="30" rows="10"  value="<?php echo($valores['comentario']); ?>"></textarea>
+          </div>
   				<button type="submit" class="btn btn-primary">Modificar</button>
 			</form>
 	

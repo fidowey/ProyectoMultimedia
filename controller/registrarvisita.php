@@ -16,9 +16,10 @@ $minutoactual=(int)$hoy['minutes'];
 $horario=$horaactual.$minutoactual;
 $fecha=$anioactual.$mesactual.$diactual;
 
+visita($codebar,$fecha,$horario,$id_parque);
 
-registrovisita($codebar,$id_parque,$horario,$fecha);
-
+/*
 header("Location:".$_SERVER['HTTP_REFERER']);
+*/
 
 ?>

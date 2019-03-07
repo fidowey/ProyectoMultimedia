@@ -13,6 +13,7 @@ require_once'../model/bd.php';
 	$email = $_POST['email'];
 	$tipo_vis=$_POST['tipo_vis'];
 	$imgck=$_REQUEST['imgck'];
+	$comentario=$_REQUEST['comentario'];
 
 	$hoy=getdate(); //obtenemos la fecha actual
 	$anioactual=(int)$hoy['year']; //el (int) es para convertir una variable a entero
@@ -148,9 +149,10 @@ require_once'../model/bd.php';
 	
 
 
-editarvisitante($cod_vis,$nombre,$appat,$apmat,$rut,$dv,$direccion,$fechanac,$pasaporte,$telefono,$edad,$email,$tipo_vis,$target_file);
+editarvisitante($cod_vis,$nombre,$appat,$apmat,$rut,$dv,$direccion,$fechanac,$pasaporte,$telefono,$edad,$email,$tipo_vis,$target_file,$comentario);
 
-header("Location:".$_SERVER['HTTP_REFERER']);
+
+header("Location: ../views/control_visitas.php");
 	
  ?>
 
