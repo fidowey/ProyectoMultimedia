@@ -30,7 +30,7 @@
         				<a class="nav-link text-center" href="/ProyectoMultimedia/views/control_usuarios.php">	Cuentas Trabajadores	</a>
       				</li>
       				<li class="nav-item ">
-        				<a class="nav-link text-center" href="/ProyectoMultimedia/views/control_visitas_admin.php">	Cuentas Visitantes	</a>
+        				<a class="nav-link text-center" href="/ProyectoMultimedia/views/control_visitas.php">	Cuentas Visitantes	</a>
       				</li>
                 <li class="nav-item ">
                 <a class="nav-link text-center" href="/ProyectoMultimedia/views/Agregar_usuarios_all.php"> Agregar Funcionarios  </a>

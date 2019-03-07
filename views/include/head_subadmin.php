@@ -42,7 +42,7 @@ $("#uptimeVal").text(datos.uptime);
         				<a class="nav-link text-center text-white" href="/ProyectoMultimedia/views/historial_visitas.php">	Ver historial visitas		</a>
       				</li>
       				<li class="nav-item ">
-        				<a class="nav-link text-center text-white" href="/ProyectoMultimedia/views/control_visitas_subadmin.php">	Editar visitantes	</a>
+        				<a class="nav-link text-center text-white" href="/ProyectoMultimedia/views/control_visitas.php">	Editar visitantes	</a>
       				</li>
       				<li class="nav-item">
         				<a class="nav-link text-center text-white" href="/ProyectoMultimedia/views/registrar_usuarios.php">	Registrar personal	</a>

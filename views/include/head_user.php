@@ -27,7 +27,7 @@
                 <a class="nav-link text-center text-white" href="/ProyectoMultimedia/views/perfil_usuario.php"> Ver tu perfil  </a>
               </li>
       				<li class="nav-item ">
-        				<a class="nav-link text-center text-white" href="/ProyectoMultimedia/views/control_visitas_usuario.php">	Cuentas Visitantes	</a>
+        				<a class="nav-link text-center text-white" href="/ProyectoMultimedia/views/control_visitas.php">	Cuentas Visitantes	</a>
       				</li>
                 <li class="nav-item ">
                 <a class="nav-link text-center text-white" href="/ProyectoMultimedia/views/registrar_visitas_user.php"> Registrar visita  </a>

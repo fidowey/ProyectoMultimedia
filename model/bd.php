@@ -907,6 +907,23 @@ function updatesubadmin($nombre,$appat,$apmat,$rut,$telefono,$email,$privilegio,
 	mysqli_close($db);	
 	}
 
+	function visita($codebar,$fecha,$horario,$id_parque){
+		global $db;
+		
+		$consulta="SELECT cod_vis FROM VISITANTE
+		WHERE bar_codevis=$codebar";
+
+		mysqli_query($db,$consulta);
+
+		if ($db->query($consulta)===TRUE) {
+			echo "el registro se ingreso con exito";
+		}
+		else{
+		echo "Error: ".$consulta."<br>".$db->error;
+		}
+		mysql_close($db);
+		}
+
 	
 
 	function updateuser($nombre,$appat,$apmat,$rut,$telefono,$email,$privilegio,$password,$dv,$target_file,$id_cargo,$id_parque){
@@ -990,50 +1007,6 @@ function updatesubadmin($nombre,$appat,$apmat,$rut,$telefono,$email,$privilegio,
 		mysql_close($db);
 
 		}
-
-	function registrovisita($codebar,$id_parque,$horario,$fecha){
-		global $db;
-
-		$sel="
-		SELECT * FROM VISITANTE
-		WHERE codebar_vis=$codebar
-		";
-
-		mysqli_query($db,$sel);
-
-		while ($valores=mysqli_fetch_array($consulta)) {
-			$cod_visita=$valores['cod_vis'];
-
-			$consulta2="SELECT MAX(id_vis) AS maxvis from VISITA";
-
-			while ($resultado = mysqli_fetch_array($consulta2)) {
-
-				$id_visita=$resultado['maxvis']+1;
-			
-
-			$sql="INSERT INTO VISITA
-			fecha_vis,
-			hora_vis,
-			id_vis,
-			cod_vis,
-			id_parque
-			VALUES
-			$fecha,
-			$horario,
-			$id_visita,
-			$cod_visita,
-			$id_parque
-			";
-
-			if ($db->query($sql)===TRUE) {
-			echo "el registro se ingreso con exito";
-		}
-		else{
-		echo "Error: ".$sql."<br>".$db->error;
-		}
-		}
-		}
-}
 		
 
 		function selecttodosvisitantes(){
@@ -1046,6 +1019,9 @@ function updatesubadmin($nombre,$appat,$apmat,$rut,$telefono,$email,$privilegio,
 			return mysqli_query($db,$consulta);
 			mysql_close($db);
 		}
+
+
+		
 
 		function selecttodostrabajadores(){
 			global $db;
@@ -1079,11 +1055,6 @@ function updatesubadmin($nombre,$appat,$apmat,$rut,$telefono,$email,$privilegio,
 			mysql_close($db);
 
 		}
-
-
-
-
-
 
 
 

@@ -9,6 +9,22 @@ $email=$_SESSION['usuario'];
 $password=$_SESSION['password'];
 $id_parque=$_SESSION['place'];
 
+switch ($id_parque) {
+  case '1':
+    $id_parque="CERRO LA CAMPANA";
+    break;
+  case '2':
+    $id_parque="EL PERAL";
+    break;
+  case '3':
+    $id_parque="EL TABO";
+    break;
+  
+  default:
+    # code...
+    break;
+}
+
 ?>
 
 
